@@ -36,12 +36,17 @@ on:
 jobs:
   prepare:
     name: Prepare to Build
+    permissions:
+      packages: write
+      contents: read
     runs-on: ubuntu-latest
     outputs:
       matrices: ${{ steps.prepare-matrices.outputs.matrices }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Setup Python
         uses: actions/setup-python@v4
