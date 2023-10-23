@@ -58,6 +58,7 @@ jobs:
         id: generate-token
         with:
           installation_retrieval_mode: organization
+          installation_retrieval_payload: kFlix-tv
           app_id: "${{ secrets.BOT_APP_ID }}"
           private_key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
 
