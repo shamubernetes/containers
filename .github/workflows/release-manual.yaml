@@ -36,6 +36,7 @@ jobs:
     secrets: inherit
     permissions:
       packages: write
+      contents: read
     with:
       appsToBuild: ${{ inputs.appsToBuild }}
       channelsToBuild: ${{ inputs.channelsToBuild }}
