@@ -20,7 +20,7 @@ RUN \
     # Prerequisites
     set -eux \
     && apt-get -qq update \
-    && apt-get install -y \
+    && apt-get install --no-install-recommends -y \
         bash \
         ca-certificates \
         curl \
@@ -46,8 +46,6 @@ RUN \
     && groupadd docker --gid 123 \
     && usermod -aG sudo runner \
     && usermod -aG docker runner \
-    && mkdir -p /home/runner/.linuxbrew \
-    && chown -R runner: /home/runner/.linuxbrew \
     && echo "%sudo   ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers \
     && echo "Defaults env_keep += \"DEBIAN_FRONTEND\"" >> /etc/sudoers \
     && \
@@ -82,5 +80,4 @@ RUN \
         /var/tmp/*
 WORKDIR /home/runner
 USER runner
-RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 CMD ["/home/runner/run.sh"]
