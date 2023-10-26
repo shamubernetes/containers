@@ -1,0 +1,45 @@
+fail_fast: false
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.5.0 # Use the ref you want to point at
+  hooks:
+  - id: check-added-large-files
+  - id: check-case-conflict
+  - id: check-json
+  - id: check-merge-conflict
+  - id: check-symlinks
+  - id: check-vcs-permalinks
+  - id: destroyed-symlinks
+  - id: detect-private-key
+  - id: end-of-file-fixer
+  - id: mixed-line-ending
+    args: [--fix=lf]
+  - id: trailing-whitespace
+
+- repo: https://github.com/gruntwork-io/pre-commit
+  rev: v0.1.22
+  hooks:
+  - id: shellcheck
+
+- repo: https://github.com/compilerla/conventional-pre-commit
+  rev: v2.4.0
+  hooks:
+  - id: conventional-pre-commit
+    stages: [commit-msg]
+    args: []
+
+- repo: https://github.com/hadolint/hadolint
+  rev: v2.12.0
+  hooks:
+  - id: hadolint-docker
+
+- repo: https://github.com/adrienverge/yamllint.git
+  rev: v1.32.0
+  hooks:
+  - id: yamllint
+    args: [-c=.yamllint]
+
+- repo: https://github.com/stackrox/kube-linter
+  rev: v0.6.4
+  hooks:
+  - id: kube-linter
