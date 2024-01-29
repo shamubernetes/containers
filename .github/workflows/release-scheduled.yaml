@@ -19,6 +19,8 @@ on:
         required: true
   schedule:
   - cron: "0 * * * *"
+env:
+  TOKEN: ${{ secrets.TOKEN }}
 
 jobs:
   simple-checks:
@@ -32,6 +34,7 @@ jobs:
     secrets: inherit
     permissions:
       packages: write
+      contents: read
     with:
       appsToBuild: ${{ inputs.appsToBuild }}
       force: ${{ inputs.force == true }}
