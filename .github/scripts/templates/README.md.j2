@@ -13,8 +13,6 @@ _An opinionated collection of container images_
 
 <div align="center">
 
-![GitHub Repo stars](https://img.shields.io/github/stars/kflix-tv/containers?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/kflix-tv/containers?style=for-the-badge)
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/kflix-tv/containers/release-scheduled.yaml?style=for-the-badge&label=Scheduled%20Release)
 
 </div>
