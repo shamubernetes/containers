@@ -9,9 +9,6 @@ tasks:
     cmds:
     - task -l
 
-  init:
-    cmd: brew install hadolint
-
   test:
     desc: |-
       task APP=<app> CHANNEL=<channel> BASE=<true/false> test
