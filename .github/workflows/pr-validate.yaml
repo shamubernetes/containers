@@ -2,29 +2,24 @@ name: "Pull Request: Validate"
 
 on:
   pull_request:
-    branches:
-    - main
-    types:
-    - opened
-    - synchronize
-    - reopened
+    branches: ["main"]
+    types: ["opened", "synchronize", "reopened"]
 
 concurrency:
   group: ${{ github.head_ref }}-pr-validate
   cancel-in-progress: true
 
 jobs:
-  # Pin to main to prevent accidental injection of malicious code
   simple-checks:
-    uses: onedr0p/containers/.github/workflows/simple-checks.yaml@main
+    uses: kflix-tv/containers/.github/workflows/simple-checks.yaml@main
 
   get-changed-images:
-    uses: onedr0p/containers/.github/workflows/get-changed-images.yaml@main
+    uses: kflix-tv/containers/.github/workflows/get-changed-images.yaml@main
 
   build-images:
-    needs: [simple-checks, get-changed-images]
+    needs: ["simple-checks", "get-changed-images"]
     if: ${{ needs.get-changed-images.outputs.addedOrModified == 'true' }}
-    uses: onedr0p/containers/.github/workflows/build-images.yaml@main
+    uses: kflix-tv/containers/.github/workflows/build-images.yaml@main
     secrets: inherit
     with:
       appsToBuild: "${{ needs.get-changed-images.outputs.addedOrModifiedImages }}"

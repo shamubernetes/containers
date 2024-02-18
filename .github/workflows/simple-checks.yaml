@@ -8,26 +8,29 @@ jobs:
     name: Validate Image Metadata
     runs-on: ["arc-runner-set-kflix"]
     steps:
-    - uses: actions/checkout@v4
-
-    - uses: dorny/paths-filter@v3
-      id: filter
+    - name: Checkout
+      uses: actions/checkout@v4
       with:
-        list-files: shell
-        filters: |
+        fetch-depth: 0
+
+    - name: Get Changed Files
+      id: changed-files
+      uses: tj-actions/changed-files@v42
+      with:
+        files_yaml: |
           cue:
-            - added|modified: "apps/**/metadata.yaml"
-            - added|modified: "apps/**/metadata.json"
-            - added|modified: "./metadata.rules.cue"
+            - metadata.rules.cue
+            - apps/**/metadata.json
+            - apps/**/metadata.yaml
 
     - name: Setup CUE
-      if: ${{ steps.filter.outputs.cue == 'true' }}
-      uses: cue-lang/setup-cue@1713281ae501e533ff06108005dffeab9e2e5203
+      if: ${{ steps.changed-files.outputs.cue_any_changed == 'true' }}
+      uses: cue-lang/setup-cue@v1.0.0
 
+    # Run against all files to ensure they are tested if the cue schema is changed.
     - name: Validate image metadata
-      if: ${{ steps.filter.outputs.cue == 'true' }}
+      if: ${{ steps.changed-files.outputs.cue_any_changed == 'true' }}
       shell: bash
-      # Run against all files to ensure they are tested if the cue schema is changed.
       run: |
         find ./apps/ -name metadata.json | xargs -I {} cue vet --schema '#Spec' {} ./metadata.rules.cue
         find ./apps/ -name metadata.yaml | xargs -I {} cue vet --schema '#Spec' {} ./metadata.rules.cue
