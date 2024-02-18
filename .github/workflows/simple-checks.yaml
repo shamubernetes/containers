@@ -1,4 +1,3 @@
----
 name: "Simple Checks"
 
 on:
@@ -7,28 +6,28 @@ on:
 jobs:
   metadata-validation:
     name: Validate Image Metadata
-    runs-on: ubuntu-latest
+    runs-on: ["arc-runner-set-kflix"]
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-      - uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          list-files: shell
-          filters: |
-            cue:
-              - added|modified: "apps/**/metadata.yaml"
-              - added|modified: "apps/**/metadata.json"
-              - added|modified: "./metadata.rules.cue"
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        list-files: shell
+        filters: |
+          cue:
+            - added|modified: "apps/**/metadata.yaml"
+            - added|modified: "apps/**/metadata.json"
+            - added|modified: "./metadata.rules.cue"
 
-      - name: Setup CUE
-        if: ${{ steps.filter.outputs.cue == 'true' }}
-        uses: cue-lang/setup-cue@1713281ae501e533ff06108005dffeab9e2e5203
+    - name: Setup CUE
+      if: ${{ steps.filter.outputs.cue == 'true' }}
+      uses: cue-lang/setup-cue@1713281ae501e533ff06108005dffeab9e2e5203
 
-      - name: Validate image metadata
-        if: ${{ steps.filter.outputs.cue == 'true' }}
-        shell: bash
-        # Run against all files to ensure they are tested if the cue schema is changed.
-        run: |
-          find ./apps/ -name metadata.json | xargs -I {} cue vet --schema '#Spec' {} ./metadata.rules.cue
-          find ./apps/ -name metadata.yaml | xargs -I {} cue vet --schema '#Spec' {} ./metadata.rules.cue
+    - name: Validate image metadata
+      if: ${{ steps.filter.outputs.cue == 'true' }}
+      shell: bash
+      # Run against all files to ensure they are tested if the cue schema is changed.
+      run: |
+        find ./apps/ -name metadata.json | xargs -I {} cue vet --schema '#Spec' {} ./metadata.rules.cue
+        find ./apps/ -name metadata.yaml | xargs -I {} cue vet --schema '#Spec' {} ./metadata.rules.cue

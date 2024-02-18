@@ -1,4 +1,3 @@
----
 name: "Get Changed Images"
 
 on:
@@ -14,26 +13,26 @@ on:
 jobs:
   get-changed-images:
     name: Get Changed Images
-    runs-on: ubuntu-latest
+    runs-on: ["arc-runner-set-kflix"]
     outputs:
       addedOrModified: "${{ steps.filter.outputs.addedOrModified }}"
       addedOrModifiedImages: "${{ steps.filter-containers.outputs.addedOrModifiedImages }}"
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-      - name: Collect changed files
-        uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          list-files: json
-          filters: |
-            addedOrModified:
-              - added|modified: 'apps/*/**'
+    - name: Collect changed files
+      uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        list-files: json
+        filters: |
+          addedOrModified:
+            - added|modified: 'apps/*/**'
 
-      - name: Determine changed images
-        if: ${{ steps.filter.outputs.addedOrModified == 'true' }}
-        id: filter-containers
-        run: |
-          PATHS='${{ steps.filter.outputs.addedOrModified_files }}'
-          OUTPUT=$(echo $PATHS | jq --raw-output -c 'map(. |= split("/")[1]) | unique | join(",")')
-          echo "addedOrModifiedImages=${OUTPUT}" >> $GITHUB_OUTPUT
+    - name: Determine changed images
+      if: ${{ steps.filter.outputs.addedOrModified == 'true' }}
+      id: filter-containers
+      run: |
+        PATHS='${{ steps.filter.outputs.addedOrModified_files }}'
+        OUTPUT=$(echo $PATHS | jq --raw-output -c 'map(. |= split("/")[1]) | unique | join(",")')
+        echo "addedOrModifiedImages=${OUTPUT}" >> $GITHUB_OUTPUT
