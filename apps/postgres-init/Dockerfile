@@ -1,4 +1,4 @@
-FROM ghcr.io/kflix-tv/alpine:rolling@sha256:0e3067295cc20dafbd4cf63789ccc71858ad555f3998200ca10b271328c7285e
+FROM ghcr.io/kflix-tv/alpine:rolling@sha256:b5ca29ff569830f81e06e75fbadc1f6045698af282e171a1db0ef3ee7b855642
 
 ARG TARGETPLATFORM
 ARG VERSION
