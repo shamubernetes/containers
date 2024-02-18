@@ -70,6 +70,7 @@ Container | Channel | Image | Latest Tags
 [actions-runner](https://github.com/kFlix-tv/containers/pkgs/container/actions-runner) | stable | ghcr.io/kFlix-tv/actions-runner |![2](https://img.shields.io/badge/2-blue?style=flat-square) ![2.313](https://img.shields.io/badge/2.313-blue?style=flat-square) ![2.313.0](https://img.shields.io/badge/2.313.0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [plex](https://github.com/kFlix-tv/containers/pkgs/container/plex) | stable | ghcr.io/kFlix-tv/plex |![1.40.0.7998-c29d4c0c8](https://img.shields.io/badge/1.40.0.7998--c29d4c0c8-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [plex-beta](https://github.com/kFlix-tv/containers/pkgs/container/plex-beta) | beta | ghcr.io/kFlix-tv/plex-beta |![1.40.0.7998-c29d4c0c8](https://img.shields.io/badge/1.40.0.7998--c29d4c0c8-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
+[postgres-init](https://github.com/kFlix-tv/containers/pkgs/container/postgres-init) | stable | ghcr.io/kFlix-tv/postgres-init |![16](https://img.shields.io/badge/16-blue?style=flat-square) ![16.2](https://img.shields.io/badge/16.2-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 
 
 ## Contributing
