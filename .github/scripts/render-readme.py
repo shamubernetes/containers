@@ -5,7 +5,7 @@ import yaml
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 
-repo_owner = os.environ.get('REPO_OWNER', os.environ.get('GITHUB_REPOSITORY_OWNER'))
+repo_owner = os.environ.get('REPO_OWNER', os.environ.get('GITHUB_REPOSITORY_OWNER')).lower()
 repo_name = os.environ.get('REPO_NAME', os.environ.get('GITHUB_REPOSITORY'))
 
 env = Environment(
@@ -42,6 +42,7 @@ def get_scheduled_release_workflow_id():
     )
     if r.status_code != 200:
         print(f"Failed to get workflows for {repo_name}: {r.status_code}: {r.text}")
+        print(f"https://api.github.com/repos/{repo_owner}/{repo_name}/actions/workflows")
         return None
     data = r.json()
     for workflow in data["workflows"]:
