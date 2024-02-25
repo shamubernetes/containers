@@ -8,8 +8,6 @@
     ":semanticCommits",
     "github>kFlix-tv/containers//.github/renovate/autoMerge.json5"
   ],
-  "onboarding": false,
-  "requireConfig": "optional",
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"]
 }
