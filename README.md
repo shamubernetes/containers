@@ -66,10 +66,12 @@ Each Image will be built with a `rolling` tag, along with tags specific to it's 
 
 ### Base Images
 
+All Base Images are configured with a non-root user (kflix:kflix), and exposed /config volume, and use tini as an entrypoint to ensure proper signal handling.
+
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
-[alpine](https://github.com/kflix-tv/containers/pkgs/container/alpine) | 3.19 | ghcr.io/kflix-tv/alpine |[![3.19.1](https://img.shields.io/badge/3.19.1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/alpine/180432899?tag=3.19.1) [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/alpine/180432899?tag=rolling)
-[ubuntu](https://github.com/kflix-tv/containers/pkgs/container/ubuntu) | jammy | ghcr.io/kflix-tv/ubuntu |[![jammy-20240212](https://img.shields.io/badge/jammy--20240212-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/181674711?tag=jammy-20240212) [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/181674711?tag=rolling)
+[alpine](https://github.com/kflix-tv/containers/pkgs/container/alpine) | 3.19 | ghcr.io/kflix-tv/alpine |[![3.19.1](https://img.shields.io/badge/3.19.1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/alpine/183229670?tag=3.19.1) [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/alpine/183229670?tag=rolling)
+[ubuntu](https://github.com/kflix-tv/containers/pkgs/container/ubuntu) | jammy | ghcr.io/kflix-tv/ubuntu |[![jammy-20240212](https://img.shields.io/badge/jammy--20240212-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/183229668?tag=jammy-20240212) [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/183229668?tag=rolling)
 
 
 
