@@ -70,6 +70,7 @@ if __name__ == "__main__":
                 gh_data = get_latest_image(name)
                 if gh_data is not None:
                     image["html_url"] = f"https://github.com/{repo_name}/pkgs/container/{name}"
+                    image["id"] = gh_data["id"]
                     image["tags"] = sorted(gh_data["metadata"]["container"]["tags"])
                 if meta["base"]:
                     base_images.append(image)
