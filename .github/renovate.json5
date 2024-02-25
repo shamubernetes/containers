@@ -5,7 +5,8 @@
     "docker:enableMajor",
     ":dependencyDashboard",
     ":disableRateLimiting",
-    ":semanticCommits"
+    ":semanticCommits",
+    "github>kFlix-tv/containers//.github/renovate/autoMerge.json5"
   ],
   "onboarding": false,
   "requireConfig": "optional",
