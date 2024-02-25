@@ -149,8 +149,10 @@ if __name__ == "__main__":
                     app_images.append(image)
     latest_run_url = get_latest_scheduled_workflow_run()
     if latest_run_url is None:
+        print("Failed to get latest run URL, defaulting to workflow list")
         latest_run_url = get_scheduled_release_workflow_url()
     if latest_run_url is None:
+        print("Failed to get workflow URL, defaulting to repo actions")
         latest_run_url = f"https://github.com/{repo_owner}/{repo_name}/actions"
     template = env.get_template("README.md.j2")
     with open("./README.md", "w") as f:
