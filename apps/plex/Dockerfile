@@ -1,4 +1,4 @@
-FROM ghcr.io/kflix-tv/ubuntu:jammy-20240212@sha256:cbf7b6ee1fff001d541a19ea1538f50d2ddc9227c5a2b6f22cb6ddb7bada3156
+FROM ghcr.io/kflix-tv/ubuntu:jammy-20240212@sha256:beca1f1341c614f04b49690bb5301da10b1419caedc87c4ec3ec6f547afea3fc
 
 ARG TARGETPLATFORM
 ARG VERSION
@@ -9,7 +9,7 @@ ENV NVIDIA_DRIVER_CAPABILITIES="compute,video,utility" \
     PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="/config/Library/Application Support" \
     PLEX_MEDIA_SERVER_HOME="/usr/lib/plexmediaserver" \
     PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS="6" \
-    PLEX_MEDIA_SERVER_USER="kah" \
+    PLEX_MEDIA_SERVER_USER="kflix" \
     PLEX_MEDIA_SERVER_INFO_VENDOR="Docker" \
     PLEX_MEDIA_SERVER_INFO_DEVICE="Docker Container (kflix-tv)"
 
@@ -50,6 +50,6 @@ RUN \
     && printf "umask %d\n" "${UMASK}" >> /etc/bash.bashrc
 
 WORKDIR "${PLEX_MEDIA_SERVER_HOME}"
-USER kah
+USER kflix
 COPY ./apps/plex/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]

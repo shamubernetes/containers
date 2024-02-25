@@ -1,6 +1,6 @@
 FROM ghcr.io/kflix-tv/par2cmdline-turbo:rolling@sha256:165ba212102a1e0d9d543f3a34d32d36298119bfcd12c45b7c252337d04f938c as par2cmdline-turbo
 
-FROM ghcr.io/kflix-tv/alpine:rolling@sha256:b5ca29ff569830f81e06e75fbadc1f6045698af282e171a1db0ef3ee7b855642
+FROM ghcr.io/kflix-tv/alpine:rolling@sha256:46b8b82c3bfcc181ab176cc3c6974edfa79aafebbff4aa93ec65a0d89b93ce46
 ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
@@ -58,7 +58,7 @@ RUN ln -s /usr/local/bin/par2 /usr/local/bin/par2create \
     && ln -s /usr/local/bin/par2 /usr/local/bin/par2repair \
     && ln -s /usr/local/bin/par2 /usr/local/bin/par2verify
 
-USER kah
+USER kflix
 COPY ./apps/sabnzbd/sabnzbd.ini /app/sabnzbd.ini
 COPY ./apps/sabnzbd/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]

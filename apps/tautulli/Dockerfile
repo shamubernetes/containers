@@ -1,4 +1,4 @@
-FROM ghcr.io/kflix-tv/alpine:rolling@sha256:b5ca29ff569830f81e06e75fbadc1f6045698af282e171a1db0ef3ee7b855642
+FROM ghcr.io/kflix-tv/alpine:rolling@sha256:46b8b82c3bfcc181ab176cc3c6974edfa79aafebbff4aa93ec65a0d89b93ce46
 
 ARG TARGETPLATFORM
 ARG VERSION
@@ -42,7 +42,7 @@ RUN \
         /root/.cargo \
         /tmp/*
 
-USER kah
+USER kflix
 COPY ./apps/tautulli/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
 
