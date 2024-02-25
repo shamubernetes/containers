@@ -10,6 +10,7 @@ on:
     paths:
     - "apps/**"
     - ".github/scripts/templates/**"
+    - ".github/scripts/render-readme.py"
     - "!apps/**/README.md"
 
 jobs:
