@@ -71,7 +71,7 @@ def get_scheduled_release_workflow_url():
 
 
 def get_latest_scheduled_workflow_run():
-    workflow_id = get_scheduled_release_workflow_id(repo_name)
+    workflow_id = get_scheduled_release_workflow_id()
     if workflow_id is None:
         return None
     r = requests.get(
