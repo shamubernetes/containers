@@ -37,7 +37,7 @@ ENV \
 USER root
 
 RUN \
-    adduser kah \
+    adduser kflix \
         --uid 568 \
         --group \
         --system \
@@ -45,7 +45,7 @@ RUN \
         --no-create-home \
     && \
     mkdir -p /config \
-    && chown -R kah:kah /config \
+    && chown -R kflix:kflix /config \
     && chmod -R 775 /config
 
 WORKDIR /app
@@ -85,7 +85,7 @@ RUN \
     && ln -s /usr/bin/vim.tiny /usr/local/bin/nano \
     && ln -s /usr/bin/vim.tiny /usr/local/bin/emacs \
     && ln -s /usr/bin/catatonit /usr/bin/tini \
-    && chown -R kah:kah /app \
+    && chown -R kflix:kflix /app \
     && \
     printf "/bin/bash /scripts/greeting.sh\n" >> /etc/bash.bashrc \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \

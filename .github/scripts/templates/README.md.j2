@@ -66,6 +66,8 @@ Each Image will be built with a `rolling` tag, along with tags specific to it's 
 
 ### Base Images
 
+All Base Images are configured with a non-root user (kflix:kflix), and exposed /config volume, and use tini as an entrypoint to ensure proper signal handling.
+
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
 {% for image in base_images | sort(attribute="name") -%}

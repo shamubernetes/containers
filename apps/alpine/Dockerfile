@@ -44,11 +44,11 @@ RUN \
 
 #hadolint ignore=DL3018
 RUN \
-    addgroup -S kah --gid 568 \
-        && adduser -S kah -G kah --uid 568 \
+    addgroup -S kflix --gid 568 \
+        && adduser -S kflix -G kflix --uid 568 \
     && \
     mkdir -p /config \
-    && chown -R kah:kah /config \
+    && chown -R kflix:kflix /config \
     && chmod -R 775 /config \
     && printf "/bin/bash /scripts/greeting.sh\n" > /etc/profile.d/greeting.sh \
     && printf "umask %d\n" "${UMASK}" > /etc/profile.d/umask.sh \
