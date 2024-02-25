@@ -88,8 +88,6 @@ Container | Channel | Image | Latest Tags
 {{ space() }}[![{{ tag }}](https://img.shields.io/badge/{{ tag.replace("-", "--") }}-{% if tag == "rolling" %}green{% else %}blue{% endif %}?style=flat-square)]({{ image.html_url }}/{{ image.id }}?tag={{ tag }})
 {%- endfor %}
 {% endfor %}
-{%- endfor %}
-{% endfor %}
 
 ## Contributing
 
