@@ -6,7 +6,7 @@ import yaml
 from jinja2 import Environment, PackageLoader, select_autoescape
 
 repo_owner = os.environ.get('REPO_OWNER', os.environ.get('GITHUB_REPOSITORY_OWNER')).lower()
-repo_name = os.environ.get('REPO_NAME', os.environ.get('GITHUB_REPOSITORY'))
+repo_name = os.environ.get('REPO_NAME', os.environ.get('GITHUB_REPOSITORY')).lower()
 
 env = Environment(
   loader=PackageLoader("render-readme"),
@@ -34,7 +34,7 @@ def load_metadata_file(file_path):
 
 def get_scheduled_release_workflow_id():
     r = requests.get(
-      f"https://api.github.com/repos/{repo_owner}/{repo_name}/actions/workflows",
+      f"https://api.github.com/repos/{repo_name}/actions/workflows",
       headers={
         "Accept": "application/vnd.github.v3+json",
         "Authorization": "token " + os.environ["GITHUB_TOKEN"]
@@ -42,7 +42,7 @@ def get_scheduled_release_workflow_id():
     )
     if r.status_code != 200:
         print(f"Failed to get workflows for {repo_name}: {r.status_code}: {r.text}")
-        print(f"https://api.github.com/repos/{repo_owner}/{repo_name}/actions/workflows")
+        print(f"https://api.github.com/repos/{repo_name}/actions/workflows")
         return None
     data = r.json()
     for workflow in data["workflows"]:
@@ -54,7 +54,7 @@ def get_scheduled_release_workflow_id():
 
 def get_scheduled_release_workflow_url():
     r = requests.get(
-      f"https://api.github.com/repos/{repo_owner}/{repo_name}/actions/workflows",
+      f"https://api.github.com/repos/{repo_name}/actions/workflows",
       headers={
         "Accept": "application/vnd.github.v3+json",
         "Authorization": "token " + os.environ["GITHUB_TOKEN"]
@@ -76,7 +76,7 @@ def get_latest_scheduled_workflow_run():
     if workflow_id is None:
         return None
     r = requests.get(
-      f"https://api.github.com/repos/{repo_owner}/{repo_name}/actions/workflows/{workflow_id}/runs",
+      f"https://api.github.com/repos/{repo_name}/actions/workflows/{workflow_id}/runs",
       headers={
         "Accept": "application/vnd.github.v3+json",
         "Authorization": "token " + os.environ["GITHUB_TOKEN"]
@@ -154,7 +154,7 @@ if __name__ == "__main__":
         latest_run_url = get_scheduled_release_workflow_url()
     if latest_run_url is None:
         print("Failed to get workflow URL, defaulting to repo actions")
-        latest_run_url = f"https://github.com/{repo_owner}/{repo_name}/actions"
+        latest_run_url = f"https://github.com/{repo_name}/actions"
     template = env.get_template("README.md.j2")
     with open("./README.md", "w") as f:
         f.write(template.render(base_images=base_images, app_images=app_images, latest_run_url=latest_run_url))
