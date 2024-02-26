@@ -14,6 +14,7 @@ RUN \
     apt-get update && apt-get upgrade -y \
     && \
     apt-get install -y --no-install-recommends \
+        apt-transport-https \
         ca-certificates \
         curl \
         gcc \
@@ -25,6 +26,13 @@ RUN \
         unzip \
         wget \
         zip \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN \
+    curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | tee /usr/share/keyrings/helm.gpg > /dev/null && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list && \
+    apt-get update && \
+    apt-get install helm \
     && rm -rf /var/lib/apt/lists/*
 
 RUN \
