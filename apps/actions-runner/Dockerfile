@@ -19,6 +19,7 @@ RUN \
         curl \
         gcc \
         git \
+        gpg \
         jo \
         jq \
         moreutils \
