@@ -13,7 +13,7 @@ _An opinionated collection of container images_
 
 <div align="center">
 
-[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/kflix-tv/containers/release-scheduled.yaml?style=for-the-badge&label=Scheduled%20Release)](https://github.com/kFlix-tv/containers/actions/runs/8064347181)
+[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/kflix-tv/containers/release-scheduled.yaml?style=for-the-badge&label=Scheduled%20Release)](https://github.com/kFlix-tv/containers/actions/runs/8065172219)
 
 </div>
 
