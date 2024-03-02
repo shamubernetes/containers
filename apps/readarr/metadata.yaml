@@ -2,6 +2,24 @@
 app: readarr
 base: false
 semantic_versioning: true
+description: Readarr is a fork of Sonarr for e-books and audiobooks.
+environment:
+- READARR__ANALYTICS_ENABLED: false
+- READARR__API_KEY: __EMPTY
+- READARR__AUTHENTICATION_METHOD: None
+- READARR__AUTHENTICATION_REQUIRED: __EMPTY
+- READARR__BRANCH: _(current channel)_
+- READARR__INSTANCE_NAME: Readarr
+- READARR__LOG_LEVEL: info
+- READARR__PORT: 8787
+- READARR__POSTGRES_HOST: __EMPTY
+- READARR__POSTGRES_MAIN_DB: __EMPTY
+- READARR__POSTGRES_LOG_DB: __EMPTY
+- READARR__POSTGRES_CACHE_DB: __EMPTY
+- READARR__POSTGRES_PASSWORD: __EMPTY
+- READARR__POSTGRES_PORT: 5432
+- READARR__POSTGRES_USER: __EMPTY
+- READARR__URL_BASE: __EMPTY
 channels:
 - name: develop
   platforms: ["linux/amd64", "linux/arm64"]

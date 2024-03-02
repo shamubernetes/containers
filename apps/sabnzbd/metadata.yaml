@@ -2,6 +2,12 @@
 app: sabnzbd
 base: false
 semantic_versioning: true
+description: SABnzbd is a free and open-source newsgrabber that makes Usenet as simple and streamlined as possible by automating everything we can.
+environment:
+- SABNZBD__PORT: __EMPTY
+- SABNZBD__API_KEY: __EMPTY
+- SABNZBD__NZB_KEY: __EMPTY
+- SABNZBD__HOST_WHITELIST_ENTRIES: __EMPTY
 channels:
 - name: stable
   platforms: ["linux/amd64", "linux/arm64"]

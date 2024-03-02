@@ -32,26 +32,6 @@ def load_metadata_file(file_path):
     return None
 
 
-def get_scheduled_release_workflow_id():
-    r = requests.get(
-      f"https://api.github.com/repos/{repo_name}/actions/workflows",
-      headers={
-        "Accept": "application/vnd.github.v3+json",
-        "Authorization": "token " + os.environ["GITHUB_TOKEN"]
-      }
-    )
-    if r.status_code != 200:
-        print(f"Failed to get workflows for {repo_name}: {r.status_code}: {r.text}")
-        print(f"https://api.github.com/repos/{repo_name}/actions/workflows")
-        return None
-    data = r.json()
-    for workflow in data["workflows"]:
-        if workflow["name"] == "Scheduled Release":
-            return workflow["id"]
-    print(f"Couldn't find Scheduled Release workflow for {repo_name}")
-    return None
-
-
 def get_scheduled_release_workflow_url():
     r = requests.get(
       f"https://api.github.com/repos/{repo_name}/actions/workflows",
@@ -94,6 +74,10 @@ def get_latest_image(name):
 if __name__ == "__main__":
     base_images = []
     app_images = []
+    latest_run_url = get_scheduled_release_workflow_url()
+    if latest_run_url is None:
+        print("Failed to get workflow URL, defaulting to repo actions")
+        latest_run_url = f"https://github.com/{repo_name}/actions"
     for subdir, dirs, files in os.walk("./apps"):
         for file in files:
             if file != "metadata.yaml" and file != "metadata.json":
@@ -109,8 +93,20 @@ if __name__ == "__main__":
                   "name": name,
                   "channel": channel["name"],
                   "html_url": "",
-                  "owner": repo_owner
+                  "owner": repo_owner,
+                  "description": meta["description"]
                 }
+                if meta.get("environment", None):
+                    for key, value in meta["environment"].items():
+                        value = str(value)
+                        if value == "__EMPTY":
+                            default = ""
+                        else:
+                            default = value
+                        image["environment"] += {
+                          "name": key,
+                          "default": default
+                        }
                 gh_data = get_latest_image(name)
                 if gh_data is not None:
                     image["html_url"] = f"https://github.com/{repo_name}/pkgs/container/{name}"
@@ -120,10 +116,14 @@ if __name__ == "__main__":
                     base_images.append(image)
                 else:
                     app_images.append(image)
-    latest_run_url = get_scheduled_release_workflow_url()
-    if latest_run_url is None:
-        print("Failed to get workflow URL, defaulting to repo actions")
-        latest_run_url = f"https://github.com/{repo_name}/actions"
+    template = env.get_template("container-README.md.j2")
+    for image in base_images:
+        with open(f"./apps/{image['name']}/README.md", "w") as f:
+            f.write(template.render(image=image))
+    for image in app_images:
+        if image.channel == "stable" or image.channel == "master" or image.channel == "main":
+            with open(f"./apps/{image['name']}/README.md", "w") as f:
+                f.write(template.render(image=image))
     template = env.get_template("README.md.j2")
     with open("./README.md", "w") as f:
         f.write(template.render(base_images=base_images, app_images=app_images, latest_run_url=latest_run_url))

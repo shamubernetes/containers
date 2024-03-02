@@ -2,6 +2,24 @@
 app: radarr
 base: false
 semantic_versioning: true
+description: Radarr is a fork of Sonarr for tracking and automatically downloading movies from Usenet and BitTorrent.
+environment:
+- RADARR__ANALYTICS_ENABLED: false
+- RADARR__API_KEY: __EMPTY
+- RADARR__AUTHENTICATION_METHOD: None
+- RADARR__AUTHENTICATION_REQUIRED: __EMPTY
+- RADARR__BRANCH: _(current channel)_
+- RADARR__INSTANCE_NAME: Radarr
+- RADARR__LOG_LEVEL: info
+- RADARR__PORT: 7878
+- RADARR__POSTGRES_HOST: __EMPTY
+- RADARR__POSTGRES_MAIN_DB: __EMPTY
+- RADARR__POSTGRES_LOG_DB: __EMPTY
+- RADARR__POSTGRES_CACHE_DB: __EMPTY
+- RADARR__POSTGRES_PASSWORD: __EMPTY
+- RADARR__POSTGRES_PORT: 5432
+- RADARR__POSTGRES_USER: __EMPTY
+- RADARR__URL_BASE: __EMPTY
 channels:
 - name: master
   platforms: ["linux/amd64", "linux/arm64"]

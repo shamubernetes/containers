@@ -2,6 +2,23 @@
 app: sonarr
 base: false
 semantic_versioning: true
+description: Sonarr is a PVR for Usenet and BitTorrent users.
+environment:
+- SONARR__ANALYTICS_ENABLED: False
+- SONARR__API_KEY: __EMPTY
+- SONARR__AUTHENTICATION_METHOD: None
+- SONARR__AUTHENTICATION_REQUIRED: __EMPTY
+- SONARR__BRANCH: _(current channel)_
+- SONARR__INSTANCE_NAME: sonarr
+- SONARR__LOG_LEVEL: info
+- SONARR__PORT: 8989
+- SONARR__POSTGRES_HOST: __EMPTY
+- SONARR__POSTGRES_MAIN_DB: __EMPTY
+- SONARR__POSTGRES_LOG_DB: __EMPTY
+- SONARR__POSTGRES_PASSWORD: __EMPTY
+- SONARR__POSTGRES_PORT: 5432
+- SONARR__POSTGRES_USER: __EMPTY
+- SONARR__URL_BASE: __EMPTY
 channels:
 - name: main
   platforms: ["linux/amd64", "linux/arm64"]
