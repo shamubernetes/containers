@@ -35,5 +35,5 @@ jobs:
     name: Render Readme
     needs: build-images
     if: ${{ always() && needs.build-images.result != 'failure' }}
-    uses: ./.github/workflows/render-readme.yaml
+    uses: ./.github/workflows/render-readmes.yaml
     secrets: inherit
