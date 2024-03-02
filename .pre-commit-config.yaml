@@ -47,7 +47,8 @@ repos:
 - repo: https://github.com/python-jsonschema/check-jsonschema
   rev: 0.28.0
   hooks:
-  - id: check-github-workflows
-    args: ["--verbose"]
   - id: check-metaschema
-    args: ["--verbose"]
+    files: .*schema\.json$
+  - id: check-jsonschema
+    files: ^apps/.*/metadata\.yaml$
+    args: ["--schemafile", "docs/metadata-schema.json"]
