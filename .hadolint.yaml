@@ -1,1 +1,8 @@
-failure-threshold: error
+failure-threshold: warning
+ignored:
+- DL3008
+strict-labels: true
+label-schema:
+  author: text
+  version: text
+  documentation: url
