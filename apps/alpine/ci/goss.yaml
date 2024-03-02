@@ -1,4 +1,5 @@
-# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#file
+# yaml-language-server: $schema=https://github.com/goss-org/goss/raw/master/docs/schema.yaml
+# https://github.com/goss-org/goss/blob/master/docs/gossfile.md
 file:
   /scripts/greeting.sh:
     exists: true
@@ -8,13 +9,11 @@ file:
     exists: true
   /usr/local/bin/envsubst:
     exists: true
-
 # https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#group
 group:
   kflix:
     exists: true
     gid: 568
-
 # https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#user
 user:
   kflix:

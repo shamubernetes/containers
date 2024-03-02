@@ -1,20 +1,18 @@
+# yaml-language-server: $schema=https://github.com/goss-org/goss/raw/master/docs/schema.yaml
 # https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#process
 process:
   python3:
     running: true
-
 # https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#port
 port:
   # https://github.com/aelsabbahy/goss/issues/149
   tcp:8080:
     listening: true
-
 # https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#http
 http:
   http://localhost:8080/sabnzbd:
     status: 200
-
-# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#file
+# https://github.com/goss-org/goss/blob/master/docs/gossfile.md
 file:
   /usr/local/bin/par2:
     exists: true

@@ -1,4 +1,5 @@
-# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#file
+# yaml-language-server: $schema=https://github.com/goss-org/goss/raw/master/docs/schema.yaml
+# https://github.com/goss-org/goss/blob/master/docs/gossfile.md
 file:
   /usr/local/bin/par2:
     exists: true
