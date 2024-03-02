@@ -2,6 +2,7 @@
 app: tautulli
 base: false
 semantic_versioning: true
+description: Tautulli
 channels:
 - name: master
   platforms: ["linux/amd64", "linux/arm64"]

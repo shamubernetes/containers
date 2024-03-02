@@ -2,6 +2,7 @@
 app: postgres-init
 base: false
 semantic_versioning: true
+description: Postgres Init
 channels:
 - name: stable
   platforms: ["linux/amd64", "linux/arm64"]

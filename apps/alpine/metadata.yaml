@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/yamllint
 app: alpine
 base: true
+description: A minimal Docker image based on Alpine Linux used as a base image for other containers.
 channels:
 - name: "3.19"
   platforms: ["linux/amd64", "linux/arm64"]

@@ -2,6 +2,7 @@
 app: actions-runner
 base: false
 semantic_versioning: true
+description: GitHub Actions Runner
 channels:
 - name: stable
   platforms: ["linux/amd64"]
