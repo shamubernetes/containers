@@ -71,34 +71,6 @@ def get_scheduled_release_workflow_url():
     return None
 
 
-def get_latest_scheduled_workflow_run():
-    workflow_id = get_scheduled_release_workflow_id()
-    if workflow_id is None:
-        return None
-    r = requests.get(
-      f"https://api.github.com/repos/{repo_name}/actions/workflows/{workflow_id}/runs",
-      headers={
-        "Accept": "application/vnd.github.v3+json",
-        "Authorization": "token " + os.environ["GITHUB_TOKEN"]
-      }
-    )
-    if r.status_code != 200:
-        print(f"Failed to get runs for {workflow_id}: {r.status_code}: {r.text}")
-        return None
-    try:
-      data = r.json()
-    except json.decoder.JSONDecodeError:
-      print(f"Failed to decode JSON: {r.text}")
-      return None
-    if len(data["workflow_runs"]) == 0:
-        print(f"No runs found for {workflow_id}")
-        return None
-    if data["workflow_runs"][0]["html_url"] is not None:
-        return data["workflow_runs"][0]["html_url"]
-    print(f"Couldn't find latest run for {workflow_id}")
-    return None
-
-
 def get_latest_image(name):
     r = requests.get(
       f"https://api.github.com/users/{repo_owner}/packages/container/{name}/versions",
@@ -148,10 +120,7 @@ if __name__ == "__main__":
                     base_images.append(image)
                 else:
                     app_images.append(image)
-    latest_run_url = get_latest_scheduled_workflow_run()
-    if latest_run_url is None:
-        print("Failed to get latest run URL, defaulting to workflow list")
-        latest_run_url = get_scheduled_release_workflow_url()
+    latest_run_url = get_scheduled_release_workflow_url()
     if latest_run_url is None:
         print("Failed to get workflow URL, defaulting to repo actions")
         latest_run_url = f"https://github.com/{repo_name}/actions"
