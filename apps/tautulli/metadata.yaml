@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://json.schemastore.org/yamllint.json
+# yaml-language-server: $schema=../../docs/metadata-schema.json
 app: tautulli
 base: false
 semantic_versioning: true

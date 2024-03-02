@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "https://github.com/kFlix-tv/containers/blob/main/docs/metadata-schema.json",
+  "$ref": "#/definitions/metadata",
+  "definitions": {
+      "metadata": {
+          "title": "Metadata",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+              "app": {
+                  "type": "string"
+              },
+              "base": {
+                  "type": "boolean"
+              },
+              "semantic_versioning": {
+                  "type": "boolean"
+              },
+              "description": {
+                  "type": "string"
+              },
+              "environment": {
+                  "type": "array",
+                  "items": {
+                      "$ref": "#/definitions/Environment"
+                  }
+              },
+              "channels": {
+                  "type": "array",
+                  "items": {
+                      "$ref": "#/definitions/Channel"
+                  }
+              }
+          },
+          "required": [
+              "app",
+              "base",
+              "channels",
+              "description"
+          ]
+      },
+      "Channel": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+              "name": {
+                  "type": "string"
+              },
+              "platforms": {
+                  "type": "array",
+                  "items": {
+                      "type": "string"
+                  }
+              },
+              "stable": {
+                  "type": "boolean"
+              },
+              "tests": {
+                  "$ref": "#/definitions/Tests"
+              }
+          },
+          "required": [
+              "name",
+              "platforms",
+              "stable",
+              "tests"
+          ],
+          "title": "Channel"
+      },
+      "Tests": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+              "enabled": {
+                  "type": "boolean"
+              },
+              "type": {
+                "enum": ["cli", "web"]
+              }
+          },
+          "required": [
+              "enabled",
+              "type"
+          ],
+          "title": "Tests"
+      },
+      "Environment": {
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^": { "type": ["string", "boolean", "number"] }
+          },
+          "required": [],
+          "title": "Environment"
+      }
+  }
+}

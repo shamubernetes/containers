@@ -1,10 +1,10 @@
-# yaml-language-server: $schema=https://json.schemastore.org/yamllint.json
+# yaml-language-server: $schema=../../docs/metadata-schema.json
 app: sonarr
 base: false
 semantic_versioning: true
 description: Sonarr is a PVR for Usenet and BitTorrent users.
 environment:
-- SONARR__ANALYTICS_ENABLED: False
+- SONARR__ANALYTICS_ENABLED: false
 - SONARR__API_KEY: __EMPTY
 - SONARR__AUTHENTICATION_METHOD: None
 - SONARR__AUTHENTICATION_REQUIRED: __EMPTY

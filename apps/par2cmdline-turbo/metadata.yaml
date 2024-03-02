@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://json.schemastore.org/yamllint.json
+# yaml-language-server: $schema=../../docs/metadata-schema.json
 app: par2cmdline-turbo
 base: false
 description: par2cmdline-turbo is a fast, standalone PAR 2.0 compatible file verification and repair tool.

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://json.schemastore.org/yamllint.json
+# yaml-language-server: $schema=../../docs/metadata-schema.json
 app: ubuntu
 base: true
 description: Ubuntu container, used as a base for other containers

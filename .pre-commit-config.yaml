@@ -43,3 +43,11 @@ repos:
   rev: v0.6.4
   hooks:
   - id: kube-linter
+
+- repo: https://github.com/python-jsonschema/check-jsonschema
+  rev: 0.28.0
+  hooks:
+  - id: check-github-workflows
+    args: ["--verbose"]
+  - id: check-metaschema
+    args: ["--verbose"]
