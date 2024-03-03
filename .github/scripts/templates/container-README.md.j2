@@ -4,46 +4,38 @@ to edit this file, instead edit its template at: ./github/scripts/templates/cont
 -->
 <div align="center">
 
-# {{ image.name }}
+# {{ image.app_name }}
 
 </div>
 
 {{ image.description }}
 
-
-{{
-{% if image.environment %}
+{%- if image.environment %}
 
 ## Custom environment configuration
 
 This container support setting certain custom environment variables with the use of [drone/envsubst](https://github.com/drone/envsubst).
 
-{% set name_length = 5 %}
-{% set default_length = 8 %}
-{for env in image.environment %}
-{% set line_name_length = env.name|length %}
-{% if line_name_length > name_length %}
-{% set name_length = ( line_name_length + 1) %}
-{% set line_default_length = env.default|length %}
-{% if line_default_length > default_length %}
-{% set default_length = ( line_default_length + 1) %}
-{% endif %}
-{% endfor %}
+{% set ns = namespace(name_length=4, default_length=7) %}
+{%- for env in image.environment -%}
+  {%- if env.name|length > ns.name_length -%}
+    {% set ns.name_length = (env.name|length) %}
+  {%- endif %}
+  {%- if env.default|length > ns.default_length -%}
+    {% set ns.default_length = (env.default|length) %}
+  {%- endif -%}
+{%- endfor -%}
 
+| Name{{ " " * (ns.name_length - 4)}} | Default{{ " " * (ns.default_length - 7)}} |
+|-{{ "-" * ns.name_length }}-|-{{ "-" * ns.default_length }}-|
+{%- for env in image.environment %}
+| {{ env.name }}{{ " " * (ns.name_length - env.name|length) }} | {{ env.default }}{{ " " * (ns.default_length - env.default|length) }} |
+{%- endfor %}
+{%- endif %}
 
-| Name{{ " " * (name_length - 4)}}| Default |
-|-{{ "-" * name_length }}|-{{ "-" * default_length }}|
-{% for env in image.environment %}
-| {{ env.name }}{{ " " * (name_length - env.name|length) }}| {{ env.default }}{{ " " * (default_length - env.default|length) }}|
-{% endfor %}
-{% endif %}
-}}
-
-{{
-{% if image.dockerfile %}
+{%- if image.dockerfile %}
 ### Dockerfile
 ```Dockerfile
-{{ image.dockerfile }}
+image.dockerfile
 ```
 {% endif %}
-}}

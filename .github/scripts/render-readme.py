@@ -95,6 +95,8 @@ if __name__ == "__main__":
                     name = "-".join([meta["app"], channel["name"]])
                 image = {
                   "name": name,
+                  "app_name": meta["app"],
+                  "primary": channel["primary"],
                   "channel": channel["name"],
                   "html_url": "",
                   "owner": repo_owner,
@@ -108,8 +110,10 @@ if __name__ == "__main__":
                           value = str(value)
                           if value == "__EMPTY":
                               default = ""
+                          elif value == "__CHANNEL":
+                              default = "`" + channel["name"] + "`"
                           else:
-                              default = value
+                              default = "`" + value + "`"
                           image["environment"].append({
                             "name": key,
                             "default": default
@@ -125,11 +129,11 @@ if __name__ == "__main__":
                     app_images.append(image)
     template = env.get_template("container-README.md.j2")
     for image in base_images:
-        with open(f"./apps/{image['name']}/README.md", "w") as f:
+        with open(f"./apps/{image['app_name']}/README.md", "w") as f:
             f.write(template.render(image=image))
     for image in app_images:
-        if image.channel == "stable" or image.channel == "master" or image.channel == "main":
-            with open(f"./apps/{image['name']}/README.md", "w") as f:
+        if image.get("primary", False):
+            with open(f"./apps/{image['app_name']}/README.md", "w") as f:
                 f.write(template.render(image=image))
     template = env.get_template("README.md.j2")
     with open("./README.md", "w") as f:
