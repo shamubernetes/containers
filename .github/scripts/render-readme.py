@@ -101,6 +101,7 @@ if __name__ == "__main__":
                   "description": meta["description"]
                 }
                 if meta.get("environment", False):
+                    image["environment"] = []
                     print(name)
                     for env in meta["environment"]:
                         for key, value in env.items():
@@ -109,10 +110,10 @@ if __name__ == "__main__":
                               default = ""
                           else:
                               default = value
-                          image["environment"] += {
+                          image["environment"].append({
                             "name": key,
                             "default": default
-                          }
+                          })
                 gh_data = get_latest_image(name)
                 if gh_data is not None:
                     image["html_url"] = f"https://github.com/{repo_name}/pkgs/container/{name}"
