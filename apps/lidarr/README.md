@@ -32,3 +32,10 @@ This container support setting certain custom environment variables with the use
 | LIDARR__POSTGRES_PORT           | `5432`   |
 | LIDARR__POSTGRES_USER           |          |
 | LIDARR__URL_BASE                |          |
+
+## Tags
+[![2](https://img.shields.io/badge/2-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr/185973208?tag=2)
+ [![2.1](https://img.shields.io/badge/2.1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr/185973208?tag=2.1)
+ [![2.1.7](https://img.shields.io/badge/2.1.7-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr/185973208?tag=2.1.7)
+ [![2.1.7.4030](https://img.shields.io/badge/2.1.7.4030-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr/185973208?tag=2.1.7.4030)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr/185973208?tag=rolling)
