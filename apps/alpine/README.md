@@ -16,5 +16,5 @@ A minimal Docker image based on Alpine Linux used as a base image for other cont
 
 
 
-[![3.19.1](https://img.shields.io/badge/3.19.1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/alpine/185973206?tag=3.19.1)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/alpine/185973206?tag=rolling)
+[![3.19.1](https://img.shields.io/badge/3.19.1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/alpine/186048568?tag=3.19.1)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/alpine/186048568?tag=rolling)
