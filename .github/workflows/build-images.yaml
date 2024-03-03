@@ -4,6 +4,7 @@ on:
   workflow_call:
     inputs:
       appsToBuild:
+        description: App(s) to build, comma separated, or 'all' | 'base' | 'apps'
         required: false
         type: string
         default: ""
@@ -91,8 +92,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image:
-          ["${{ fromJSON(needs.prepare.outputs.matrices).imagePlatforms }}"]
+        image: ["${{ fromJSON(needs.prepare.outputs.matrices).imagePlatforms }}"]
     permissions:
       contents: read
       packages: write

@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       appsToBuild:
-        description: App(s) to build
+        description: App(s) to build, comma separated, or 'all' | 'base' | 'apps'
         required: false
         type: string
         default: all
