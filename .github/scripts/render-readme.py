@@ -83,6 +83,10 @@ if __name__ == "__main__":
             if file != "metadata.yaml" and file != "metadata.json":
                 continue
             meta = load_metadata_file(os.path.join(subdir, file))
+            if meta is None:
+                print(f"Failed to load metadata from {file}")
+                continue
+            print(meta)
             for channel in meta["channels"]:
                 name = ""
                 if channel.get("stable", False):
