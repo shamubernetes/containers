@@ -46,7 +46,8 @@ def get_scheduled_release_workflow_url():
     data = r.json()
     for workflow in data["workflows"]:
         if workflow["name"] == "Scheduled Release":
-            return workflow["html_url"]
+            workflow_file_name = workflow["path"].split("/")[-1]
+            return f"https://github.com/{repo_name}/actions/workflows/{workflow_file_name}"
     print(f"Couldn't find Scheduled Release workflow for {repo_name}")
     return None
 
@@ -100,10 +101,6 @@ def get_latest_image(name):
 if __name__ == "__main__":
     base_images = []
     app_images = []
-    latest_run_url = get_scheduled_release_workflow_url()
-    if latest_run_url is None:
-        print("Failed to get workflow URL, defaulting to repo actions")
-        latest_run_url = f"https://github.com/{repo_name}/actions"
     all_apps = {}
     for subdir, dirs, files in os.walk("./apps"):
         for file in files:
@@ -159,6 +156,10 @@ if __name__ == "__main__":
                     base_images.append(image)
                 else:
                     app_images.append(image)
+    latest_run_url = get_scheduled_release_workflow_url()
+    if latest_run_url is None:
+        print("Failed to get workflow URL, defaulting to repo actions")
+        latest_run_url = f"https://github.com/{repo_name}/actions"
     template = env.get_template("container-README.md.j2")
     for image in base_images:
         if image.get("primary", False):
