@@ -73,7 +73,7 @@ def get_all_tags(name, page=1, per_page=100):
         else:
             print(f"Couldn't find tags for {name}")
     if len(data) == per_page:
-        image_tags.extend(get_all_tags(name, page + 1))
+        image_tags = image_tags | get_all_tags(name, page + 1)
     return image_tags
 
 
