@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
   "$id": "https://github.com/kFlix-tv/containers/blob/main/docs/metadata-schema.json",
-  "$ref": "#/definitions/metadata",
+  "$ref": "#/definitions/Metadata",
   "definitions": {
-      "metadata": {
+      "Metadata": {
           "title": "Metadata",
           "type": "object",
           "additionalProperties": false,
@@ -89,7 +89,9 @@
           "type": "object",
           "additionalProperties": false,
           "patternProperties": {
-            "^": { "type": ["string", "boolean", "number"] }
+            "^": {
+              "type": ["string", "boolean", "number"]
+            }
           },
           "required": [],
           "title": "Environment"
