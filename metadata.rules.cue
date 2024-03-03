@@ -3,8 +3,8 @@
 	base:                 bool
 	semantic_versioning?: bool
 	description:          string
-	environment:          array
-	channels: [...#Channels]
+  environment:          [...#Environment]
+	channels:             [...#Channels]
 }
 
 #Channels: {
@@ -13,10 +13,15 @@
 	stable: bool
 	tests: {
 		enabled: bool
-		type?:   =~"^(cli|web)$"
+		type?:   #AcceptedTestTypes
 	}
+}
+
+#Environment: {
+  [string]: string | bool | int
 }
 
 #AcceptableAppName:     string & !="" & =~"^[a-zA-Z0-9_-]+$"
 #AcceptableChannelName: string & !="" & =~"^[a-zA-Z0-9._-]+$"
 #AcceptedPlatforms:     "linux/amd64" | "linux/arm64"
+#AcceptedTestTypes:     "cli" | "web"
