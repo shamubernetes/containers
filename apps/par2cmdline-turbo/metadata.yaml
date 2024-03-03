@@ -4,6 +4,7 @@ base: false
 description: par2cmdline-turbo is a fast, standalone PAR 2.0 compatible file verification and repair tool.
 channels:
 - name: stable
+  primary: true
   platforms: ["linux/amd64", "linux/arm64"]
   stable: true
   tests:

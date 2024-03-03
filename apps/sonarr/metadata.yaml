@@ -8,7 +8,7 @@ environment:
 - SONARR__API_KEY: __EMPTY
 - SONARR__AUTHENTICATION_METHOD: None
 - SONARR__AUTHENTICATION_REQUIRED: __EMPTY
-- SONARR__BRANCH: _(current channel)_
+- SONARR__BRANCH: __CHANNEL
 - SONARR__INSTANCE_NAME: sonarr
 - SONARR__LOG_LEVEL: info
 - SONARR__PORT: 8989
@@ -21,12 +21,14 @@ environment:
 - SONARR__URL_BASE: __EMPTY
 channels:
 - name: main
+  primary: true
   platforms: ["linux/amd64", "linux/arm64"]
   stable: true
   tests:
     enabled: true
     type: web
 - name: develop
+  primary: false
   platforms: ["linux/amd64", "linux/arm64"]
   stable: false
   tests:

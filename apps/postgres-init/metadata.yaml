@@ -5,6 +5,7 @@ semantic_versioning: true
 description: Postgres Init
 channels:
 - name: stable
+  primary: true
   platforms: ["linux/amd64", "linux/arm64"]
   stable: true
   tests:

@@ -10,6 +10,7 @@ environment:
 - SABNZBD__HOST_WHITELIST_ENTRIES: __EMPTY
 channels:
 - name: stable
+  primary: true
   platforms: ["linux/amd64", "linux/arm64"]
   stable: true
   tests:

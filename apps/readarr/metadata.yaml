@@ -8,7 +8,7 @@ environment:
 - READARR__API_KEY: __EMPTY
 - READARR__AUTHENTICATION_METHOD: None
 - READARR__AUTHENTICATION_REQUIRED: __EMPTY
-- READARR__BRANCH: _(current channel)_
+- READARR__BRANCH: __CHANNEL
 - READARR__INSTANCE_NAME: Readarr
 - READARR__LOG_LEVEL: info
 - READARR__PORT: 8787
@@ -22,12 +22,14 @@ environment:
 - READARR__URL_BASE: __EMPTY
 channels:
 - name: develop
+  primary: true
   platforms: ["linux/amd64", "linux/arm64"]
   stable: false
   tests:
     enabled: true
     type: web
 - name: nightly
+  primary: false
   platforms: ["linux/amd64", "linux/arm64"]
   stable: false
   tests:

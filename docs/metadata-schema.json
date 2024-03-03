@@ -47,6 +47,9 @@
               "name": {
                   "type": "string"
               },
+              "primary": {
+                  "type": "boolean"
+              },
               "platforms": {
                   "type": "array",
                   "items": {
@@ -62,6 +65,7 @@
           },
           "required": [
               "name",
+              "primary",
               "platforms",
               "stable",
               "tests"

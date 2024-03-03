@@ -8,7 +8,7 @@ environment:
 - LIDARR__API_KEY: __EMPTY
 - LIDARR__AUTHENTICATION_METHOD: None
 - LIDARR__AUTHENTICATION_REQUIRED: __EMPTY
-- LIDARR__BRANCH: _(current channel)_
+- LIDARR__BRANCH: __CHANNEL
 - LIDARR__INSTANCE_NAME: Lidarr
 - LIDARR__LOG_LEVEL: info
 - LIDARR__PORT: 8686
@@ -22,18 +22,21 @@ environment:
 - LIDARR__URL_BASE: __EMPTY
 channels:
 - name: master
+  primary: true
   platforms: ["linux/amd64", "linux/arm64"]
   stable: true
   tests:
     enabled: true
     type: web
 - name: develop
+  primary: false
   platforms: ["linux/amd64", "linux/arm64"]
   stable: false
   tests:
     enabled: true
     type: web
 - name: nightly
+  primary: false
   platforms: ["linux/amd64", "linux/arm64"]
   stable: false
   tests:

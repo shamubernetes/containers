@@ -4,6 +4,7 @@ base: true
 description: Ubuntu container, used as a base for other containers
 channels:
 - name: jammy
+  primary: true
   platforms: ["linux/amd64", "linux/arm64"]
   stable: true
   tests:
