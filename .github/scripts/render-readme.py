@@ -51,6 +51,31 @@ def get_scheduled_release_workflow_url():
     return None
 
 
+def get_all_tags(name, page=1, per_page=100):
+    image_tags = []
+    r = requests.get(
+      f"https://api.github.com/users/{repo_owner}/packages/container/{name}/versions?per_page={per_page}&page={page}",
+      headers={
+        "Accept": "application/vnd.github.v3+json",
+        "Authorization": "token " + os.environ["GITHUB_TOKEN"]
+      },
+    )
+    if r.status_code != 200:
+        print(f"Failed to get versions for {name}: {r.status_code}: {r.text}")
+        return None
+    data = r.json()
+    for image in data:
+        tags = image["metadata"]["container"]["tags"]
+        # if there are any tags
+        if tags is not None:
+            image_tags.extend(tags)
+        else:
+            print(f"Couldn't find tags for {name}")
+    if len(data) == per_page:
+        image_tags.extend(get_all_tags(name, page + 1))
+    return image_tags
+
+
 def get_latest_image(name):
     r = requests.get(
       f"https://api.github.com/users/{repo_owner}/packages/container/{name}/versions",
@@ -86,7 +111,6 @@ if __name__ == "__main__":
             if meta is None:
                 print(f"Failed to load metadata from {file}")
                 continue
-            print(meta)
             for channel in meta["channels"]:
                 name = ""
                 if channel.get("stable", False):
@@ -104,7 +128,6 @@ if __name__ == "__main__":
                 }
                 if meta.get("environment", False):
                     image["environment"] = []
-                    print(name)
                     for environment in meta["environment"]:
                         for key, value in environment.items():
                           value = str(value)
@@ -119,6 +142,7 @@ if __name__ == "__main__":
                             "default": default
                           })
                 gh_data = get_latest_image(name)
+                image["all_tags"] = sorted(get_all_tags(name))
                 if gh_data is not None:
                     image["html_url"] = f"https://github.com/{repo_name}/pkgs/container/{name}"
                     image["id"] = gh_data["id"]
