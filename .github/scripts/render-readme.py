@@ -102,16 +102,17 @@ if __name__ == "__main__":
                 }
                 if meta.get("environment", False):
                     print(name)
-                    for key, value in meta["environment"].items():
-                        value = str(value)
-                        if value == "__EMPTY":
-                            default = ""
-                        else:
-                            default = value
-                        image["environment"] += {
-                          "name": key,
-                          "default": default
-                        }
+                    for env in meta["environment"]:
+                        for key, value in env.items():
+                          value = str(value)
+                          if value == "__EMPTY":
+                              default = ""
+                          else:
+                              default = value
+                          image["environment"] += {
+                            "name": key,
+                            "default": default
+                          }
                 gh_data = get_latest_image(name)
                 if gh_data is not None:
                     image["html_url"] = f"https://github.com/{repo_name}/pkgs/container/{name}"
