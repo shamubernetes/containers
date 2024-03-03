@@ -96,7 +96,8 @@ if __name__ == "__main__":
                   "owner": repo_owner,
                   "description": meta["description"]
                 }
-                if meta.get("environment", None):
+                if meta.get("environment", False):
+                    print(name)
                     for key, value in meta["environment"].items():
                         value = str(value)
                         if value == "__EMPTY":
