@@ -52,7 +52,7 @@ def get_scheduled_release_workflow_url():
 
 
 def get_all_tags(name, page=1, per_page=100):
-    image_tags = []
+    image_tags = {}
     r = requests.get(
       f"https://api.github.com/users/{repo_owner}/packages/container/{name}/versions?per_page={per_page}&page={page}",
       headers={
@@ -68,7 +68,8 @@ def get_all_tags(name, page=1, per_page=100):
         tags = image["metadata"]["container"]["tags"]
         # if there are any tags
         if tags is not None:
-            image_tags.extend(tags)
+            for tag in tags:
+                image_tags[tag] = image["id"]
         else:
             print(f"Couldn't find tags for {name}")
     if len(data) == per_page:
@@ -103,6 +104,7 @@ if __name__ == "__main__":
     if latest_run_url is None:
         print("Failed to get workflow URL, defaulting to repo actions")
         latest_run_url = f"https://github.com/{repo_name}/actions"
+    all_apps = {}
     for subdir, dirs, files in os.walk("./apps"):
         for file in files:
             if file != "metadata.yaml" and file != "metadata.json":
@@ -111,12 +113,17 @@ if __name__ == "__main__":
             if meta is None:
                 print(f"Failed to load metadata from {file}")
                 continue
+            app_name = meta["app"]
+            all_apps.update({app_name: {"channels": {}}})
             for channel in meta["channels"]:
                 name = ""
                 if channel.get("stable", False):
+                    channel_name = "stable"
                     name = meta["app"]
                 else:
+                    channel_name = channel["name"]
                     name = "-".join([meta["app"], channel["name"]])
+                all_apps[app_name]["channels"][channel_name] = {}
                 image = {
                   "name": name,
                   "app_name": meta["app"],
@@ -142,7 +149,8 @@ if __name__ == "__main__":
                             "default": default
                           })
                 gh_data = get_latest_image(name)
-                image["all_tags"] = sorted(get_all_tags(name))
+                all_tags = dict(sorted(get_all_tags(name).items()))
+                all_apps[app_name]["channels"][channel_name] = all_tags
                 if gh_data is not None:
                     image["html_url"] = f"https://github.com/{repo_name}/pkgs/container/{name}"
                     image["id"] = gh_data["id"]
@@ -153,12 +161,13 @@ if __name__ == "__main__":
                     app_images.append(image)
     template = env.get_template("container-README.md.j2")
     for image in base_images:
-        with open(f"./apps/{image['app_name']}/README.md", "w") as f:
-            f.write(template.render(image=image))
+        if image.get("primary", False):
+          with open(f"./apps/{image['app_name']}/README.md", "w") as f:
+              f.write(template.render(image=image, all_version_tags=all_apps[image["app_name"]]))
     for image in app_images:
         if image.get("primary", False):
             with open(f"./apps/{image['app_name']}/README.md", "w") as f:
-                f.write(template.render(image=image))
+                f.write(template.render(image=image, all_version_tags=all_apps[image["app_name"]]))
     template = env.get_template("README.md.j2")
     with open("./README.md", "w") as f:
         f.write(template.render(base_images=base_images, app_images=app_images, latest_run_url=latest_run_url))
