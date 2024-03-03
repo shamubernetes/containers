@@ -4,7 +4,7 @@ to edit this file, instead edit its template at: ./github/scripts/templates/cont
 -->
 <div align="center">
 
-# sabnzbd
+# Sabnzbd
 
 </div>
 
@@ -22,6 +22,11 @@ This container support setting certain custom environment variables with the use
 | SABNZBD__HOST_WHITELIST_ENTRIES |         |
 
 ## Tags
+
+#### Stable
+
+
+
 [![4](https://img.shields.io/badge/4-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sabnzbd/185974259?tag=4)
  [![4.2](https://img.shields.io/badge/4.2-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sabnzbd/185974259?tag=4.2)
  [![4.2.2](https://img.shields.io/badge/4.2.2-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sabnzbd/185974259?tag=4.2.2)

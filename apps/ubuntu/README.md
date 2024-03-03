@@ -4,12 +4,17 @@ to edit this file, instead edit its template at: ./github/scripts/templates/cont
 -->
 <div align="center">
 
-# ubuntu
+# Ubuntu
 
 </div>
 
 Ubuntu container, used as a base for other containers
 
 ## Tags
+
+#### Stable
+
+
+
 [![jammy-20240212](https://img.shields.io/badge/jammy--20240212-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/183229668?tag=jammy-20240212)
  [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/183229668?tag=rolling)
