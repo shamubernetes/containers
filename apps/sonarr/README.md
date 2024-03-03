@@ -1,23 +1,33 @@
+<!---
+NOTE: AUTO-GENERATED FILE
+to edit this file, instead edit its template at: ./github/scripts/templates/container/README.md.j2
+-->
+<div align="center">
+
 # sonarr
+
+</div>
+
+Sonarr is a PVR for Usenet and BitTorrent users.
 
 ## Custom environment configuration
 
-This container support setting certain custom enviroment variables with the use of [drone/envsubst](https://github.com/drone/envsubst).
+This container support setting certain custom environment variables with the use of [drone/envsubst](https://github.com/drone/envsubst).
 
-| Name                            | Default             |
-|---------------------------------|---------------------|
-| SONARR__ANALYTICS_ENABLED       | `False`             |
-| SONARR__API_KEY                 |                     |
-| SONARR__AUTHENTICATION_METHOD   | `None`              |
-| SONARR__AUTHENTICATION_REQUIRED |                     |
-| SONARR__BRANCH                  | _(current channel)_ |
-| SONARR__INSTANCE_NAME           | `sonarr`            |
-| SONARR__LOG_LEVEL               | `info`              |
-| SONARR__PORT                    | `8989`              |
-| SONARR__POSTGRES_HOST           |                     |
-| SONARR__POSTGRES_MAIN_DB        |                     |
-| SONARR__POSTGRES_LOG_DB         |                     |
-| SONARR__POSTGRES_PASSWORD       |                     |
-| SONARR__POSTGRES_PORT           | `5432`              |
-| SONARR__POSTGRES_USER           |                     |
-| SONARR__URL_BASE                |                     |
+| Name                            | Default  |
+|---------------------------------|----------|
+| SONARR__ANALYTICS_ENABLED       | `False`  |
+| SONARR__API_KEY                 |          |
+| SONARR__AUTHENTICATION_METHOD   | `None`   |
+| SONARR__AUTHENTICATION_REQUIRED |          |
+| SONARR__BRANCH                  | `main`   |
+| SONARR__INSTANCE_NAME           | `sonarr` |
+| SONARR__LOG_LEVEL               | `info`   |
+| SONARR__PORT                    | `8989`   |
+| SONARR__POSTGRES_HOST           |          |
+| SONARR__POSTGRES_MAIN_DB        |          |
+| SONARR__POSTGRES_LOG_DB         |          |
+| SONARR__POSTGRES_PASSWORD       |          |
+| SONARR__POSTGRES_PORT           | `5432`   |
+| SONARR__POSTGRES_USER           |          |
+| SONARR__URL_BASE                |          |
