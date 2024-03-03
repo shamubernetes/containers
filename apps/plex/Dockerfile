@@ -1,4 +1,4 @@
-FROM ghcr.io/kflix-tv/ubuntu:jammy-20240212@sha256:beca1f1341c614f04b49690bb5301da10b1419caedc87c4ec3ec6f547afea3fc
+FROM ghcr.io/kflix-tv/ubuntu:jammy-20240212@sha256:d07dae042fe45c093642c593744a8d48a182596b347962a994c255e07f95a237
 
 ARG TARGETPLATFORM
 ARG VERSION
