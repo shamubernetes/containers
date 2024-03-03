@@ -9,6 +9,7 @@
 
 #Channels: {
 	name: #AcceptableChannelName
+  primary: bool
 	platforms: [...#AcceptedPlatforms]
 	stable: bool
 	tests: {
