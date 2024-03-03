@@ -103,8 +103,8 @@ if __name__ == "__main__":
                 if meta.get("environment", False):
                     image["environment"] = []
                     print(name)
-                    for env in meta["environment"]:
-                        for key, value in env.items():
+                    for environment in meta["environment"]:
+                        for key, value in environment.items():
                           value = str(value)
                           if value == "__EMPTY":
                               default = ""
