@@ -46,8 +46,7 @@ jobs:
     - name: Find changed files
       id: find-changes
       run: |
-        changed_files=$(git diff --name-only)
-        readme_files_changed=$(echo $changed_files | grep -E "README.md")
+        readme_files_changed=$(git diff --name-only | grep -E "README.md" || echo "")
         echo "README_FILES=$readme_files_changed" >> $GITHUB_ENV
 
     - name: Commit Changes
