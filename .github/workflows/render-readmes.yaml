@@ -47,10 +47,12 @@ jobs:
       id: find-changes
       run: |
         readme_files_changed=$(git diff --name-only | grep -E "README.md" || echo "")
-        echo "README_FILES='${readme_files_changed}'" >> $GITHUB_ENV
+        echo "README_FILES=${readme_files_changed}" >> "$GITHUB_OUTPUT"
 
     - name: Commit Changes
       shell: bash
+      env:
+        README_FILES: "${{ steps.find-changes.outputs.README_FILES }}"
       run: |
         git config --global user.name "ktvBot[bot]"
         git config --global user.email "148669015+ktvbot[bot]@users.noreply.github.com"
