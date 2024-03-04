@@ -46,15 +46,11 @@ jobs:
     - name: Find changed files
       id: find-changes
       run: |
-        readme_files_changed=$(git diff --name-only | grep -E "README.md" || echo "")
-        echo "What is wrong here???"
-        echo "|README_FILES=${readme_files_changed}|"
-        echo "README_FILES=${readme_files_changed}" >> "$GITHUB_OUTPUT"
+        readme_files_changed=$(git diff --name-only | grep -E "README.md" | tr '\n' ' ' || echo "")
+        echo "README_FILES=${readme_files_changed}" >> $GITHUB_ENV
 
     - name: Commit Changes
       shell: bash
-      env:
-        README_FILES: "${{ steps.find-changes.outputs.README_FILES }}"
       run: |
         git config --global user.name "ktvBot[bot]"
         git config --global user.email "148669015+ktvbot[bot]@users.noreply.github.com"
