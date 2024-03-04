@@ -47,6 +47,8 @@ jobs:
       id: find-changes
       run: |
         readme_files_changed=$(git diff --name-only | grep -E "README.md" || echo "")
+        echo "What is wrong here???"
+        echo "|README_FILES=${readme_files_changed}|"
         echo "README_FILES=${readme_files_changed}" >> "$GITHUB_OUTPUT"
 
     - name: Commit Changes
