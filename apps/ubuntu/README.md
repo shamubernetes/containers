@@ -17,4 +17,5 @@ Ubuntu container, used as a base for other containers
 
 
 [![jammy-20240212](https://img.shields.io/badge/jammy--20240212-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/186048575?tag=jammy-20240212)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/186048575?tag=rolling)
+ [![jammy-20240227](https://img.shields.io/badge/jammy--20240227-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/187321562?tag=jammy-20240227)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/187321562?tag=rolling)
