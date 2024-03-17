@@ -39,34 +39,39 @@ This container support setting certain custom environment variables with the use
 
 
 
-[![1](https://img.shields.io/badge/1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr/186050000?tag=1)
+[![1](https://img.shields.io/badge/1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr/192027016?tag=1)
  [![1.13](https://img.shields.io/badge/1.13-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr/186050000?tag=1.13)
  [![1.13.3](https://img.shields.io/badge/1.13.3-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr/186050000?tag=1.13.3)
  [![1.13.3.4273](https://img.shields.io/badge/1.13.3.4273-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr/186050000?tag=1.13.3.4273)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr/186050000?tag=rolling)
+ [![1.14](https://img.shields.io/badge/1.14-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr/192027016?tag=1.14)
+ [![1.14.3](https://img.shields.io/badge/1.14.3-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr/192027016?tag=1.14.3)
+ [![1.14.3.4333](https://img.shields.io/badge/1.14.3.4333-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr/192027016?tag=1.14.3.4333)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr/192027016?tag=rolling)
 
 #### Develop
 
 
 
- [![1](https://img.shields.io/badge/1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/191950559?tag=1)
+ [![1](https://img.shields.io/badge/1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/192026995?tag=1)
  [![1.13](https://img.shields.io/badge/1.13-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/180440515?tag=1.13)
  [![1.13.3](https://img.shields.io/badge/1.13.3-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/180440515?tag=1.13.3)
  [![1.13.3.4273](https://img.shields.io/badge/1.13.3.4273-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/180440515?tag=1.13.3.4273)
- [![1.14](https://img.shields.io/badge/1.14-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/191950559?tag=1.14)
+ [![1.14](https://img.shields.io/badge/1.14-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/192026995?tag=1.14)
  [![1.14.0](https://img.shields.io/badge/1.14.0-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/186049999?tag=1.14.0)
  [![1.14.0.4286](https://img.shields.io/badge/1.14.0.4286-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/186049999?tag=1.14.0.4286)
  [![1.14.1](https://img.shields.io/badge/1.14.1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/188987619?tag=1.14.1)
  [![1.14.1.4316](https://img.shields.io/badge/1.14.1.4316-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/188987619?tag=1.14.1.4316)
  [![1.14.2](https://img.shields.io/badge/1.14.2-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/191950559?tag=1.14.2)
  [![1.14.2.4318](https://img.shields.io/badge/1.14.2.4318-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/191950559?tag=1.14.2.4318)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/191950559?tag=rolling)
+ [![1.14.3](https://img.shields.io/badge/1.14.3-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/192026995?tag=1.14.3)
+ [![1.14.3.4333](https://img.shields.io/badge/1.14.3.4333-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/192026995?tag=1.14.3.4333)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-develop/192026995?tag=rolling)
 
 #### Nightly
 
 
 
- [![1](https://img.shields.io/badge/1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-nightly/192003327?tag=1)
+ [![1](https://img.shields.io/badge/1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-nightly/192026965?tag=1)
  [![1.14](https://img.shields.io/badge/1.14-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-nightly/192003327?tag=1.14)
  [![1.14.1](https://img.shields.io/badge/1.14.1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-nightly/186050009?tag=1.14.1)
  [![1.14.1.4289](https://img.shields.io/badge/1.14.1.4289-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-nightly/180440516?tag=1.14.1.4289)
@@ -87,4 +92,7 @@ This container support setting certain custom environment variables with the use
  [![1.14.3.4326](https://img.shields.io/badge/1.14.3.4326-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-nightly/190309046?tag=1.14.3.4326)
  [![1.14.3.4330](https://img.shields.io/badge/1.14.3.4330-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-nightly/191865131?tag=1.14.3.4330)
  [![1.14.3.4332](https://img.shields.io/badge/1.14.3.4332-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-nightly/192003327?tag=1.14.3.4332)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-nightly/192003327?tag=rolling)
+ [![1.15](https://img.shields.io/badge/1.15-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-nightly/192026965?tag=1.15)
+ [![1.15.0](https://img.shields.io/badge/1.15.0-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-nightly/192026965?tag=1.15.0)
+ [![1.15.0.4334](https://img.shields.io/badge/1.15.0.4334-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-nightly/192026965?tag=1.15.0.4334)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/prowlarr-nightly/192026965?tag=rolling)
