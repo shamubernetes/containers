@@ -49,11 +49,11 @@ This container support setting certain custom environment variables with the use
 
 
 
- [![5](https://img.shields.io/badge/5-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/192003329?tag=5)
+ [![5](https://img.shields.io/badge/5-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/197764274?tag=5)
  [![5.3](https://img.shields.io/badge/5.3-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/183231234?tag=5.3)
  [![5.3.6](https://img.shields.io/badge/5.3.6-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/183231234?tag=5.3.6)
  [![5.3.6.8612](https://img.shields.io/badge/5.3.6.8612-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/183231234?tag=5.3.6.8612)
- [![5.4](https://img.shields.io/badge/5.4-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/192003329?tag=5.4)
+ [![5.4](https://img.shields.io/badge/5.4-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/197764274?tag=5.4)
  [![5.4.0](https://img.shields.io/badge/5.4.0-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/186050021?tag=5.4.0)
  [![5.4.0.8636](https://img.shields.io/badge/5.4.0.8636-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/186050021?tag=5.4.0.8636)
  [![5.4.1](https://img.shields.io/badge/5.4.1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/186081764?tag=5.4.1)
@@ -62,14 +62,16 @@ This container support setting certain custom environment variables with the use
  [![5.4.2.8667](https://img.shields.io/badge/5.4.2.8667-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/191950540?tag=5.4.2.8667)
  [![5.4.3](https://img.shields.io/badge/5.4.3-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/192003329?tag=5.4.3)
  [![5.4.3.8677](https://img.shields.io/badge/5.4.3.8677-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/192003329?tag=5.4.3.8677)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/192003329?tag=rolling)
+ [![5.4.4](https://img.shields.io/badge/5.4.4-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/197764274?tag=5.4.4)
+ [![5.4.4.8688](https://img.shields.io/badge/5.4.4.8688-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/197764274?tag=5.4.4.8688)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-develop/197764274?tag=rolling)
 
 #### Nightly
 
 
 
- [![5](https://img.shields.io/badge/5-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/195061006?tag=5)
- [![5.4](https://img.shields.io/badge/5.4-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/195061006?tag=5.4)
+ [![5](https://img.shields.io/badge/5-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/197809318?tag=5)
+ [![5.4](https://img.shields.io/badge/5.4-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/197809318?tag=5.4)
  [![5.4.0](https://img.shields.io/badge/5.4.0-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/183231232?tag=5.4.0)
  [![5.4.0.8613](https://img.shields.io/badge/5.4.0.8613-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/180440952?tag=5.4.0.8613)
  [![5.4.0.8616](https://img.shields.io/badge/5.4.0.8616-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/180875882?tag=5.4.0.8616)
@@ -101,6 +103,8 @@ This container support setting certain custom environment variables with the use
  [![5.4.4.8683](https://img.shields.io/badge/5.4.4.8683-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/192026959?tag=5.4.4.8683)
  [![5.4.4.8685](https://img.shields.io/badge/5.4.4.8685-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/194200083?tag=5.4.4.8685)
  [![5.4.4.8688](https://img.shields.io/badge/5.4.4.8688-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/194508457?tag=5.4.4.8688)
- [![5.4.5](https://img.shields.io/badge/5.4.5-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/195061006?tag=5.4.5)
+ [![5.4.5](https://img.shields.io/badge/5.4.5-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/197809318?tag=5.4.5)
  [![5.4.5.8689](https://img.shields.io/badge/5.4.5.8689-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/195061006?tag=5.4.5.8689)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/195061006?tag=rolling)
+ [![5.4.5.8692](https://img.shields.io/badge/5.4.5.8692-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/196651956?tag=5.4.5.8692)
+ [![5.4.5.8703](https://img.shields.io/badge/5.4.5.8703-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/197809318?tag=5.4.5.8703)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/radarr-nightly/197809318?tag=rolling)
