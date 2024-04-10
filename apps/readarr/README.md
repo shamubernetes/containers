@@ -55,8 +55,8 @@ This container support setting certain custom environment variables with the use
 
 
 
- [![0](https://img.shields.io/badge/0-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/200539257?tag=0)
- [![0.3](https://img.shields.io/badge/0.3-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/200539257?tag=0.3)
+ [![0](https://img.shields.io/badge/0-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/201745100?tag=0)
+ [![0.3](https://img.shields.io/badge/0.3-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/201745100?tag=0.3)
  [![0.3.19](https://img.shields.io/badge/0.3.19-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/186049997?tag=0.3.19)
  [![0.3.19.2437](https://img.shields.io/badge/0.3.19.2437-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/186049997?tag=0.3.19.2437)
  [![0.3.20](https://img.shields.io/badge/0.3.20-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/188568475?tag=0.3.20)
@@ -72,6 +72,7 @@ This container support setting certain custom environment variables with the use
  [![0.3.22.2488](https://img.shields.io/badge/0.3.22.2488-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/197809329?tag=0.3.22.2488)
  [![0.3.22.2491](https://img.shields.io/badge/0.3.22.2491-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/200376561?tag=0.3.22.2491)
  [![0.3.22.2499](https://img.shields.io/badge/0.3.22.2499-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/200455702?tag=0.3.22.2499)
- [![0.3.23](https://img.shields.io/badge/0.3.23-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/200539257?tag=0.3.23)
+ [![0.3.23](https://img.shields.io/badge/0.3.23-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/201745100?tag=0.3.23)
  [![0.3.23.2500](https://img.shields.io/badge/0.3.23.2500-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/200539257?tag=0.3.23.2500)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/200539257?tag=rolling)
+ [![0.3.23.2506](https://img.shields.io/badge/0.3.23.2506-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/201745100?tag=0.3.23.2506)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/readarr-develop-nightly/201745100?tag=rolling)
