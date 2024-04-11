@@ -69,8 +69,8 @@ This container support setting certain custom environment variables with the use
 
 
 
- [![2](https://img.shields.io/badge/2-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/201783534?tag=2)
- [![2.2](https://img.shields.io/badge/2.2-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/201783534?tag=2.2)
+ [![2](https://img.shields.io/badge/2-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/202718448?tag=2)
+ [![2.2](https://img.shields.io/badge/2.2-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/202718448?tag=2.2)
  [![2.2.0](https://img.shields.io/badge/2.2.0-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/183231222?tag=2.2.0)
  [![2.2.0.4045](https://img.shields.io/badge/2.2.0.4045-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/180440117?tag=2.2.0.4045)
  [![2.2.0.4053](https://img.shields.io/badge/2.2.0.4053-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/183231222?tag=2.2.0.4053)
@@ -96,7 +96,8 @@ This container support setting certain custom environment variables with the use
  [![2.2.4.4125](https://img.shields.io/badge/2.2.4.4125-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/200442155?tag=2.2.4.4125)
  [![2.2.4.4128](https://img.shields.io/badge/2.2.4.4128-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/200450159?tag=2.2.4.4128)
  [![2.2.4.4130](https://img.shields.io/badge/2.2.4.4130-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/200506345?tag=2.2.4.4130)
- [![2.2.5](https://img.shields.io/badge/2.2.5-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/201783534?tag=2.2.5)
+ [![2.2.5](https://img.shields.io/badge/2.2.5-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/202718448?tag=2.2.5)
  [![2.2.5.4133](https://img.shields.io/badge/2.2.5.4133-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/201034645?tag=2.2.5.4133)
  [![2.2.5.4138](https://img.shields.io/badge/2.2.5.4138-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/201783534?tag=2.2.5.4138)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/201783534?tag=rolling)
+ [![2.2.5.4139](https://img.shields.io/badge/2.2.5.4139-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/202718448?tag=2.2.5.4139)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/lidarr-nightly/202718448?tag=rolling)
