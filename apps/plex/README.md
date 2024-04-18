@@ -33,4 +33,5 @@ Plex Media Server
  [![1.40.2.8312-b1c79904d](https://img.shields.io/badge/1.40.2.8312--b1c79904d-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/plex-beta/197201301?tag=1.40.2.8312-b1c79904d)
  [![1.40.2.8351-9938371be](https://img.shields.io/badge/1.40.2.8351--9938371be-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/plex-beta/202157154?tag=1.40.2.8351-9938371be)
  [![1.40.2.8383-15541a816](https://img.shields.io/badge/1.40.2.8383--15541a816-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/plex-beta/204603593?tag=1.40.2.8383-15541a816)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/plex-beta/204603593?tag=rolling)
+ [![1.40.2.8395-c67dce28e](https://img.shields.io/badge/1.40.2.8395--c67dce28e-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/plex-beta/205681441?tag=1.40.2.8395-c67dce28e)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/plex-beta/205681441?tag=rolling)
