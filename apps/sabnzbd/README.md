@@ -27,8 +27,10 @@ This container support setting certain custom environment variables with the use
 
 
 
-[![4](https://img.shields.io/badge/4-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sabnzbd/189214288?tag=4)
+[![4](https://img.shields.io/badge/4-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sabnzbd/210957214?tag=4)
  [![4.2](https://img.shields.io/badge/4.2-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sabnzbd/189214288?tag=4.2)
  [![4.2.2](https://img.shields.io/badge/4.2.2-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sabnzbd/186050032?tag=4.2.2)
  [![4.2.3](https://img.shields.io/badge/4.2.3-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sabnzbd/189214288?tag=4.2.3)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sabnzbd/189214288?tag=rolling)
+ [![4.3](https://img.shields.io/badge/4.3-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sabnzbd/210957214?tag=4.3)
+ [![4.3.0](https://img.shields.io/badge/4.3.0-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sabnzbd/210957214?tag=4.3.0)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sabnzbd/210957214?tag=rolling)
