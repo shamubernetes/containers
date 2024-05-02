@@ -71,7 +71,7 @@ All Base Images are configured with a non-root user (kflix:kflix), and exposed /
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
 [alpine](https://github.com/kflix-tv/containers/pkgs/container/alpine) | 3.19 | ghcr.io/kflix-tv/alpine |[![3.19.1](https://img.shields.io/badge/3.19.1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/alpine/186048568?tag=3.19.1) [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/alpine/186048568?tag=rolling)
-[ubuntu](https://github.com/kflix-tv/containers/pkgs/container/ubuntu) | jammy | ghcr.io/kflix-tv/ubuntu |[![jammy-20240416](https://img.shields.io/badge/jammy--20240416-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/208651564?tag=jammy-20240416) [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/208651564?tag=rolling)
+[ubuntu](https://github.com/kflix-tv/containers/pkgs/container/ubuntu) | jammy | ghcr.io/kflix-tv/ubuntu |[![jammy-20240427](https://img.shields.io/badge/jammy--20240427-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/211029161?tag=jammy-20240427) [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/ubuntu/211029161?tag=rolling)
 
 
 
