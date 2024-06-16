@@ -43,7 +43,7 @@ env:
 jobs:
   renovate:
     name: Renovate
-    runs-on: ["arc-runner-set-kflix"]
+    runs-on: ["ghar-set-zoo"]
     steps:
     - name: Generate Token
       uses: actions/create-github-app-token@v1
