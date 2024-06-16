@@ -38,8 +38,8 @@ This container support setting certain custom environment variables with the use
 
 
 
-[![4](https://img.shields.io/badge/4-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/203353251?tag=4)
- [![4.0](https://img.shields.io/badge/4.0-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/203353251?tag=4.0)
+[![4](https://img.shields.io/badge/4-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/230625925?tag=4)
+ [![4.0](https://img.shields.io/badge/4.0-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/230625925?tag=4.0)
  [![4.0.1](https://img.shields.io/badge/4.0.1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/183231238?tag=4.0.1)
  [![4.0.1.929](https://img.shields.io/badge/4.0.1.929-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/183231238?tag=4.0.1.929)
  [![4.0.2](https://img.shields.io/badge/4.0.2-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/186049998?tag=4.0.2)
@@ -48,14 +48,16 @@ This container support setting certain custom environment variables with the use
  [![4.0.3.1413](https://img.shields.io/badge/4.0.3.1413-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/197958105?tag=4.0.3.1413)
  [![4.0.4](https://img.shields.io/badge/4.0.4-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/203353251?tag=4.0.4)
  [![4.0.4.1491](https://img.shields.io/badge/4.0.4.1491-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/203353251?tag=4.0.4.1491)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/203353251?tag=rolling)
+ [![4.0.5](https://img.shields.io/badge/4.0.5-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/230625925?tag=4.0.5)
+ [![4.0.5.1710](https://img.shields.io/badge/4.0.5.1710-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/230625925?tag=4.0.5.1710)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr/230625925?tag=rolling)
 
 #### Develop
 
 
 
- [![4](https://img.shields.io/badge/4-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/214427537?tag=4)
- [![4.0](https://img.shields.io/badge/4.0-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/214427537?tag=4.0)
+ [![4](https://img.shields.io/badge/4-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/230625935?tag=4)
+ [![4.0](https://img.shields.io/badge/4.0-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/230625935?tag=4.0)
  [![4.0.1](https://img.shields.io/badge/4.0.1-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/183231251?tag=4.0.1)
  [![4.0.1.1131](https://img.shields.io/badge/4.0.1.1131-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/180447533?tag=4.0.1.1131)
  [![4.0.1.1168](https://img.shields.io/badge/4.0.1.1168-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/183231251?tag=4.0.1.1168)
@@ -77,4 +79,6 @@ This container support setting certain custom environment variables with the use
  [![4.0.4.1616](https://img.shields.io/badge/4.0.4.1616-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/212176728?tag=4.0.4.1616)
  [![4.0.4.1650](https://img.shields.io/badge/4.0.4.1650-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/213950933?tag=4.0.4.1650)
  [![4.0.4.1668](https://img.shields.io/badge/4.0.4.1668-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/214427537?tag=4.0.4.1668)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/214427537?tag=rolling)
+ [![4.0.5](https://img.shields.io/badge/4.0.5-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/230625935?tag=4.0.5)
+ [![4.0.5.1740](https://img.shields.io/badge/4.0.5.1740-blue?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/230625935?tag=4.0.5.1740)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/kflix-tv/containers/pkgs/container/sonarr-develop/230625935?tag=rolling)
