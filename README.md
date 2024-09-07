@@ -63,21 +63,13 @@ For applications that need to have persistent configuration data the config volu
 
 Each Image will be built with a `rolling` tag, along with tags specific to it's version. Available Images Below
 
-
-### Base Images
-
-All Base Images are configured with a non-root user (kflix:kflix), and exposed /config volume, and use tini as an entrypoint to ensure proper signal handling.
-
-Container | Channel | Image | Latest Tags
---- | --- | --- | ---
-
-
-
 ### Application Images
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
-[actions-runner](https://github.com/shamubernetes/containers/pkgs/container/actions-runner) | stable | ghcr.io/shamubernetes/actions-runner |[![2](https://img.shields.io/badge/2-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/actions-runner/269987973?tag=2) [![2.319](https://img.shields.io/badge/2.319-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/actions-runner/269987973?tag=2.319) [![2.319.1](https://img.shields.io/badge/2.319.1-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/actions-runner/269987973?tag=2.319.1) [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/actions-runner/269987973?tag=rolling)
+[actions-runner](https://github.com/shamubernetes/containers/pkgs/container/actions-runner) | stable | ghcr.io/shamubernetes/actions-runner |[![2](https://img.shields.io/badge/2-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/actions-runner/270009725?tag=2) [![2.319](https://img.shields.io/badge/2.319-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/actions-runner/270009725?tag=2.319) [![2.319.1](https://img.shields.io/badge/2.319.1-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/actions-runner/270009725?tag=2.319.1) [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/actions-runner/270009725?tag=rolling)
+[plex](https://github.com/shamubernetes/containers/pkgs/container/plex) | stable | ghcr.io/shamubernetes/plex |[![1.40.3.8555-fef15d30c](https://img.shields.io/badge/1.40.3.8555--fef15d30c-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/230625923?tag=1.40.3.8555-fef15d30c) [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/230625923?tag=rolling)
+[plex-beta](https://github.com/shamubernetes/containers/pkgs/container/plex-beta) | beta | ghcr.io/shamubernetes/plex-beta |[![1.40.3.8555-fef15d30c](https://img.shields.io/badge/1.40.3.8555--fef15d30c-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/230625941?tag=1.40.3.8555-fef15d30c) [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/230625941?tag=rolling)
 
 
 ## Contributing
@@ -93,21 +85,6 @@ Container | Channel | Image | Latest Tags
     ```ruby
     task APP=sonarr CHANNEL=main test
     ```
-
-### Automated tags
-
-Here's an example of how tags are created in the GitHub workflows, be careful with `metadata.json` as it does affect the outcome of how the tags will be created when the application is built.
-
-| Application | Channel   | Stable  | Base    | Generated Tag               |
-|-------------|-----------|---------|---------|-----------------------------|
-| `ubuntu`    | `focal`   | `true`  | `true`  | `ubuntu:focal-rolling`      |
-| `ubuntu`    | `focal`   | `true`  | `true`  | `ubuntu:focal-19880312`     |
-| `alpine`    | `3.16`    | `true`  | `true`  | `alpine:rolling`            |
-| `alpine`    | `3.16`    | `true`  | `true`  | `alpine:3.16.0`             |
-| `sonarr`    | `develop` | `false` | `false` | `sonarr-develop:3.0.8.1538` |
-| `sonarr`    | `develop` | `false` | `false` | `sonarr-develop:rolling`    |
-| `sonarr`    | `main`    | `true`  | `false` | `sonarr:3.0.8.1507`         |
-| `sonarr`    | `main`    | `true`  | `false` | `sonarr:rolling`            |
 
 ## Deprecations
 
