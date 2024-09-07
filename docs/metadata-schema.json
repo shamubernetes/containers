@@ -11,9 +11,6 @@
               "app": {
                   "type": "string"
               },
-              "base": {
-                  "type": "boolean"
-              },
               "semantic_versioning": {
                   "type": "boolean"
               },
@@ -35,7 +32,6 @@
           },
           "required": [
               "app",
-              "base",
               "channels",
               "description"
           ]

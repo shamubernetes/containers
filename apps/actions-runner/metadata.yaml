@@ -1,6 +1,5 @@
 # yaml-language-server: $schema=../../docs/metadata-schema.json
 app: actions-runner
-base: false
 semantic_versioning: true
 description: GitHub Actions Runner
 channels:

@@ -1,15 +1,14 @@
 #Spec: {
 	app:                  #AcceptableAppName
-	base:                 bool
 	semantic_versioning?: bool
 	description:          string
-  environment:          [...#Environment]
-	channels:             [...#Channels]
+	environment: [...#Environment]
+	channels: [...#Channels]
 }
 
 #Channels: {
-	name: #AcceptableChannelName
-  primary: bool
+	name:    #AcceptableChannelName
+	primary: bool
 	platforms: [...#AcceptedPlatforms]
 	stable: bool
 	tests: {
@@ -19,7 +18,7 @@
 }
 
 #Environment: {
-  [string]: string | bool | int
+	[string]: string | bool | int
 }
 
 #AcceptableAppName:     string & !="" & =~"^[a-zA-Z0-9_-]+$"
