@@ -53,8 +53,8 @@ jobs:
     - name: Commit Changes
       shell: bash
       run: |
-        git config --global user.name "ktvBot[bot]"
-        git config --global user.email "148669015+ktvbot[bot]@users.noreply.github.com"
+        git config --global user.name "ShamuBot[bot]"
+        git config --global user.email "148669015+ShamuBot[bot]@users.noreply.github.com"
         for file in $README_FILES; do
           git add $file
         done
