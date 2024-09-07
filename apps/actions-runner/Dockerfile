@@ -1,8 +1,8 @@
 ARG VERSION
 FROM ghcr.io/actions/actions-runner:${VERSION}
-LABEL author="kiliantyler"
+LABEL author="shamubernetes"
 LABEL version="${VERSION}"
-LABEL documentation="https://github.com/kFlix-tv/containers/blob/main/apps/actions-runner/README.md"
+LABEL documentation="https://github.com/shamubernetes/containers/blob/main/apps/actions-runner/README.md"
 
 
 ENV HOMEBREW_NO_ANALYTICS=1 \
@@ -17,7 +17,7 @@ USER root
 RUN \
   apt-get update && apt-get upgrade -y \
   && \
-  apt-get install -y --no-install-recommends \
+  apt-get install -y --no-install-recommends --no-install-suggests \
   apt-transport-https \
   ca-certificates \
   curl \
