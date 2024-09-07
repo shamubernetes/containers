@@ -5,7 +5,5 @@ file:
     exists: true
   /usr/bin/helm:
     exists: true
-  /usr/bin/yq:
-    exists: true
   /usr/bin/gh:
     exists: true
