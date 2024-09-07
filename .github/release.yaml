@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-release-config.json
+changelog:
+  exclude:
+    labels:
+    - area/ci
+    - area/docs
+    - area/task
+    - area/trunk
+  categories:
+  - title: "Github Actions Runner"
+    labels:
+    - app/actions-runner
+  - title: "Plex"
+    labels:
+    - app/plex

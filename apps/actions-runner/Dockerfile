@@ -18,39 +18,33 @@ RUN \
   apt-get update && apt-get upgrade -y \
   && \
   apt-get install -y --no-install-recommends --no-install-suggests \
-  apt-transport-https \
-  ca-certificates \
-  curl \
-  gcc \
-  git \
-  gpg \
-  jo \
-  jq \
-  moreutils \
-  unrar \
-  unzip \
-  wget \
-  zip \
+      apt-transport-https \
+      ca-certificates \
+      curl \
+      gcc \
+      git \
+      gpg \
+      jo \
+      jq \
+      moreutils \
+      pass \
+      unrar \
+      unzip \
+      wget \
+      zip \
   && rm -rf /var/lib/apt/lists/*
 
 RUN \
-  curl -fsSL https://baltocdn.com/helm/signing.asc | gpg --dearmor | tee /usr/share/keyrings/helm.gpg > /dev/null \
-  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list \
-  && apt-get update \
-  && apt-get -y --no-install-recommends install helm \
-  && rm -rf /var/lib/apt/lists/*
-
-RUN \
-  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-  && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-  && apt-get update \
-  && apt-get install -y --no-install-recommends gh \
-  && rm -rf /var/lib/apt/lists/*
-
-RUN \
-  curl https://github.com/mikefarah/yq/releases/v4.42.1/download/yq_linux_amd64 -o /usr/bin/yq \
-  && chmod +x /usr/bin/yq
+  curl -fsSL https://baltocdn.com/helm/signing.asc | gpg --dearmor | dd of=/usr/share/keyrings/helm.gpg && \
+  curl -fsSL https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | dd of=/etc/apt/keyrings/mise-archive-keyring.gpg && \
+  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && \
+  chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg /etc/apt/keyrings/mise-archive-keyring.gpg /usr/share/keyrings/helm.gpg && \
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list > /dev/null && \
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null && \
+  echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=amd64] https://mise.jdx.dev/deb stable main" | tee /etc/apt/sources.list.d/mise.list > /dev/null && \
+  apt-get update && \
+  apt-get install -y --no-install-recommends gh mise helm && \
+  rm -rf /var/lib/apt/lists/*
 
 USER runner
 

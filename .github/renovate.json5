@@ -6,7 +6,7 @@
     ":dependencyDashboard",
     ":disableRateLimiting",
     ":semanticCommits",
-    "github>kFlix-tv/containers//.github/renovate/autoMerge.json5"
+    "github>shamubernetes/containers//.github/renovate/autoMerge.json5"
   ],
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"]

@@ -7,10 +7,12 @@ vars:
   LABELER_FILE: '{{ .ROOT_DIR }}/.github/labeler.yaml'
 
 tasks:
-  default:
-    silent: true
+
+  add:
+    desc: Add a new app
     cmds:
-    - task -l
+    - echo "Not implemented yet"
+    # - .append-app-labels
 
   test:
     desc: |-
@@ -33,7 +35,8 @@ tasks:
     vars:
       MULTIPLATFORM: '{{ default "false" .MULTIPLATFORM }}'
 
-  download-goss:
+  .download-goss:
+    internal: true
     silent: true
     vars:
       GOSS_VERSION: v0.3.21
@@ -47,23 +50,21 @@ tasks:
     - test -f ./.goss/goss
     - test -f ./.goss/dgoss
 
-  append-app-labels:
+  .append-app-labels:
+    internal: true
     desc: Append app labels to the labels config file
-    cmds:
-    - for: {var: apps}
-      cmd: |-
-        #!/usr/bin/env bash
-        app_exists=$(yq e '.[] | select(.name == "app/{{.ITEM}}")' {{.LABELS_CONFIG_FILE}} | wc -l)
-        if [ "$app_exists" -eq 0 ]; then
-          yq e -i '. += [{"name": "app/{{.ITEM}}", "color": "0e8a16" }]' {{.LABELS_CONFIG_FILE}}
-          yq e -i '. |= .[] style="flow"' {{.LABELS_CONFIG_FILE}}
-        fi
-        app_exists=$(yq e 'has("app/{{.ITEM}}")' {{.LABELER_FILE}})
-        if [ "$app_exists" == "false" ]; then
-          yq e -i '."app/{{.ITEM}}" = [{"changed-files": [{"any-glob-to-any-file": "apps/{{.ITEM}}/**/*"}]}]' {{.LABELER_FILE}}
-          yamlfmt -formatter indentless_arrays=true {{.LABELER_FILE}}
-        fi
+    cmd: |-
+      #!/usr/bin/env bash
+      app_exists=$(yq e '.[] | select(.name == "app/{{.APP}}")' {{.LABELS_CONFIG_FILE}} | wc -l)
+      if [ "$app_exists" -eq 0 ]; then
+        yq e -i '. += [{"name": "app/{{.APP}}", "color": "0e8a16" }]' {{.LABELS_CONFIG_FILE}}
+        yq e -i '. |= .[] style="flow"' {{.LABELS_CONFIG_FILE}}
+      fi
+      app_exists=$(yq e 'has("app/{{.APP}}")' {{.LABELER_FILE}})
+      if [ "$app_exists" == "false" ]; then
+        yq e -i '."app/{{.APP}}" = [{"changed-files": [{"any-glob-to-any-file": "apps/{{.APP}}/**/*"}]}]' {{.LABELER_FILE}}
+        yamlfmt -formatter indentless_arrays=true {{.LABELER_FILE}}
+      fi
     vars:
-      apps:
-        sh: for dir in {{.ROOT_DIR}}/apps/*/; do basename "${dir}"; done
+      app: '{{ .APP }}'
     silent: true
