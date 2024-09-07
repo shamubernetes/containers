@@ -63,22 +63,6 @@ For applications that need to have persistent configuration data the config volu
 
 Each Image will be built with a `rolling` tag, along with tags specific to it's version. Available Images Below
 
-
-### Base Images
-
-All Base Images are configured with a non-root user (kflix:kflix), and exposed /config volume, and use tini as an entrypoint to ensure proper signal handling.
-
-Container | Channel | Image | Latest Tags
---- | --- | --- | ---
-{% for image in base_images | sort(attribute="name") -%}
-[{{ image.name }}]({{ image.html_url }}) | {{ image.channel }} | ghcr.io/{{ image.owner }}/{{ image.name }} |
-{%- set space = joiner(" ") -%}
-{%- for tag in image.tags -%}
-{{ space() }}[![{{ tag }}](https://img.shields.io/badge/{{ tag.replace("-", "--") }}-{% if tag == "rolling" %}green{% else %}blue{% endif %}?style=flat-square)]({{ image.html_url }}/{{ image.id }}?tag={{ tag }})
-{%- endfor %}
-{% endfor %}
-
-
 ### Application Images
 
 Container | Channel | Image | Latest Tags
@@ -104,21 +88,6 @@ Container | Channel | Image | Latest Tags
     ```ruby
     task APP=sonarr CHANNEL=main test
     ```
-
-### Automated tags
-
-Here's an example of how tags are created in the GitHub workflows, be careful with `metadata.json` as it does affect the outcome of how the tags will be created when the application is built.
-
-| Application | Channel   | Stable  | Base    | Generated Tag               |
-|-------------|-----------|---------|---------|-----------------------------|
-| `ubuntu`    | `focal`   | `true`  | `true`  | `ubuntu:focal-rolling`      |
-| `ubuntu`    | `focal`   | `true`  | `true`  | `ubuntu:focal-19880312`     |
-| `alpine`    | `3.16`    | `true`  | `true`  | `alpine:rolling`            |
-| `alpine`    | `3.16`    | `true`  | `true`  | `alpine:3.16.0`             |
-| `sonarr`    | `develop` | `false` | `false` | `sonarr-develop:3.0.8.1538` |
-| `sonarr`    | `develop` | `false` | `false` | `sonarr-develop:rolling`    |
-| `sonarr`    | `main`    | `true`  | `false` | `sonarr:3.0.8.1507`         |
-| `sonarr`    | `main`    | `true`  | `false` | `sonarr:rolling`            |
 
 ## Deprecations
 

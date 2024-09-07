@@ -1,22 +1,21 @@
-import os
 import json
+import os
+
 import requests
 import yaml
-
 from jinja2 import Environment, PackageLoader, select_autoescape
 
-repo_owner = os.environ.get('REPO_OWNER', os.environ.get('GITHUB_REPOSITORY_OWNER')).lower()
-repo_name = os.environ.get('REPO_NAME', os.environ.get('GITHUB_REPOSITORY')).lower()
+repo_owner = os.environ.get(
+    "REPO_OWNER", os.environ.get("GITHUB_REPOSITORY_OWNER")
+).lower()
+repo_name = os.environ.get("REPO_NAME", os.environ.get("GITHUB_REPOSITORY")).lower()
 
-env = Environment(
-  loader=PackageLoader("render-readme"),
-  autoescape=select_autoescape()
-)
+env = Environment(loader=PackageLoader("render-readme"), autoescape=select_autoescape())
 
 
 def load_metadata_file_yaml(file_path):
-  with open(file_path, "r") as f:
-    return yaml.safe_load(f)
+    with open(file_path, "r") as f:
+        return yaml.safe_load(f)
 
 
 def load_metadata_file_json(file_path):
@@ -34,11 +33,11 @@ def load_metadata_file(file_path):
 
 def get_scheduled_release_workflow_url():
     r = requests.get(
-      f"https://api.github.com/repos/{repo_name}/actions/workflows",
-      headers={
-        "Accept": "application/vnd.github.v3+json",
-        "Authorization": "token " + os.environ["GITHUB_TOKEN"]
-      }
+        f"https://api.github.com/repos/{repo_name}/actions/workflows",
+        headers={
+            "Accept": "application/vnd.github.v3+json",
+            "Authorization": "token " + os.environ["GITHUB_TOKEN"],
+        },
     )
     if r.status_code != 200:
         print(f"Failed to get workflows for {repo_name}: {r.status_code}: {r.text}")
@@ -47,7 +46,9 @@ def get_scheduled_release_workflow_url():
     for workflow in data["workflows"]:
         if workflow["name"] == "Scheduled Release":
             workflow_file_name = workflow["path"].split("/")[-1]
-            return f"https://github.com/{repo_name}/actions/workflows/{workflow_file_name}"
+            return (
+                f"https://github.com/{repo_name}/actions/workflows/{workflow_file_name}"
+            )
     print(f"Couldn't find Scheduled Release workflow for {repo_name}")
     return None
 
@@ -55,11 +56,11 @@ def get_scheduled_release_workflow_url():
 def get_all_tags(name, page=1, per_page=100):
     image_tags = {}
     r = requests.get(
-      f"https://api.github.com/users/{repo_owner}/packages/container/{name}/versions?per_page={per_page}&page={page}",
-      headers={
-        "Accept": "application/vnd.github.v3+json",
-        "Authorization": "token " + os.environ["GITHUB_TOKEN"]
-      },
+        f"https://api.github.com/users/{repo_owner}/packages/container/{name}/versions?per_page={per_page}&page={page}",
+        headers={
+            "Accept": "application/vnd.github.v3+json",
+            "Authorization": "token " + os.environ["GITHUB_TOKEN"],
+        },
     )
     if r.status_code != 200:
         print(f"Failed to get versions for {name}: {r.status_code}: {r.text}")
@@ -80,11 +81,11 @@ def get_all_tags(name, page=1, per_page=100):
 
 def get_latest_image(name):
     r = requests.get(
-      f"https://api.github.com/users/{repo_owner}/packages/container/{name}/versions",
-      headers={
-        "Accept": "application/vnd.github.v3+json",
-        "Authorization": "token " + os.environ["GITHUB_TOKEN"]
-      },
+        f"https://api.github.com/users/{repo_owner}/packages/container/{name}/versions",
+        headers={
+            "Accept": "application/vnd.github.v3+json",
+            "Authorization": "token " + os.environ["GITHUB_TOKEN"],
+        },
     )
     if r.status_code != 200:
         print(f"Failed to get versions for {name}: {r.status_code}: {r.text}")
@@ -99,7 +100,6 @@ def get_latest_image(name):
 
 
 if __name__ == "__main__":
-    base_images = []
     app_images = []
     all_apps = {}
     for subdir, dirs, files in os.walk("./apps"):
@@ -122,53 +122,56 @@ if __name__ == "__main__":
                     name = "-".join([meta["app"], channel["name"]])
                 all_apps[app_name]["channels"][channel_name] = {}
                 image = {
-                  "name": name,
-                  "app_name": meta["app"],
-                  "primary": channel["primary"],
-                  "channel": channel["name"],
-                  "html_url": "",
-                  "owner": repo_owner,
-                  "description": meta["description"]
+                    "name": name,
+                    "app_name": meta["app"],
+                    "primary": channel["primary"],
+                    "channel": channel["name"],
+                    "html_url": "",
+                    "owner": repo_owner,
+                    "description": meta["description"],
                 }
                 if meta.get("environment", False):
                     image["environment"] = []
                     for environment in meta["environment"]:
                         for key, value in environment.items():
-                          value = str(value)
-                          if value == "__EMPTY":
-                              default = ""
-                          elif value == "__CHANNEL":
-                              default = "`" + channel["name"] + "`"
-                          else:
-                              default = "`" + value + "`"
-                          image["environment"].append({
-                            "name": key,
-                            "default": default
-                          })
+                            value = str(value)
+                            if value == "__EMPTY":
+                                default = ""
+                            elif value == "__CHANNEL":
+                                default = "`" + channel["name"] + "`"
+                            else:
+                                default = "`" + value + "`"
+                            image["environment"].append(
+                                {"name": key, "default": default}
+                            )
                 gh_data = get_latest_image(name)
                 all_tags = dict(sorted(get_all_tags(name).items()))
                 all_apps[app_name]["channels"][channel_name] = all_tags
                 if gh_data is not None:
-                    image["html_url"] = f"https://github.com/{repo_name}/pkgs/container/{name}"
+                    image["html_url"] = (
+                        f"https://github.com/{repo_name}/pkgs/container/{name}"
+                    )
                     image["id"] = gh_data["id"]
                     image["tags"] = sorted(gh_data["metadata"]["container"]["tags"])
-                if meta["base"]:
-                    base_images.append(image)
-                else:
-                    app_images.append(image)
+                app_images.append(image)
     latest_run_url = get_scheduled_release_workflow_url()
     if latest_run_url is None:
         print("Failed to get workflow URL, defaulting to repo actions")
         latest_run_url = f"https://github.com/{repo_name}/actions"
     template = env.get_template("container-README.md.j2")
-    for image in base_images:
-        if image.get("primary", False):
-          with open(f"./apps/{image['app_name']}/README.md", "w") as f:
-              f.write(template.render(image=image, all_version_tags=all_apps[image["app_name"]]))
     for image in app_images:
         if image.get("primary", False):
             with open(f"./apps/{image['app_name']}/README.md", "w") as f:
-                f.write(template.render(image=image, all_version_tags=all_apps[image["app_name"]]))
+                f.write(
+                    template.render(
+                        image=image, all_version_tags=all_apps[image["app_name"]]
+                    )
+                )
     template = env.get_template("README.md.j2")
     with open("./README.md", "w") as f:
-        f.write(template.render(base_images=base_images, app_images=app_images, latest_run_url=latest_run_url))
+        f.write(
+            template.render(
+                app_images=app_images,
+                latest_run_url=latest_run_url,
+            )
+        )
