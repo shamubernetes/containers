@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: "Pull Request: Validate"
 
 on:
@@ -11,15 +12,15 @@ concurrency:
 
 jobs:
   simple-checks:
-    uses: kflix-tv/containers/.github/workflows/simple-checks.yaml@main
+    uses: shamubernetes/containers/.github/workflows/simple-checks.yaml@main
 
   get-changed-images:
-    uses: kflix-tv/containers/.github/workflows/get-changed-images.yaml@main
+    uses: shamubernetes/containers/.github/workflows/get-changed-images.yaml@main
 
   build-images:
     needs: ["simple-checks", "get-changed-images"]
     if: ${{ needs.get-changed-images.outputs.addedOrModified == 'true' }}
-    uses: kflix-tv/containers/.github/workflows/build-images.yaml@main
+    uses: shamubernetes/containers/.github/workflows/build-images.yaml@main
     secrets: inherit
     with:
       appsToBuild: "${{ needs.get-changed-images.outputs.addedOrModifiedImages }}"

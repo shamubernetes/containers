@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: Scheduled Release
 
 concurrency:
@@ -23,12 +24,12 @@ on:
 jobs:
   simple-checks:
     name: Simple Checks
-    uses: kflix-tv/containers/.github/workflows/simple-checks.yaml@main
+    uses: shamubernetes/containers/.github/workflows/simple-checks.yaml@main
 
   build-images:
     name: Build Images
     needs: simple-checks
-    uses: kflix-tv/containers/.github/workflows/build-images.yaml@main
+    uses: shamubernetes/containers/.github/workflows/build-images.yaml@main
     secrets: inherit
     permissions:
       contents: read

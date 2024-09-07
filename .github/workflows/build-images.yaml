@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: "Image Build"
 
 on:
@@ -31,6 +32,9 @@ on:
         required: true
       BOT_APP_PRIVATE_KEY:
         description: The private key of the GitHub App
+        required: true
+      DISCORD_WEBHOOK:
+        description: The Discord Webhook URL
         required: true
 
 jobs:

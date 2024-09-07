@@ -1,0 +1,9 @@
+# trunk-ignore-all(trunk-yls/no-yls)
+self-hosted-runner:
+  # Labels of self-hosted runner in array of strings.
+  labels:
+  - ghar-set-zoo
+# Configuration variables in array of strings defined in your repository or
+# organization. `null` means disabling configuration variables check.
+# Empty array means no configuration variable is allowed.
+config-variables: null

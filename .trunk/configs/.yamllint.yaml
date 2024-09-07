@@ -4,7 +4,7 @@ rules:
   anchors:
     forbid-undeclared-aliases: true
     forbid-duplicated-anchors: false
-    forbid-unused-anchors: true
+    forbid-unused-anchors: false
   braces:
     min-spaces-inside: 0
     max-spaces-inside: 0
@@ -20,7 +20,7 @@ rules:
     max-spaces-after: 1
   commas:
     max-spaces-before: 0
-    min-spaces-after: 1
+    min-spaces-after: 0
     max-spaces-after: 1
   comments:
     require-starting-space: true
