@@ -16,13 +16,13 @@ tasks:
 
   test:
     desc: |-
-      task APP=<app> CHANNEL=<channel> BASE=<true/false> test
+      task APP=<app> CHANNEL=<channel> ARCH=<amd64|arm64> app:test
     cmds:
-    - task: download-goss
+    - task: .download-goss
     - >-
-      cue vet --schema '#Spec' ./apps/{{.APP}}/metadata.json metadata.rules.cue
+      cue vet --schema '#Spec' ./apps/{{.APP}}/metadata.yaml metadata.rules.cue
     - >-
-      docker buildx build --progress=plain --load -t {{.APP}}:{{.CHANNEL}} --build-arg CHANNEL={{.CHANNEL}} --build-arg VERSION=$(bash ./.github/scripts/upstream.sh "{{.APP}}" "{{.CHANNEL}}") {{if eq .MULTIPLATFORM "true"}} --platform $(jq -r '.channels[] | select(.name=="{{.CHANNEL}}").platforms | join(",")' ./apps/{{.APP}}/metadata.json) {{else}} --platform "linux/$(uname -m | sed 's/x86_64/amd64/')" {{end}} -f ./apps/{{.APP}}/Dockerfile .
+      docker buildx build --progress=plain --load -t {{.APP}}:{{.CHANNEL}} --build-arg CHANNEL={{.CHANNEL}} --build-arg VERSION=$(bash {{.ROOT_DIR}}/apps/{{.APP}}/ci/latest.sh "{{.CHANNEL}}") {{if eq .MULTIPLATFORM "true"}} --platform $(jq -r '.channels[] | select(.name=="{{.CHANNEL}}").platforms | join(",")' ./apps/{{.APP}}/metadata.json) {{else}} --platform "linux/{{.ARCH}}" {{end}} -f ./apps/{{.APP}}/Dockerfile .
     - >-
       ./.goss/dgoss run {{.APP}}:{{.CHANNEL}} {{if eq .BASE "true"}}tail -f /dev/null{{end}}
     env:
@@ -34,12 +34,13 @@ tasks:
       GOSS_FILES_STRATEGY: cp
     vars:
       MULTIPLATFORM: '{{ default "false" .MULTIPLATFORM }}'
+      ARCH: '{{ default "$(uname -m | sed s/x86_64/amd64/)" .ARCH }}'
 
   .download-goss:
     internal: true
     silent: true
     vars:
-      GOSS_VERSION: v0.3.21
+      GOSS_VERSION: v0.4.8
     cmds:
     - mkdir -p ./.goss
     - curl -fsSL -o ./.goss/goss https://github.com/aelsabbahy/goss/releases/download/{{.GOSS_VERSION}}/goss-linux-amd64

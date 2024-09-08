@@ -1,5 +1,6 @@
-ARG VERSION
 FROM docker.io/library/ubuntu:24.04
+
+ARG VERSION
 
 LABEL author="shamubernetes"
 LABEL version="${VERSION}"
