@@ -40,7 +40,7 @@ on:
 jobs:
   prepare:
     name: Prepare to Build
-    runs-on: ["ubuntu-latest"]
+    runs-on: ["ghar-set-zoo"]
     outputs:
       matrices: ${{ steps.prepare-matrices.outputs.matrices }}
     steps:
@@ -91,7 +91,7 @@ jobs:
   build-platform-images:
     name: Build/Test ${{ matrix.image.name }} (${{ matrix.image.platform }})
     needs: prepare
-    runs-on: ["ubuntu-latest"]
+    runs-on: ["ghar-set-zoo"]
     if: ${{ toJSON(fromJSON(needs.prepare.outputs.matrices).imagePlatforms) != '[]' && toJSON(fromJSON(needs.prepare.outputs.matrices).imagePlatforms) != '' }}
     strategy:
       fail-fast: false
@@ -245,7 +245,7 @@ jobs:
 
   merge:
     name: Merge ${{ matrix.image.name }}
-    runs-on: ["ubuntu-latest"]
+    runs-on: ["ghar-set-zoo"]
     needs: ["prepare", "build-platform-images"]
     # Always run merge, as the prior matrix is all or nothing. We test for prior step failure
     # in the "Test Failed Bit" step. This ensures if one app fails, others can still complete.
@@ -344,7 +344,7 @@ jobs:
   # Summarize matrix https://github.community/t/status-check-for-a-matrix-jobs/127354/7
   build_success:
     name: Build matrix success
-    runs-on: ["ubuntu-latest"]
+    runs-on: ["ghar-set-zoo"]
     needs: ["prepare", "merge"]
     if: ${{ always() }}
     steps:
