@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$id": "https://github.com/kFlix-tv/containers/blob/main/docs/metadata-schema.json",
+  "$id": "https://github.com/shamubernetes/containers/blob/main/docs/metadata-schema.json",
   "$ref": "#/definitions/Metadata",
   "definitions": {
       "Metadata": {

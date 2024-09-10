@@ -2,22 +2,22 @@
 NOTE: AUTO-GENERATED FILE
 to edit this file, instead edit its template at: ./github/scripts/templates/README.md.j2
 -->
-<div align="center">
 
+<div align="center">
 
 ## Containers
 
-_An opinionated collection of container images_
+*An opinionated collection of container images*
 
 </div>
 
 <div align="center">
 
-[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/kflix-tv/containers/release-scheduled.yaml?style=for-the-badge&label=Scheduled%20Release)](https://github.com/shamubernetes/containers/actions/workflows/release-scheduled.yaml)
+[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/shamubernetes/containers/release-scheduled.yaml?style=for-the-badge\&label=Scheduled%20Release)](https://github.com/shamubernetes/containers/actions/workflows/release-scheduled.yaml)
 
 </div>
 
-Welcome to our container images, if looking for a container start by [browsing the GitHub Packages page for this repo's packages](https://github.com/kflix-tv?tab=packages&repo_name=containers).
+Welcome to our container images, if looking for a container start by [browsing the GitHub Packages page for this repo's packages](https://github.com/shamubernetes?tab=packages\&repo_name=containers).
 
 ## Mission statement
 
@@ -33,12 +33,12 @@ We do take a similar approach but instead of appending a `-ls69` or `-r420` pref
 
 | Container                                          | Immutable |
 |----------------------------------------------------|-----------|
-| `ghcr.io/kflix-tv/sonarr:rolling`                   | ❌         |
-| `ghcr.io/kflix-tv/sonarr:3.0.8.1507`                | ❌         |
-| `ghcr.io/kflix-tv/sonarr:rolling@sha256:8053...`    | ✅         |
-| `ghcr.io/kflix-tv/sonarr:3.0.8.1507@sha256:8053...` | ✅         |
+| `ghcr.io/shamubernetes/sonarr:rolling`                   | ❌         |
+| `ghcr.io/shamubernetes/sonarr:3.0.8.1507`                | ❌         |
+| `ghcr.io/shamubernetes/sonarr:rolling@sha256:8053...`    | ✅         |
+| `ghcr.io/shamubernetes/sonarr:3.0.8.1507@sha256:8053...` | ✅         |
 
-_If pinning an image to the sha256 digest, tools like [Renovate](https://github.com/renovatebot/renovate) support updating the container on a digest or application version change._
+*If pinning an image to the sha256 digest, tools like [Renovate](https://github.com/renovatebot/renovate) support updating the container on a digest or application version change.*
 
 ## Passing arguments to a application
 
@@ -48,12 +48,12 @@ Some applications do not support defining configuration via environment variable
 2. Look up the documentation for the application and find a argument you would like to set.
 3. Set the argument in the `args` section, be sure to include `entrypoint.sh` as the first arg and any application specific arguments thereafter.
 
-    ```yaml
-    args:
-      - /entrypoint.sh
-      - --port
-      - "8080"
-    ```
+   ```yaml
+   args:
+     - /entrypoint.sh
+     - --port
+     - "8080"
+   ```
 
 ## Configuration volume
 
@@ -71,7 +71,6 @@ Container | Channel | Image | Latest Tags
 [plex](https://github.com/shamubernetes/containers/pkgs/container/plex) | stable | ghcr.io/shamubernetes/plex |[![1.40.5.8921-836b34c27](https://img.shields.io/badge/1.40.5.8921--836b34c27-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/270227735?tag=1.40.5.8921-836b34c27) [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/270227735?tag=rolling)
 [plex-beta](https://github.com/shamubernetes/containers/pkgs/container/plex-beta) | beta | ghcr.io/shamubernetes/plex-beta |[![1.41.0.8930-056c2ed26](https://img.shields.io/badge/1.41.0.8930--056c2ed26-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/270227746?tag=1.41.0.8930-056c2ed26) [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/270227746?tag=rolling)
 
-
 ## Contributing
 
 1. Install [Docker](https://docs.docker.com/get-docker/), [Taskfile](https://taskfile.dev/) & [Cuelang](https://cuelang.org/)
@@ -82,9 +81,9 @@ Container | Channel | Image | Latest Tags
 6. Include any additional files if required
 7. Use Taskfile to build and test your image
 
-    ```ruby
-    task APP=sonarr CHANNEL=main test
-    ```
+   ```ruby
+   task APP=sonarr CHANNEL=main test
+   ```
 
 ## Deprecations
 
@@ -96,6 +95,7 @@ Containers here can be **deprecated** at any point, this could be for any reason
 4. The **maintenance burden** of keeping the container here **is too bothersome**
 
 **Note**: Deprecated containers will remained published to this repo for 6 months after which they will be pruned.
+
 ## Credits
 
 A lot of inspiration and ideas are thanks to the hard work of [hotio.dev](https://hotio.dev/) and [linuxserver.io](https://www.linuxserver.io/) contributors.
