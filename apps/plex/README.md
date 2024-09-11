@@ -40,4 +40,5 @@ Plex Media Server
  [![1.41.0.8930-056c2ed26](https://img.shields.io/badge/1.41.0.8930--056c2ed26-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/270227746?tag=1.41.0.8930-056c2ed26)
  [![1.41.0.8976-8d3b73150](https://img.shields.io/badge/1.41.0.8976--8d3b73150-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/271586771?tag=1.41.0.8976-8d3b73150)
  [![1.41.0.8988-350a78cb8](https://img.shields.io/badge/1.41.0.8988--350a78cb8-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/272136238?tag=1.41.0.8988-350a78cb8)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/272136238?tag=rolling)
+ [![1.41.0.8992-8463ad060](https://img.shields.io/badge/1.41.0.8992--8463ad060-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/272322631?tag=1.41.0.8992-8463ad060)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/272322631?tag=rolling)
