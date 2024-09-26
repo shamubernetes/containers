@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 channel=$1
 
+if [ -z "${channel}" ]; then
+  echo "Usage: $0 <channel>"
+  exit 1
+fi
+
 if [[ ${channel} == "beta" ]]; then
   git clone --quiet --depth=1 https://aur.archlinux.org/plex-media-server-plexpass.git /tmp/plex-media-server-plexpass
   pushd /tmp/plex-media-server-plexpass >/dev/null || exit

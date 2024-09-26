@@ -24,3 +24,6 @@ app/actions-runner:
 app/plex:
 - changed-files:
   - any-glob-to-any-file: apps/plex/**/*
+app/satisfactory:
+- changed-files:
+  - any-glob-to-any-file: apps/satisfactory/**/*

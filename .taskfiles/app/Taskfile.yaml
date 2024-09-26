@@ -14,15 +14,40 @@ tasks:
     - echo "Not implemented yet"
     # - .append-app-labels
 
+  .cue-vet:
+    internal: true
+    desc: Run cue vet on the metadata file
+    cmd: |-
+      #!/usr/bin/env bash
+      cue vet --schema '#Spec' ./apps/{{.APP}}/metadata.yaml metadata.rules.cue
+    silent: true
+
+  build:
+    desc: |-
+      task APP=<app> CHANNEL=<channel> ARCH=<amd64|arm64> app:build
+    cmds:
+    - task: .cue-vet
+    - >-
+      docker buildx build \
+       --progress=plain \
+       --load -t {{.APP}}:{{.CHANNEL}} \
+       --build-arg CHANNEL={{.CHANNEL}} \
+       --build-arg VERSION=$(bash {{.ROOT_DIR}}/apps/{{.APP}}/ci/latest.sh "{{.CHANNEL}}") \
+       {{- if eq .MULTIPLATFORM "true" }}
+        --platform $(jq -r '.channels[] | select(.name=="{{.CHANNEL}}").platforms | join(",")' ./apps/{{.APP}}/metadata.json) \
+       {{- else }}
+        --platform "linux/{{.ARCH}}" \
+       {{- end }}
+       -f ./apps/{{.APP}}/Dockerfile .
+    vars:
+      MULTIPLATFORM: '{{ default "false" .MULTIPLATFORM }}'
+      ARCH: '{{ default "$(uname -m | sed s/x86_64/amd64/)" .ARCH }}'
+
   test:
     desc: |-
       task APP=<app> CHANNEL=<channel> ARCH=<amd64|arm64> app:test
     cmds:
     - task: .download-goss
-    - >-
-      cue vet --schema '#Spec' ./apps/{{.APP}}/metadata.yaml metadata.rules.cue
-    - >-
-      docker buildx build --progress=plain --load -t {{.APP}}:{{.CHANNEL}} --build-arg CHANNEL={{.CHANNEL}} --build-arg VERSION=$(bash {{.ROOT_DIR}}/apps/{{.APP}}/ci/latest.sh "{{.CHANNEL}}") {{if eq .MULTIPLATFORM "true"}} --platform $(jq -r '.channels[] | select(.name=="{{.CHANNEL}}").platforms | join(",")' ./apps/{{.APP}}/metadata.json) {{else}} --platform "linux/{{.ARCH}}" {{end}} -f ./apps/{{.APP}}/Dockerfile .
     - >-
       ./.goss/dgoss run {{.APP}}:{{.CHANNEL}} {{if eq .BASE "true"}}tail -f /dev/null{{end}}
     env:

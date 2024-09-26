@@ -1,0 +1,62 @@
+# yaml-language-server: $schema=../../docs/metadata-schema.json
+app: satisfactory
+description: Satisfactory Server -- Rootless
+environment:
+  - USER: user
+    description: User to run the server as
+    default: steam
+  - STEAMCMDDIR: STEAMCMDDIR
+    description: Directory to store SteamCMD files
+    default: /app/steamcmd
+  - GAMECONFIGDIR: GAMECONFIGDIR
+    description: Directory to store game configuration files
+    default: /config/gamefiles/FactoryGame/Saved
+  - GAMESAVESDIR: GAMESAVESDIR
+    description: Directory to store game save files
+    default: /app/.config/Epic/FactoryGame/Saved/SaveGames
+  - TZ: TZ
+    description: Timezone
+    default: Etc/UTC
+  - AUTOSAVENUMBER: AUTOSAVENUMBER
+    description: Number of autosaves to keep
+    default: 5
+  - MAXOBJECTS: MAXOBJECTS
+    description: Maximum number of objects to keep in memory
+    default: 2162688
+  - MAXTICKRATE: MAXTICKRATE
+    description: Maximum tick rate
+    default: 120
+  - CONNECTION_TIMEOUT: CONNECTION_TIMEOUT
+    description: Connection timeout
+    default: 300
+  - INITIAL_CONNECT_TIMEOUT: INITIAL_CONNECT_TIMEOUT
+    description: Initial connection timeout
+    default: 300
+  - SERVERSTREAMING: SERVERSTREAMING
+    description: Server streaming
+    default: 0
+  - MAXPLAYERS: MAXPLAYERS
+    description: Maximum number of players
+    default: 4
+  - DISABLESEASONALEVENTS: DISABLESEASONALEVENTS
+    description: Disable seasonal events
+    default: ""
+  - SERVERGAMEPORT: SERVERGAMEPORT
+    description: Server game port
+    default: 7777
+
+channels:
+- name: public
+  primary: true
+  platforms: ["linux/amd64"]
+  stable: true
+  tests:
+    enabled: true
+    type: web
+- name: experimental
+  stable: true
+  primary: false
+  platforms: ["linux/amd64"]
+  tests:
+    enabled: true
+    type: web
