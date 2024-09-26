@@ -4,11 +4,60 @@ to edit this file, instead edit its template at: ./github/scripts/templates/cont
 -->
 <div align="center">
 
-# Plex
+# Satisfactory
 
 </div>
 
-Plex Media Server
+Satisfactory Server -- Rootless
+
+## Custom environment configuration
+
+This container support setting certain custom environment variables with the use of [drone/envsubst](https://github.com/drone/envsubst).
+
+| Name                    | Default                                         |
+|-------------------------|-------------------------------------------------|
+| USER                    | `user`                                          |
+| description             | `User to run the server as`                     |
+| default                 | `steam`                                         |
+| STEAMCMDDIR             | `STEAMCMDDIR`                                   |
+| description             | `Directory to store SteamCMD files`             |
+| default                 | `/app/steamcmd`                                 |
+| GAMECONFIGDIR           | `GAMECONFIGDIR`                                 |
+| description             | `Directory to store game configuration files`   |
+| default                 | `/config/gamefiles/FactoryGame/Saved`           |
+| GAMESAVESDIR            | `GAMESAVESDIR`                                  |
+| description             | `Directory to store game save files`            |
+| default                 | `/app/.config/Epic/FactoryGame/Saved/SaveGames` |
+| TZ                      | `TZ`                                            |
+| description             | `Timezone`                                      |
+| default                 | `Etc/UTC`                                       |
+| AUTOSAVENUMBER          | `AUTOSAVENUMBER`                                |
+| description             | `Number of autosaves to keep`                   |
+| default                 | `5`                                             |
+| MAXOBJECTS              | `MAXOBJECTS`                                    |
+| description             | `Maximum number of objects to keep in memory`   |
+| default                 | `2162688`                                       |
+| MAXTICKRATE             | `MAXTICKRATE`                                   |
+| description             | `Maximum tick rate`                             |
+| default                 | `120`                                           |
+| CONNECTION_TIMEOUT      | `CONNECTION_TIMEOUT`                            |
+| description             | `Connection timeout`                            |
+| default                 | `300`                                           |
+| INITIAL_CONNECT_TIMEOUT | `INITIAL_CONNECT_TIMEOUT`                       |
+| description             | `Initial connection timeout`                    |
+| default                 | `300`                                           |
+| SERVERSTREAMING         | `SERVERSTREAMING`                               |
+| description             | `Server streaming`                              |
+| default                 | `0`                                             |
+| MAXPLAYERS              | `MAXPLAYERS`                                    |
+| description             | `Maximum number of players`                     |
+| default                 | `4`                                             |
+| DISABLESEASONALEVENTS   | `DISABLESEASONALEVENTS`                         |
+| description             | `Disable seasonal events`                       |
+| default                 | ``                                              |
+| SERVERGAMEPORT          | `SERVERGAMEPORT`                                |
+| description             | `Server game port`                              |
+| default                 | `7777`                                          |
 
 ## Tags
 
@@ -16,30 +65,5 @@ Plex Media Server
 
 
 
-[![1.40.0.7998-c29d4c0c8](https://img.shields.io/badge/1.40.0.7998--c29d4c0c8-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/186050760?tag=1.40.0.7998-c29d4c0c8)
- [![1.40.1.8227-c0dd5a73e](https://img.shields.io/badge/1.40.1.8227--c0dd5a73e-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/193493166?tag=1.40.1.8227-c0dd5a73e)
- [![1.40.2.8395-c67dce28e](https://img.shields.io/badge/1.40.2.8395--c67dce28e-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/205662901?tag=1.40.2.8395-c67dce28e)
- [![1.40.3.8555-fef15d30c](https://img.shields.io/badge/1.40.3.8555--fef15d30c-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/230625923?tag=1.40.3.8555-fef15d30c)
- [![1.40.5.8921-836b34c27](https://img.shields.io/badge/1.40.5.8921--836b34c27-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/270227735?tag=1.40.5.8921-836b34c27)
- [![1.41.0.8992-8463ad060](https://img.shields.io/badge/1.41.0.8992--8463ad060-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/272613773?tag=1.41.0.8992-8463ad060)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/272613773?tag=rolling)
-
-#### Beta
-
-
-
- [![1.40.0.7998-c29d4c0c8](https://img.shields.io/badge/1.40.0.7998--c29d4c0c8-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/180437800?tag=1.40.0.7998-c29d4c0c8)
- [![1.40.1.8120-6dc7f7fd8](https://img.shields.io/badge/1.40.1.8120--6dc7f7fd8-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/186050765?tag=1.40.1.8120-6dc7f7fd8)
- [![1.40.1.8173-3e92df2db](https://img.shields.io/badge/1.40.1.8173--3e92df2db-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/187891176?tag=1.40.1.8173-3e92df2db)
- [![1.40.1.8227-c0dd5a73e](https://img.shields.io/badge/1.40.1.8227--c0dd5a73e-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/192950065?tag=1.40.1.8227-c0dd5a73e)
- [![1.40.2.8273-7630a4c43](https://img.shields.io/badge/1.40.2.8273--7630a4c43-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/196052009?tag=1.40.2.8273-7630a4c43)
- [![1.40.2.8312-b1c79904d](https://img.shields.io/badge/1.40.2.8312--b1c79904d-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/197201301?tag=1.40.2.8312-b1c79904d)
- [![1.40.2.8351-9938371be](https://img.shields.io/badge/1.40.2.8351--9938371be-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/202157154?tag=1.40.2.8351-9938371be)
- [![1.40.2.8383-15541a816](https://img.shields.io/badge/1.40.2.8383--15541a816-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/204603593?tag=1.40.2.8383-15541a816)
- [![1.40.2.8395-c67dce28e](https://img.shields.io/badge/1.40.2.8395--c67dce28e-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/205681441?tag=1.40.2.8395-c67dce28e)
- [![1.40.3.8555-fef15d30c](https://img.shields.io/badge/1.40.3.8555--fef15d30c-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/230625941?tag=1.40.3.8555-fef15d30c)
- [![1.41.0.8930-056c2ed26](https://img.shields.io/badge/1.41.0.8930--056c2ed26-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/270227746?tag=1.41.0.8930-056c2ed26)
- [![1.41.0.8976-8d3b73150](https://img.shields.io/badge/1.41.0.8976--8d3b73150-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/271586771?tag=1.41.0.8976-8d3b73150)
- [![1.41.0.8988-350a78cb8](https://img.shields.io/badge/1.41.0.8988--350a78cb8-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/272136238?tag=1.41.0.8988-350a78cb8)
- [![1.41.0.8992-8463ad060](https://img.shields.io/badge/1.41.0.8992--8463ad060-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/272322631?tag=1.41.0.8992-8463ad060)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/272322631?tag=rolling)
+[![15811013](https://img.shields.io/badge/15811013-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/280108056?tag=15811013)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/280108056?tag=rolling)
