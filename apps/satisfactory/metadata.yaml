@@ -60,10 +60,3 @@ channels:
   tests:
     enabled: true
     type: web
-- name: nightly
-  stable: false
-  primary: false
-  platforms: ["linux/amd64"]
-  tests:
-    enabled: true
-    type: web

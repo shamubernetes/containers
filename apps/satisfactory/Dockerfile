@@ -81,12 +81,10 @@ USER ${USER}
 WORKDIR /config
 VOLUME ["/config"]
 
-RUN /app/steamcmd/steamcmd.sh +force_install_dir /config/gamefiles +login anonymous +app_update "$STEAMAPPID" validate +quit
+RUN /app/steamcmd/steamcmd.sh +force_install_dir /config/gamefiles +login anonymous +app_update "$STEAMAPPID" -beta "$CHANNEL" validate +quit
 
 COPY ./apps/satisfactory/scripts /app/scripts
 COPY ./apps/satisfactory/entrypoint.sh /entrypoint.sh
-
-EXPOSE 7777
 
 ENTRYPOINT [ "/usr/bin/catatonit", "--" ]
 CMD ["/entrypoint.sh"]
