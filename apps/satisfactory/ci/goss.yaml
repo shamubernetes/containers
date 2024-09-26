@@ -10,9 +10,7 @@ file:
     exists: true
   /app/.steam/sdk64/steamclient.so:
     exists: true
-  /usr/bin/steamcmd:
-    exists: true
-    executable: true
   /usr/local/bin/envsubst:
     exists: true
-    executable: true
+  /config/gamefiles/FactoryServer.sh:
+    exists: true

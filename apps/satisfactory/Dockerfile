@@ -9,7 +9,8 @@ ENV CGO_ENABLED=0 \
     GOARCH=${TARGETARCH} \
     GOARM=${TARGETVARIANT}
 
-RUN go install -ldflags="-s -w" github.com/drone/envsubst/cmd/envsubst@latest
+RUN go install -ldflags="-s -w" github.com/drone/envsubst/cmd/envsubst@latest \
+    && chmod +x /go/bin/envsubst
 
 
 FROM docker.io/library/ubuntu:22.04
@@ -80,8 +81,12 @@ USER ${USER}
 WORKDIR /config
 VOLUME ["/config"]
 
+RUN /app/steamcmd/steamcmd.sh +force_install_dir /config/gamefiles +login anonymous +app_update "$STEAMAPPID" validate +quit
+
 COPY ./apps/satisfactory/scripts /app/scripts
 COPY ./apps/satisfactory/entrypoint.sh /entrypoint.sh
+
+EXPOSE 7777
 
 ENTRYPOINT [ "/usr/bin/catatonit", "--" ]
 CMD ["/entrypoint.sh"]
