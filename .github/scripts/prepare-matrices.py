@@ -104,15 +104,9 @@ def get_image_metadata(subdir, meta, forRelease=False, force=False, channels=Non
                 continue
             toBuild["published_version"] = published
 
-        # check if version is queued already by a different channel
-        for image in imagesToBuild["images"]:
-            for tag in image["tags"]:
-                if tag == version:
-                    toBuild["tags"] = ["rolling", channel["name"]]
-                else:
-                    toBuild["tags"] = ["rolling", version, channel["name"]]
-
         toBuild["version"] = version
+
+        toBuild["tags"] = ["rolling", version]
 
         if meta.get("semantic_versioning", False):
             parts = version.split(".")[:-1]
