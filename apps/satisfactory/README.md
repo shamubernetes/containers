@@ -16,48 +16,20 @@ This container support setting certain custom environment variables with the use
 
 | Name                    | Default                                         |
 |-------------------------|-------------------------------------------------|
-| USER                    | `user`                                          |
-| description             | `User to run the server as`                     |
-| default                 | `steam`                                         |
-| STEAMCMDDIR             | `STEAMCMDDIR`                                   |
-| description             | `Directory to store SteamCMD files`             |
-| default                 | `/app/steamcmd`                                 |
-| GAMECONFIGDIR           | `GAMECONFIGDIR`                                 |
-| description             | `Directory to store game configuration files`   |
-| default                 | `/config/gamefiles/FactoryGame/Saved`           |
-| GAMESAVESDIR            | `GAMESAVESDIR`                                  |
-| description             | `Directory to store game save files`            |
-| default                 | `/app/.config/Epic/FactoryGame/Saved/SaveGames` |
-| TZ                      | `TZ`                                            |
-| description             | `Timezone`                                      |
-| default                 | `Etc/UTC`                                       |
-| AUTOSAVENUMBER          | `AUTOSAVENUMBER`                                |
-| description             | `Number of autosaves to keep`                   |
-| default                 | `5`                                             |
-| MAXOBJECTS              | `MAXOBJECTS`                                    |
-| description             | `Maximum number of objects to keep in memory`   |
-| default                 | `2162688`                                       |
-| MAXTICKRATE             | `MAXTICKRATE`                                   |
-| description             | `Maximum tick rate`                             |
-| default                 | `120`                                           |
-| CONNECTION_TIMEOUT      | `CONNECTION_TIMEOUT`                            |
-| description             | `Connection timeout`                            |
-| default                 | `300`                                           |
-| INITIAL_CONNECT_TIMEOUT | `INITIAL_CONNECT_TIMEOUT`                       |
-| description             | `Initial connection timeout`                    |
-| default                 | `300`                                           |
-| SERVERSTREAMING         | `SERVERSTREAMING`                               |
-| description             | `Server streaming`                              |
-| default                 | `0`                                             |
-| MAXPLAYERS              | `MAXPLAYERS`                                    |
-| description             | `Maximum number of players`                     |
-| default                 | `4`                                             |
-| DISABLESEASONALEVENTS   | `DISABLESEASONALEVENTS`                         |
-| description             | `Disable seasonal events`                       |
-| default                 | ``                                              |
-| SERVERGAMEPORT          | `SERVERGAMEPORT`                                |
-| description             | `Server game port`                              |
-| default                 | `7777`                                          |
+| USER                    | `steam`                                         |
+| STEAMCMDDIR             | `/app/steamcmd`                                 |
+| GAMECONFIGDIR           | `/config/gamefiles/FactoryGame/Saved`           |
+| GAMESAVESDIR            | `/app/.config/Epic/FactoryGame/Saved/SaveGames` |
+| TZ                      | `Etc/UTC`                                       |
+| AUTOSAVENUMBER          | `5`                                             |
+| MAXOBJECTS              | `2162688`                                       |
+| MAXTICKRATE             | `120`                                           |
+| CONNECTION_TIMEOUT      | `300`                                           |
+| INITIAL_CONNECT_TIMEOUT | `300`                                           |
+| SERVERSTREAMING         | `0`                                             |
+| MAXPLAYERS              | `4`                                             |
+| DISABLESEASONALEVENTS   | ``                                              |
+| SERVERGAMEPORT          | `7777`                                          |
 
 ## Tags
 
@@ -65,6 +37,13 @@ This container support setting certain custom environment variables with the use
 
 
 
-[![15811013](https://img.shields.io/badge/15811013-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/280817412?tag=15811013)
+[![15811013](https://img.shields.io/badge/15811013-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/280871338?tag=15811013)
  [![null](https://img.shields.io/badge/null-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/280801901?tag=null)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/280817412?tag=rolling)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/280871338?tag=rolling)
+
+#### Experimental
+
+
+
+ [![15811013](https://img.shields.io/badge/15811013-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory-experimental/280871222?tag=15811013)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory-experimental/280871222?tag=rolling)
