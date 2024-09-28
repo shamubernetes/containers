@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# shellcheck source=./apps/satisfactory/scripts/lib.sh
 source /app/scripts/lib.sh
 
 ini_args=(
@@ -19,15 +20,15 @@ ini_args=(
   "$DISABLESEASONALEVENTS"
 )
 
-printf "Launching game server\\n\\n"
+printf 'Launching game server\n\n'
 
 if [ ! -f "/config/gamefiles/FactoryServer.sh" ]; then
-    printf "FactoryServer launch script is missing.\\n"
-    exit 1
+  printf 'FactoryServer launch script is missing.\n'
+  exit 1
 fi
 
 cd /config/gamefiles || exit 1
 
 chmod +x FactoryServer.sh
 
-exec ./FactoryServer.sh -Port="$SERVERGAMEPORT"
+exec ./FactoryServer.sh -Port="$SERVERGAMEPORT" "${ini_args[@]}" "$@"

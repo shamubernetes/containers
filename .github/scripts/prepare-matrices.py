@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
 import importlib.util
-import sys
-import os
-
 import json
-import yaml
-import requests
-
+import os
+import sys
+from os.path import isfile
 from subprocess import check_output
 
-from os.path import isfile
+import requests
+import yaml
 
-repo_owner = os.environ.get('REPO_OWNER', os.environ.get('GITHUB_REPOSITORY_OWNER'))
+repo_owner = os.environ.get("REPO_OWNER", os.environ.get("GITHUB_REPOSITORY_OWNER"))
 
 TESTABLE_PLATFORMS = ["linux/amd64"]
 
@@ -46,19 +44,23 @@ def get_latest_version(subdir, channel_name):
     elif os.path.isfile(os.path.join(ci_dir, "latest.sh")):
         return get_latest_version_sh(os.path.join(ci_dir, "latest.sh"), channel_name)
     elif os.path.isfile(os.path.join(subdir, channel_name, "latest.py")):
-        return get_latest_version_py(os.path.join(subdir, channel_name, "latest.py"), channel_name)
+        return get_latest_version_py(
+            os.path.join(subdir, channel_name, "latest.py"), channel_name
+        )
     elif os.path.isfile(os.path.join(subdir, channel_name, "latest.sh")):
-        return get_latest_version_sh(os.path.join(subdir, channel_name, "latest.sh"), channel_name)
+        return get_latest_version_sh(
+            os.path.join(subdir, channel_name, "latest.sh"), channel_name
+        )
     return None
 
 
 def get_published_version(image_name):
     r = requests.get(
-      f"https://api.github.com/users/{repo_owner}/packages/container/{image_name}/versions",
-      headers={
-        "Accept": "application/vnd.github.v3+json",
-        "Authorization": "token " + os.environ["TOKEN"]
-      },
+        f"https://api.github.com/users/{repo_owner}/packages/container/{image_name}/versions",
+        headers={
+            "Accept": "application/vnd.github.v3+json",
+            "Authorization": "token " + os.environ["TOKEN"],
+        },
     )
 
     if r.status_code != 200:
@@ -74,15 +76,14 @@ def get_published_version(image_name):
 
 
 def get_image_metadata(subdir, meta, forRelease=False, force=False, channels=None):
-    imagesToBuild = {
-      "images": [],
-      "imagePlatforms": []
-    }
+    imagesToBuild = {"images": [], "imagePlatforms": []}
 
     if channels is None:
         channels = meta["channels"]
     else:
-        channels = [channel for channel in meta["channels"] if channel["name"] in channels]
+        channels = [
+            channel for channel in meta["channels"] if channel["name"] in channels
+        ]
 
     for channel in channels:
         version = get_latest_version(subdir, channel["name"])
@@ -103,10 +104,16 @@ def get_image_metadata(subdir, meta, forRelease=False, force=False, channels=Non
                 continue
             toBuild["published_version"] = published
 
+        # check if version is queued already by a different channel
+        for image in imagesToBuild["images"]:
+            for tag in image["tags"]:
+                if tag == version:
+                    toBuild["tags"] = ["rolling", channel["name"]]
+                else:
+                    toBuild["tags"] = ["rolling", version, channel["name"]]
+
         toBuild["version"] = version
 
-        # Image Tags
-        toBuild["tags"] = ["rolling", version]
         if meta.get("semantic_versioning", False):
             parts = version.split(".")[:-1]
             while len(parts) > 0:
@@ -138,17 +145,27 @@ def get_image_metadata(subdir, meta, forRelease=False, force=False, channels=Non
                 platformToBuild["label_type"] = "org.opencontainers.image"
 
             if isfile(os.path.join(subdir, channel["name"], "Dockerfile")):
-                platformToBuild["dockerfile"] = os.path.join(subdir, channel["name"], "Dockerfile")
+                platformToBuild["dockerfile"] = os.path.join(
+                    subdir, channel["name"], "Dockerfile"
+                )
                 platformToBuild["context"] = os.path.join(subdir, channel["name"])
-                platformToBuild["goss_config"] = os.path.join(subdir, channel["name"], "goss.yaml")
+                platformToBuild["goss_config"] = os.path.join(
+                    subdir, channel["name"], "goss.yaml"
+                )
             else:
                 platformToBuild["dockerfile"] = os.path.join(subdir, "Dockerfile")
                 platformToBuild["context"] = subdir
                 platformToBuild["goss_config"] = os.path.join(subdir, "ci", "goss.yaml")
 
-            platformToBuild["goss_args"] = "tail -f /dev/null" if channel["tests"].get("type", "web") == "cli" else ""
+            platformToBuild["goss_args"] = (
+                "tail -f /dev/null"
+                if channel["tests"].get("type", "web") == "cli"
+                else ""
+            )
 
-            platformToBuild["tests_enabled"] = channel["tests"]["enabled"] and platform in TESTABLE_PLATFORMS
+            platformToBuild["tests_enabled"] = (
+                channel["tests"]["enabled"] and platform in TESTABLE_PLATFORMS
+            )
 
             imagesToBuild["imagePlatforms"].append(platformToBuild)
         imagesToBuild["images"].append(toBuild)
@@ -159,27 +176,9 @@ if __name__ == "__main__":
     apps = sys.argv[1]
     forRelease = sys.argv[2] == "true"
     force = sys.argv[3] == "true"
-    imagesToBuild = {
-      "images": [],
-      "imagePlatforms": []
-    }
+    imagesToBuild = {"images": [], "imagePlatforms": []}
     if apps == "all":
-      for subdir, dirs, files in os.walk("./apps"):
-          for file in files:
-              meta = None
-              if file == "metadata.yaml":
-                  meta = load_metadata_file_yaml(os.path.join(subdir, file))
-              elif file == "metadata.json":
-                  meta = load_metadata_file_json(os.path.join(subdir, file))
-              else:
-                  continue
-              if meta is not None:
-                  imageToBuild = get_image_metadata(subdir, meta, forRelease, force=force)
-                  if imageToBuild is not None:
-                      imagesToBuild["images"].extend(imageToBuild["images"])
-                      imagesToBuild["imagePlatforms"].extend(imageToBuild["imagePlatforms"])
-    elif apps == "base":
-        for subdir, dirs, files in os.walk("./apps"):
+        for subdir, _, files in os.walk("./apps"):
             for file in files:
                 meta = None
                 if file == "metadata.yaml":
@@ -189,27 +188,14 @@ if __name__ == "__main__":
                 else:
                     continue
                 if meta is not None:
-                    if meta.get("base", False):
-                      imageToBuild = get_image_metadata(subdir, meta, forRelease, force=force)
-                      if imageToBuild is not None:
-                          imagesToBuild["images"].extend(imageToBuild["images"])
-                          imagesToBuild["imagePlatforms"].extend(imageToBuild["imagePlatforms"])
-    elif apps == "apps":
-        for subdir, dirs, files in os.walk("./apps"):
-            for file in files:
-                meta = None
-                if file == "metadata.yaml":
-                    meta = load_metadata_file_yaml(os.path.join(subdir, file))
-                elif file == "metadata.json":
-                    meta = load_metadata_file_json(os.path.join(subdir, file))
-                else:
-                    continue
-                if meta is not None:
-                    if not meta.get("base", False):
-                      imageToBuild = get_image_metadata(subdir, meta, forRelease, force=force)
-                      if imageToBuild is not None:
-                          imagesToBuild["images"].extend(imageToBuild["images"])
-                          imagesToBuild["imagePlatforms"].extend(imageToBuild["imagePlatforms"])
+                    imageToBuild = get_image_metadata(
+                        subdir, meta, forRelease, force=force
+                    )
+                    if imageToBuild is not None:
+                        imagesToBuild["images"].extend(imageToBuild["images"])
+                        imagesToBuild["imagePlatforms"].extend(
+                            imageToBuild["imagePlatforms"]
+                        )
     else:
         channels = None
         apps = apps.split(",")
@@ -218,17 +204,26 @@ if __name__ == "__main__":
 
         for app in apps:
             if not os.path.exists(os.path.join("./apps", app)):
-                print(f"App \"{app}\" not found")
+                print(f'App "{app}" not found')
                 exit(1)
 
             meta = None
             if os.path.isfile(os.path.join("./apps", app, "metadata.yaml")):
-                meta = load_metadata_file_yaml(os.path.join("./apps", app, "metadata.yaml"))
+                meta = load_metadata_file_yaml(
+                    os.path.join("./apps", app, "metadata.yaml")
+                )
             elif os.path.isfile(os.path.join("./apps", app, "metadata.json")):
-                meta = load_metadata_file_json(os.path.join("./apps", app, "metadata.json"))
+                meta = load_metadata_file_json(
+                    os.path.join("./apps", app, "metadata.json")
+                )
 
-            imageToBuild = get_image_metadata(os.path.join("./apps", app),
-                                              meta, forRelease, force=force, channels=channels)
+            imageToBuild = get_image_metadata(
+                os.path.join("./apps", app),
+                meta,
+                forRelease,
+                force=force,
+                channels=channels,
+            )
             if imageToBuild is not None:
                 imagesToBuild["images"].extend(imageToBuild["images"])
                 imagesToBuild["imagePlatforms"].extend(imageToBuild["imagePlatforms"])
