@@ -37,14 +37,14 @@ This container support setting certain custom environment variables with the use
 
 
 
-[![15811013](https://img.shields.io/badge/15811013-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/282701418?tag=15811013)
+[![15811013](https://img.shields.io/badge/15811013-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/282766794?tag=15811013)
  [![null](https://img.shields.io/badge/null-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/282725746?tag=null)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/282725746?tag=rolling)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/282766794?tag=rolling)
 
 #### Experimental
 
 
 
- [![15811013](https://img.shields.io/badge/15811013-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory-experimental/282702821?tag=15811013)
+ [![15811013](https://img.shields.io/badge/15811013-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory-experimental/282766829?tag=15811013)
  [![null](https://img.shields.io/badge/null-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory-experimental/282725624?tag=null)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory-experimental/282725624?tag=rolling)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory-experimental/282766829?tag=rolling)
