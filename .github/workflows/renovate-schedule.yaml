@@ -47,14 +47,14 @@ jobs:
     runs-on: ["ghar-set-zoo"]
     steps:
     - name: Generate Token
-      uses: actions/create-github-app-token@v1
+      uses: actions/create-github-app-token@5d869da34e18e7287c1daad50e0b8ea0f506ce69 # v1
       id: app-token
       with:
         app-id: "${{ secrets.BOT_APP_ID }}"
         private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
       with:
         token: "${{ steps.app-token.outputs.token }}"
 
@@ -65,7 +65,7 @@ jobs:
         echo "LOG_LEVEL=${{ github.event.inputs.logLevel || env.WORKFLOW_RENOVATE_LOG_LEVEL }}" >> $GITHUB_ENV
 
     - name: Renovate
-      uses: renovatebot/github-action@v40.3.1
+      uses: renovatebot/github-action@a1ed1d0adddfdf138192d1fbe3150a80094dee6a # v40.3.1
       with:
         configurationFile: "${{ env.RENOVATE_ONBOARDING_CONFIG_FILE_NAME }}"
         token: "${{ steps.app-token.outputs.token }}"

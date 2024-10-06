@@ -1,4 +1,4 @@
-FROM docker.io/library/golang:1.23-bookworm AS envsubst
+FROM docker.io/library/golang:1.23-bookworm@sha256:18d2f940cc20497f85466fdbe6c3d7a52ed2db1d5a1a49a4508ffeee2dff1463 AS envsubst
 ARG VERSION
 ARG TARGETOS
 ARG TARGETARCH
@@ -13,7 +13,7 @@ RUN go install -ldflags="-s -w" github.com/drone/envsubst/cmd/envsubst@latest \
     && chmod +x /go/bin/envsubst
 
 
-FROM docker.io/library/ubuntu:22.04
+FROM docker.io/library/ubuntu:22.04@sha256:58b87898e82351c6cf9cf5b9f3c20257bb9e2dcf33af051e12ce532d7f94e3fe
 
 ARG VERSION
 
