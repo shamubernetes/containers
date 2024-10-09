@@ -122,10 +122,9 @@ RUN sh ./ImageMagick-${IMAGEMAGICK_VERSION}/configure \
                             --with-zstd
 
 RUN make -j
-# RUN sh make install
-# RUN sh ldconfig /usr/local/lib/
-
-# RUN curl -o /app/magick https://imagemagick.org/archive/binaries/magick
+RUN make install
+RUN ldconfig /usr/local/lib/
+RUN magick --version
 
 # COPY --from=envsubst /go/bin/envsubst /usr/local/bin/envsubst
 
