@@ -9,7 +9,10 @@ LABEL documentation="https://github.com/shamubernetes/containers/blob/main/apps/
 ARG CHANNEL
 ARG PUID=568 \
     PGID=568 \
-    USER="posterizarr" \
+    # intentionally set to a user that _does not_ get
+    # the /config directory in the Posterizarr.ps1 script
+    # https://github.com/fscorrupt/Posterizarr/blob/main/Posterizarr.ps1#L69
+    USER="posterizarr_user" \
     HOMEDIR="/app" \
     CONFIGDIR="/config" \
     ASSETDIR="/assets"
@@ -30,7 +33,7 @@ RUN \
     apt-get install -y --no-install-recommends --no-install-suggests \
         curl nano \
         git jq \
-        wget \
+        wget moreutils \
         catatonit \
     && \
     for deb in $(curl -s https://api.github.com/repos/vintagesucks/imagemagick-deb/releases/latest | grep browser_download_url | cut -d '"' -f 4); do \
@@ -66,23 +69,22 @@ RUN \
     && \
     pwsh -Command "Install-Module -Name FanartTvAPI -Force -SkipPublisherCheck -AllowPrerelease -Scope AllUsers"
 
-WORKDIR /config
-VOLUME ["/config"]
-
+WORKDIR ${HOMEDIR}
 USER ${USER}
 
-RUN git clone https://github.com/fscorrupt/posterizarr.git /tmp/poster && \
-    mv /tmp/poster/* /app && \
-    rm -rf /tmp/poster && \
+RUN git clone https://github.com/fscorrupt/posterizarr.git /tmp/posterizarr && \
+    mv /tmp/posterizarr/* ${HOMEDIR} && \
+    rm -rf /tmp/posterizarr && \
+    # generate the defaults
     pwsh -Command "/app/Posterizarr.ps1 -Manual" && \
-    # this allows users to mount the entire /config directory
-    # and still have the default config files available
-    # these get copied back to /config in the entrypoint
-    mv /config/* /configtmp && \
-    cp /app/*.ttf /configtmp
+    # Posterizarr doesn't work well with spaces, and the default
+    # font it ships with doesn't copy properly...
+    cp ${HOMEDIR}/*.ttf ${HOMEDIR}/config && \
+    rm -rf ${HOMEDIR}/config/Logs ${HOMEDIR}/config/temp
 
 COPY ./apps/posterizarr/scripts /scripts
 COPY ./apps/posterizarr/entrypoint.sh /entrypoint.sh
 
+VOLUME ["${CONFIGDIR}", "${ASSETDIR}"]
 ENTRYPOINT [ "/usr/bin/catatonit", "--" ]
 CMD ["/entrypoint.sh"]

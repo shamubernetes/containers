@@ -11,8 +11,11 @@ package:
     installed: true
   jq:
     installed: true
+command:
+  'sponge -help':
+    exit-status: 0
 user:
-  posterizarr:
+  posterizarr_user:
     exists: true
     uid: 568
 file:
@@ -22,5 +25,5 @@ file:
   /app/Posterizarr.ps1:
     exists: true
     mode: "0644"
-  /configtmp/config.json:
+  /app/config/config.json:
     exists: true

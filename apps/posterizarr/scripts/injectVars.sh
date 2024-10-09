@@ -2,8 +2,7 @@
 
 # This script is used to inject environment variables into the config json file
 
-# The config file path
-CONFIG_FILE_PATH=./config.json
+CONFIG_FILE_PATH=/app/config/config.json
 
 get_jq_value() {
   local value="$1"
@@ -37,7 +36,7 @@ for var in $(env | grep '^POSTERIZARR__'); do
     if jq_value=$(get_jq_value "$value"); then
       echo "Setting $json_path from ENV"
       # Use jq to update the JSON file
-      jq ".$json_path = $jq_value" "$CONFIG_FILE_PATH" >tmp.$$.json && mv tmp.$$.json "$CONFIG_FILE_PATH"
+      jq ".$json_path = $jq_value" "$CONFIG_FILE_PATH" | sponge "$CONFIG_FILE_PATH"
     else
       echo "Skipping $json_path (unsupported type)"
       continue
