@@ -86,54 +86,49 @@ RUN \
           /var/tmp/
 
 RUN sh ./ImageMagick-${IMAGEMAGICK_VERSION}/configure \
-                            --prefix=/usr/local \
-                            --with-bzlib \
-                            --with-djvu \
-                            --with-dps \
-                            --with-fftw \
-                            --with-flif \
-                            --with-fontconfig \
-                            --with-fpx \
-                            --with-freetype \
-                            --with-gs-font-dir \
-                            --with-gslib \
-                            --with-gvc \
-                            --with-heic \
-                            --with-jbig \
-                            --with-jp2 \
-                            --with-jpeg \
-                            --with-jxl \
-                            --with-magick-plus-plus \
-                            --with-openexr \
-                            --with-openjp2 \
-                            --with-openmp \
-                            --with-pango \
-                            --with-png \
-                            --with-raqm \
-                            --with-raw \
-                            --with-rsvg \
-                            --with-tcmalloc \
-                            --with-tiff \
-                            --with-uhdr \
-                            --with-webp \
-                            --with-xml \
-                            --with-zip \
-                            --with-zlib \
-                            --with-zstd
+                                --prefix=/usr/local \
+                                --with-bzlib \
+                                --with-djvu \
+                                --with-dps \
+                                --with-fftw \
+                                --with-flif \
+                                --with-fontconfig \
+                                --with-fpx \
+                                --with-freetype \
+                                --with-gs-font-dir \
+                                --with-gslib \
+                                --with-gvc \
+                                --with-heic \
+                                --with-jbig \
+                                --with-jp2 \
+                                --with-jpeg \
+                                --with-jxl \
+                                --with-magick-plus-plus \
+                                --with-openexr \
+                                --with-openjp2 \
+                                --with-openmp \
+                                --with-pango \
+                                --with-png \
+                                --with-raqm \
+                                --with-raw \
+                                --with-rsvg \
+                                --with-tcmalloc \
+                                --with-tiff \
+                                --with-uhdr \
+                                --with-webp \
+                                --with-xml \
+                                --with-zip \
+                                --with-zlib \
+                                --with-zstd \
+      && \
+      make -j && \
+      make install &&\
+      ldconfig /usr/local/lib/ && \
+      mkdir -p /app/config /config /assets \
+      && \
+      chown -R ${PUID}:${PGID} /app /config /assets && \
+      git clone https://github.com/fscorrupt/Posterizarrr.git /app
 
-RUN make -j
-RUN make install
-RUN ldconfig /usr/local/lib/
-RUN magick --version
-
-# COPY --from=envsubst /go/bin/envsubst /usr/local/bin/envsubst
-
+COPY --from=envsubst /go/bin/envsubst /usr/local/bin/envsubst
 
 # Install-Module -Name FanartTvAPI -Force -SkipPublisherCheck -AllowPrerelease -Scope AllUsers
-# mkdir -p /app/config /config /assets
-
-# git clone https://github.com/fscorrupt/Posterizarrr.git /app
-###### chmod +x /app/magick
-
-
-# expose /config /assets
