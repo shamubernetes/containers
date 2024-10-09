@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell:7.4-ubuntu-22.04
+FROM mcr.microsoft.com/powershell:7.4-ubuntu-22.04@sha256:756dae797891cecc5a732c87695dc984c81b5ef755060c15073191996f71fc92
 
 ARG VERSION
 
