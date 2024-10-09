@@ -47,34 +47,29 @@ RUN \
         autotools-dev build-essential \
         chrpath cm-super-minimal curl \
         debhelper dh-autoreconf dh-exec \
-        dh-strip-nondeterminism doxygen doxygen-latex \
-        dwz gettext gir1.2-harfbuzz-0.0 \
-        gir1.2-pango-1.0 git graphviz \
+        dh-strip-nondeterminism dwz gettext \
+        gir1.2-harfbuzz-0.0 gir1.2-pango-1.0 git \
         icu-devtools intltool-debian jdupes \
         libann0 libarchive-zip-perl libbz2-dev \
-        libcdt5 libcgraph6 \
-        libclang-cpp11 libclang1-11 \
-        libdatrie-dev libdebhelper-perl libdeflate-dev \
+        libcdt5 libclang-cpp11 libclang1-11 \
+        libdatrie-dev libdeflate-dev \
         libdjvulibre-dev libexif-dev libexif12 \
         libfftw3-bin libfftw3-dev libfftw3-long3 \
         libfftw3-quad3 libfftw3-single3 libfile-stripnondeterminism-perl \
         libfribidi-dev libgraphite2-dev libgts-0.7-5 \
         libgvc6 libgvpr2 libharfbuzz-dev \
         libharfbuzz-gobject0 libicu-dev libilmbase-dev \
-        libjbig-dev libjpeg-dev \
-        liblab-gamut1 liblcms2-dev liblqr-1-0-dev \
+        libjbig-dev libjpeg-dev liblab-gamut1 liblcms2-dev liblqr-1-0-dev \
         libltdl-dev liblzma-dev libmime-charset-perl \
-        libopenexr-dev libpango1.0-dev libpangoxft-1.0-0 \
-        libpathplan4 libperl-dev libpng-dev \
+        libopenexr-dev libpangoxft-1.0-0 \
+        libpathplan4 libpng-dev \
         librsvg2-bin libsigsegv2 libsombok3 \
-        libsub-override-perl libthai-dev libtiff-dev \
-        libtiffxx5 libtool libunicode-linebreak-perl \
+        libthai-dev libtiff-dev \
+        libtiffxx5 libtool \
         libwmf-dev libxapian30 libxft-dev \
         libxml2-dev libxml2-utils libxt-dev \
         m4 pango1.0-tools pkg-config \
-        pkg-kde-tools po-debconf texlive-extra-utils \
-        texlive-luatex wget xsltproc \
-        catatonit \
+        wget xsltproc catatonit \
     && \
     wget https://github.com/ImageMagick/ImageMagick/archive/refs/tags/${IMAGEMAGICK_VERSION}.tar.gz && \
     tar xzf ${IMAGEMAGICK_VERSION}.tar.gz && \
@@ -88,43 +83,23 @@ RUN \
     && \
     useradd -u "${PUID}" -m "${USER}" -d ${HOMEDIR} -U \
     && chown -R "${USER}":"${USER}" "${HOMEDIR}" && \
-    mkdir /config /assets
-
-RUN sh ./ImageMagick-${IMAGEMAGICK_VERSION}/configure \
+    mkdir /config /assets \
+    && \
+    sh ./ImageMagick-${IMAGEMAGICK_VERSION}/configure \
                                 --prefix=/usr/local \
                                 --with-bzlib \
-                                --with-djvu \
                                 --with-dps \
                                 --with-fftw \
-                                --with-flif \
                                 --with-fontconfig \
                                 --with-fpx \
                                 --with-freetype \
                                 --with-gs-font-dir \
-                                --with-gslib \
-                                --with-gvc \
-                                --with-heic \
                                 --with-jbig \
-                                --with-jp2 \
                                 --with-jpeg \
-                                --with-jxl \
                                 --with-magick-plus-plus \
                                 --with-openexr \
-                                --with-openjp2 \
-                                --with-openmp \
-                                --with-pango \
                                 --with-png \
-                                --with-raqm \
-                                --with-raw \
-                                --with-rsvg \
-                                --with-tcmalloc \
                                 --with-tiff \
-                                --with-uhdr \
-                                --with-webp \
-                                --with-xml \
-                                --with-zip \
-                                --with-zlib \
-                                --with-zstd \
     && \
     make -j && \
     make install && \
@@ -145,4 +120,7 @@ RUN git clone https://github.com/fscorrupt/posterizarr.git /tmp/poster && \
     rm -rf /tmp/poster && \
     mkdir -p /app/config
 
-ENTRYPOINT [ "bash" ]
+COPY ./apps/plex/entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT [ "/usr/bin/catatonit", "--" ]
+CMD ["/entrypoint.sh"]
