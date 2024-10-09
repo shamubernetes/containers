@@ -1,6 +1,10 @@
 #!/bin/bash
 
-# Copy /config/* to /app/config/
-# ENV Vars -> /app/config/config.json
+# Copy any missing files from /configtmp to /config
+# This is useful when mounting a config volume to /config
+# ignore any errors since the /config directory might not be writable
+cp -R -u -p /configtmp/* /config || true
 
-exec sleep 9999
+/scripts/injectVars.sh
+
+exec pwsh -File /app/Posterizarr.ps1 "$@"
