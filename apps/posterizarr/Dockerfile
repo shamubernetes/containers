@@ -87,7 +87,7 @@ RUN \
           /var/tmp/ \
     && \
     useradd -u "${PUID}" -m "${USER}" -d ${HOMEDIR} -U \
-    && chown -R "${USER}":"${USER}" "${HOMEDIR}" \
+    && chown -R "${USER}":"${USER}" "${HOMEDIR}" && \
     mkdir /app /config /assets
 
 RUN sh ./ImageMagick-${IMAGEMAGICK_VERSION}/configure \
