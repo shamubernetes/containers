@@ -34,7 +34,7 @@ ENV DEBCONF_NONINTERACTIVE_SEEN="true" \
     TZ="Etc/UTC"
 
 USER root
-WORKDIR /app
+WORKDIR /imagemagick
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -83,7 +83,11 @@ RUN \
     rm -rf \
           /tmp/* \
           /var/lib/apt/lists/* \
-          /var/tmp/
+          /var/tmp/ \
+    && \
+    mkdir /app /config /assets && \
+    useradd -u ${PUID} -U -d /config -s /bin/bash ${USER} && \
+    chown -R ${PUID}:${PGID} /app /config /assets
 
 RUN sh ./ImageMagick-${IMAGEMAGICK_VERSION}/configure \
                                 --prefix=/usr/local \
@@ -125,11 +129,15 @@ RUN sh ./ImageMagick-${IMAGEMAGICK_VERSION}/configure \
     make install && \
     ldconfig /usr/local/lib/
 
-RUN mkdir -p /app/config /config /assets \
-      && \
-      chown -R ${PUID}:${PGID} /app /config /assets && \
-      git clone https://github.com/fscorrupt/Posterizarrr.git /app
+RUN pwsh -Command "Install-Module -Name FanartTvAPI -Force -SkipPublisherCheck -AllowPrerelease -Scope AllUsers"
 
 COPY --from=envsubst /go/bin/envsubst /usr/local/bin/envsubst
 
-# Install-Module -Name FanartTvAPI -Force -SkipPublisherCheck -AllowPrerelease -Scope AllUsers
+USER ${USER}
+WORKDIR /config
+VOLUME ["/config"]
+
+RUN git clone https://github.com/fscorrupt/Posterizarrr.git /app && \
+    mkdir -p /app/config
+
+ENTRYPOINT [ "bash" ]
