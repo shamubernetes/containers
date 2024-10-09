@@ -23,6 +23,7 @@ LABEL documentation="https://github.com/shamubernetes/containers/blob/main/apps/
 ARG CHANNEL
 ARG PUID=568 \
     PGID=568 \
+    USER="posterizarr" \
     HOMEDIR="/app" \
     CONFIGDIR="/config" \
     ASSETDIR="/assets" \
@@ -85,9 +86,9 @@ RUN \
           /var/lib/apt/lists/* \
           /var/tmp/ \
     && \
-    mkdir /app /config /assets && \
-    useradd -u ${PUID} -U -d /config -s /bin/bash ${USER} && \
-    chown -R ${PUID}:${PGID} /app /config /assets
+    useradd -u "${PUID}" -m "${USER}" -d ${HOMEDIR} -U \
+    && chown -R "${USER}":"${USER}" "${HOMEDIR}" \
+    mkdir /app /config /assets
 
 RUN sh ./ImageMagick-${IMAGEMAGICK_VERSION}/configure \
                                 --prefix=/usr/local \
@@ -129,13 +130,15 @@ RUN sh ./ImageMagick-${IMAGEMAGICK_VERSION}/configure \
     make install && \
     ldconfig /usr/local/lib/
 
-RUN pwsh -Command "Install-Module -Name FanartTvAPI -Force -SkipPublisherCheck -AllowPrerelease -Scope AllUsers"
+WORKDIR /config
+VOLUME ["/config"]
+
+RUN \
+  pwsh -Command "Install-Module -Name FanartTvAPI -Force -SkipPublisherCheck -AllowPrerelease -Scope AllUsers"
 
 COPY --from=envsubst /go/bin/envsubst /usr/local/bin/envsubst
 
 USER ${USER}
-WORKDIR /config
-VOLUME ["/config"]
 
 RUN git clone https://github.com/fscorrupt/Posterizarrr.git /app && \
     mkdir -p /app/config
