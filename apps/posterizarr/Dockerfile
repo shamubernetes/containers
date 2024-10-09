@@ -26,8 +26,7 @@ ARG PUID=568 \
     USER="posterizarr" \
     HOMEDIR="/app" \
     CONFIGDIR="/config" \
-    ASSETDIR="/assets" \
-    IMAGEMAGICK_VERSION="7.1.1-39"
+    ASSETDIR="/assets"
 
 ENV DEBCONF_NONINTERACTIVE_SEEN="true" \
     DEBIAN_FRONTEND="noninteractive" \
@@ -43,84 +42,55 @@ RUN \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends --no-install-suggests \
-        autoconf automake autopoint \
-        autotools-dev build-essential \
-        chrpath cm-super-minimal curl \
-        debhelper dh-autoreconf dh-exec \
-        dh-strip-nondeterminism dwz gettext \
-        gir1.2-harfbuzz-0.0 gir1.2-pango-1.0 git \
-        icu-devtools intltool-debian jdupes \
-        libann0 libarchive-zip-perl libbz2-dev \
-        libcdt5 libclang-cpp11 libclang1-11 \
-        libdatrie-dev libdeflate-dev \
-        libdjvulibre-dev libexif-dev libexif12 \
-        libfftw3-bin libfftw3-dev libfftw3-long3 \
-        libfftw3-quad3 libfftw3-single3 libfile-stripnondeterminism-perl \
-        libfribidi-dev libgraphite2-dev libgts-0.7-5 \
-        libgvc6 libgvpr2 libharfbuzz-dev \
-        libharfbuzz-gobject0 libicu-dev libilmbase-dev \
-        libjbig-dev libjpeg-dev liblab-gamut1 liblcms2-dev liblqr-1-0-dev \
-        libltdl-dev liblzma-dev libmime-charset-perl \
-        libopenexr-dev libpangoxft-1.0-0 \
-        libpathplan4 libpng-dev \
-        librsvg2-bin libsigsegv2 libsombok3 \
-        libthai-dev libtiff-dev \
-        libtiffxx5 libtool \
-        libwmf-dev libxapian30 libxft-dev \
-        libxml2-dev libxml2-utils libxt-dev \
-        m4 pango1.0-tools pkg-config \
-        wget xsltproc catatonit \
+        curl \
+        git \
+        wget \
+        catatonit \
     && \
-    wget https://github.com/ImageMagick/ImageMagick/archive/refs/tags/${IMAGEMAGICK_VERSION}.tar.gz && \
-    tar xzf ${IMAGEMAGICK_VERSION}.tar.gz && \
-    rm ${IMAGEMAGICK_VERSION}.tar.gz && \
+    for deb in $(curl -s https://api.github.com/repos/vintagesucks/imagemagick-deb/releases/latest | grep browser_download_url | cut -d '"' -f 4); do \
+        if [[ $deb == *jammy_amd64.deb* ]]; then \
+            wget -q $deb -O $(basename $deb); \
+        fi; \
+      done \
+    && \
+    apt-get install -y ./libde265_*.deb && \
+    apt-get install -y ./libheif_*.deb && \
+    apt-get install -y ./imagemagick_*.deb && \
+    ldconfig /usr/local/lib/ \
+    && \
     apt-get clean && \
     apt-get autoremove -y && \
     rm -rf \
           /tmp/* \
           /var/lib/apt/lists/* \
           /var/tmp/ \
+          /imagemagick/* \
     && \
-    useradd -u "${PUID}" -m "${USER}" -d ${HOMEDIR} -U \
-    && chown -R "${USER}":"${USER}" "${HOMEDIR}" && \
-    mkdir /config /assets \
+    useradd -u "${PUID}" -m "${USER}" -d ${HOMEDIR} -U && \
+    mkdir \
+          /config \
+          /assets \
     && \
-    sh ./ImageMagick-${IMAGEMAGICK_VERSION}/configure \
-                                --prefix=/usr/local \
-                                --with-bzlib \
-                                --with-dps \
-                                --with-fftw \
-                                --with-fontconfig \
-                                --with-fpx \
-                                --with-freetype \
-                                --with-gs-font-dir \
-                                --with-jbig \
-                                --with-jpeg \
-                                --with-magick-plus-plus \
-                                --with-openexr \
-                                --with-png \
-                                --with-tiff \
+    chown -R "${USER}":"${USER}" \
+          "${HOMEDIR}" \
+          /config \
+          /assets \
     && \
-    make -j && \
-    make install && \
-    ldconfig /usr/local/lib/
+    pwsh -Command "Install-Module -Name FanartTvAPI -Force -SkipPublisherCheck -AllowPrerelease -Scope AllUsers"
 
 WORKDIR /config
 VOLUME ["/config"]
-
-RUN \
-  pwsh -Command "Install-Module -Name FanartTvAPI -Force -SkipPublisherCheck -AllowPrerelease -Scope AllUsers"
 
 COPY --from=envsubst /go/bin/envsubst /usr/local/bin/envsubst
 
 USER ${USER}
 
-RUN git clone https://github.com/fscorrupt/posterizarr.git /tmp/poster && \
-    mv /tmp/poster/* /app && \
-    rm -rf /tmp/poster && \
-    mkdir -p /app/config
+# RUN git clone https://github.com/fscorrupt/posterizarr.git /tmp/poster && \
+#     mv /tmp/poster/* /app && \
+#     rm -rf /tmp/poster && \
+#     mkdir -p /app/config
 
-COPY ./apps/plex/entrypoint.sh /entrypoint.sh
+COPY ./apps/posterizarr/entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT [ "/usr/bin/catatonit", "--" ]
 CMD ["/entrypoint.sh"]
