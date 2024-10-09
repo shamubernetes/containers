@@ -120,11 +120,12 @@ RUN sh ./ImageMagick-${IMAGEMAGICK_VERSION}/configure \
                                 --with-zip \
                                 --with-zlib \
                                 --with-zstd \
-      && \
-      make -j && \
-      make install &&\
-      ldconfig /usr/local/lib/ && \
-      mkdir -p /app/config /config /assets \
+    && \
+    make -j && \
+    make install && \
+    ldconfig /usr/local/lib/
+
+RUN mkdir -p /app/config /config /assets \
       && \
       chown -R ${PUID}:${PGID} /app /config /assets && \
       git clone https://github.com/fscorrupt/Posterizarrr.git /app
