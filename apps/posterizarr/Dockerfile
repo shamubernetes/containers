@@ -140,7 +140,9 @@ COPY --from=envsubst /go/bin/envsubst /usr/local/bin/envsubst
 
 USER ${USER}
 
-RUN git clone https://github.com/fscorrupt/Posterizarrr.git /app && \
+RUN git clone https://github.com/fscorrupt/Posterizarrr.git /tmp/poster && \
+    mv /tmp/poster/* /app && \
+    rm -rf /tmp/poster && \
     mkdir -p /app/config
 
 ENTRYPOINT [ "bash" ]
