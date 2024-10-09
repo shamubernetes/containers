@@ -88,7 +88,7 @@ RUN \
     && \
     useradd -u "${PUID}" -m "${USER}" -d ${HOMEDIR} -U \
     && chown -R "${USER}":"${USER}" "${HOMEDIR}" && \
-    mkdir /app /config /assets
+    mkdir /config /assets
 
 RUN sh ./ImageMagick-${IMAGEMAGICK_VERSION}/configure \
                                 --prefix=/usr/local \
