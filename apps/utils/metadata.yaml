@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=../../docs/metadata-schema.json
+app: utils
+description: "Random utilities"
+channels:
+- name: stable
+  primary: true
+  platforms: ["linux/amd64", "linux/amd64"]
+  stable: true
+  tests:
+    enabled: true
+    type: web

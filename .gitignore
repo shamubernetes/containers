@@ -17,7 +17,6 @@
 
 # Private
 .private
-
 .goss/
 
 # ---------------------------------------------- #
@@ -442,7 +441,6 @@ local.properties
 .Python
 [Bb]in
 [Ii]nclude
-[Ll]ib
 [Ll]ib64
 [Ll]ocal
 pyvenv.cfg
@@ -763,7 +761,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/

@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+#function +log:notice{
+
+{[[ -z $LOG_LEVEL ]] || [[ $LOG_LEVEL -gt 3 ]]} && return
+
++log:message "[NOTIC] : ${funcstack[2]}: $@"
+
+#}
