@@ -38,13 +38,13 @@ This container support setting certain custom environment variables with the use
 
 
 [![15811013](https://img.shields.io/badge/15811013-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/287680123?tag=15811013)
- [![null](https://img.shields.io/badge/null-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/287537477?tag=null)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/287680123?tag=rolling)
+ [![null](https://img.shields.io/badge/null-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/287711916?tag=null)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory/287711916?tag=rolling)
 
 #### Experimental
 
 
 
  [![15811013](https://img.shields.io/badge/15811013-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory-experimental/287680163?tag=15811013)
- [![null](https://img.shields.io/badge/null-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory-experimental/287605241?tag=null)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory-experimental/287680163?tag=rolling)
+ [![null](https://img.shields.io/badge/null-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory-experimental/287711899?tag=null)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/satisfactory-experimental/287711899?tag=rolling)
