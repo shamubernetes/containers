@@ -1,4 +1,4 @@
-FROM docker.io/library/ubuntu:24.04@sha256:ab64a8382e935382638764d8719362bb50ee418d944c1f3d26e0c99fae49a345
+FROM docker.io/library/ubuntu:24.04@sha256:6aef31f3f313fd13eac5fe5a78e79bd1cbd332f2a69ac920a675efbd2d1e1eef
 
 ARG VERSION
 
