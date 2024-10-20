@@ -9,3 +9,6 @@ port:
 http:
   http://localhost:6969:
     status: 200
+file:
+  /usr/local/bin/envsubst:
+    exists: true

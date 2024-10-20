@@ -1,3 +1,17 @@
+ARG VERSION
+FROM docker.io/library/golang:1.23-alpine as envsubst
+ARG VERSION
+ARG TARGETOS
+ARG TARGETARCH
+ARG TARGETVARIANT=""
+ARG TARGETPLATFORM
+ENV CGO_ENABLED=0 \
+    GOOS=${TARGETOS} \
+    GOARCH=${TARGETARCH} \
+    GOARM=${TARGETVARIANT}
+RUN go install -ldflags="-s -w" github.com/drone/envsubst/cmd/envsubst@latest
+
+
 FROM docker.io/library/alpine:3.20
 
 ARG TARGETPLATFORM
@@ -10,7 +24,10 @@ LABEL documentation="https://github.com/shamubernetes/containers/blob/main/apps/
 
 ENV \
     COMPlus_EnableDiagnostics="0" \
-    WHISPARR__UPDATE__BRANCH="${CHANNEL}"
+    WHISPARR__INSTANCE_NAME="Whisparr" \
+    WHISPARR__BRANCH="${CHANNEL}" \
+    WHISPARR__PORT="6969" \
+    WHISPARR__ANALYTICS_ENABLED="False"
 
 ENV UMASK="0002" \
     TZ="Etc/UTC"
@@ -34,6 +51,7 @@ RUN \
         sqlite-libs \
         trurl \
         tzdata \
+        xmlstarlet \
     && \
     case "${TARGETPLATFORM}" in \
         'linux/amd64') export ARCH='x64' ;; \
@@ -42,18 +60,20 @@ RUN \
     && \
     mkdir -p /app/bin \
     && \
-    curl -fsSL "https://whisparr.servarr.com/v1/update/${WHISPARR__UPDATE__BRANCH}/updatefile?version=${VERSION}&os=linuxmusl&runtime=netcore&arch=${ARCH}" \
+    curl -fsSL "https://whisparr.servarr.com/v1/update/${WHISPARR__BRANCH}/updatefile?version=${VERSION}&os=linuxmusl&runtime=netcore&arch=${ARCH}" \
         | tar xzf - -C /app/bin --strip-components=1 \
     && \
     rm -rf /app/bin/Whisparr.Update \
     && \
-    printf "UpdateMethod=docker\nBranch=%s\nPackageVersion=%s\nPackageAuthor=[shamubernetes](https://github.com/shamubernetes)\n" "${WHISPARR__UPDATE__BRANCH}" "${VERSION}" > /app/package_info \
+    printf "UpdateMethod=docker\nBranch=%s\nPackageVersion=%s\nPackageAuthor=[shamubernetes](https://github.com/shamubernetes)\n" "${WHISPARR__BRANCH}" "${VERSION}" > /app/package_info \
     && \
     chown -R root:root /app && chmod -R 755 /app \
     && \
     rm -rf /tmp/*
 
+COPY ./apps/whisparr/config.xml.tmpl /app/config.xml.tmpl
 COPY ./apps/whisparr/entrypoint.sh /entrypoint.sh
+COPY --from=envsubst /go/bin/envsubst /usr/local/bin/envsubst
 
 USER nobody:nogroup
 WORKDIR /config
