@@ -40,6 +40,7 @@ RUN \
         jq \
         nano \
         tzdata \
+        unzip \
         uuid-runtime \
         xmlstarlet \
     && \
