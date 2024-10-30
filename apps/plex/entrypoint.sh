@@ -5,6 +5,11 @@ export PLEX_MEDIA_SERVER_INFO_MODEL=$(uname -m)
 #shellcheck disable=SC2155
 export PLEX_MEDIA_SERVER_INFO_PLATFORM_VERSION=$(uname -r)
 
+# Set default values for some environment variables
+PLEX_DOWNLOAD_ABSOLUTE_SCANNER=${PLEX_DOWNLOAD_ABSOLUTE_SCANNER:-"true"}
+PLEX_DOWNLOAD_HAMA_BUNDLE=${PLEX_DOWNLOAD_HAMA_BUNDLE:-"true"}
+PLEX_REMOVE_HAMA_CACHE=${PLEX_REMOVE_HAMA_CACHE:-"false"}
+
 function getPref {
   local key="$1"
   xmlstarlet sel -T -t -m "/Preferences" -v "@${key}" -n "${prefFile}"
@@ -108,6 +113,36 @@ rm -f "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/plexmedias
 if [[ ${PLEX_PURGE_CODECS} == "true" ]]; then
   echo "Purging Codecs folder..."
   find "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Codecs" -mindepth 1 -not -name '.device-id' -print -delete
+fi
+
+if [[ ${PLEX_DOWNLOAD_HAMA_BUNDLE} == "true" ]]; then
+  if [[ -d "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Plug-ins/Hama.bundle" ]]; then
+    echo "Removing existing Hama.bundle..."
+    rm -rf "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Plug-ins/Hama.bundle"
+  fi
+  echo "Downloading Hama.bundle..."
+  curl -fsSL -o "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Plug-ins/Hama.bundle.zip" \
+    "${PLEX_HAMA_BUNDLE_URL:-"https://github.com/ZeroQI/Hama.bundle/archive/master.zip"}"
+  unzip -o "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Plug-ins/Hama.bundle.zip" \
+    -d "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Plug-ins/"
+  rm -f "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Plug-ins/Hama.bundle.zip"
+fi
+
+if [[ ${PLEX_DOWNLOAD_ABSOLUTE_SCANNER} == "true" ]]; then
+  if [[ -f "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Scanners/Series/AbsoluteSeriesScanner.py" ]]; then
+    echo "Removing existing AbsoluteSeriesScanner.py..."
+    rm -f "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Scanners/Series/AbsoluteSeriesScanner.py"
+  fi
+  echo "Downloading Absolute Series Scanner..."
+  mkdir -p "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Scanners/Series"
+  curl -fsSL -o "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Scanners/Series/AbsoluteSeriesScanner.py" \
+    "${PLEX_ABSOLUTE_SCANNER_URL:-"https://raw.githubusercontent.com/ZeroQI/Absolute-Series-Scanner/master/Scanners/Series/Absolute%20Series%20Scanner.py"}"
+  chmod +x "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Scanners/Series/AbsoluteSeriesScanner.py"
+fi
+
+if [[ ${PLEX_REMOVE_HAMA_CACHE} == "true" ]]; then
+  echo "Removing Hama cache..."
+  rm -rf "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Plug-in Support/Data/com.plexapp.agents.hama"
 fi
 
 #shellcheck disable=SC2086
