@@ -126,6 +126,12 @@ if [[ ${PLEX_DOWNLOAD_HAMA_BUNDLE} == "true" ]]; then
   unzip -o "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Plug-ins/Hama.bundle.zip" \
     -d "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Plug-ins/"
   rm -f "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Plug-ins/Hama.bundle.zip"
+  if [[ -d "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Plug-ins/Hama.bundle" ]]; then
+    echo "Hama.bundle downloaded successfully!"
+  else
+    echo "Failed to download Hama.bundle!"
+    exit 1
+  fi
 fi
 
 if [[ ${PLEX_DOWNLOAD_ABSOLUTE_SCANNER} == "true" ]]; then
@@ -138,6 +144,12 @@ if [[ ${PLEX_DOWNLOAD_ABSOLUTE_SCANNER} == "true" ]]; then
   curl -fsSL -o "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Scanners/Series/AbsoluteSeriesScanner.py" \
     "${PLEX_ABSOLUTE_SCANNER_URL:-"https://raw.githubusercontent.com/ZeroQI/Absolute-Series-Scanner/master/Scanners/Series/Absolute%20Series%20Scanner.py"}"
   chmod +x "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Scanners/Series/AbsoluteSeriesScanner.py"
+  if [[ -f "${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/Scanners/Series/AbsoluteSeriesScanner.py" ]]; then
+    echo "Absolute Series Scanner downloaded successfully!"
+  else
+    echo "Failed to download Absolute Series Scanner!"
+    exit 1
+  fi
 fi
 
 if [[ ${PLEX_REMOVE_HAMA_CACHE} == "true" ]]; then
