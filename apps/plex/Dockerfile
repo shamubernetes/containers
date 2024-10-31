@@ -38,6 +38,8 @@ RUN \
         curl \
         jo \
         jq \
+        # For Absolute Series Scanner
+        libxslt-dev \
         nano \
         tzdata \
         unzip \
