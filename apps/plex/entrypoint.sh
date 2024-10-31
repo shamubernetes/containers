@@ -130,6 +130,12 @@ if [[ ${PLEX_PURGE_CODECS} == "true" ]]; then
 fi
 
 if [[ ${PLEX_DOWNLOAD_HAMA_BUNDLE} == "true" ]]; then
+
+  if [[ ! -d ${PLEX_MEDIA_SERVER_PLUGIN_DIR} ]]; then
+    echo "Creating Plex Media Server Plug-ins folder..."
+    mkdir -p "${PLEX_MEDIA_SERVER_PLUGIN_DIR}"
+  fi
+
   if [[ -d ${HAMA_BUNDLE_FOLDER_PATH} ]]; then
     echo "Removing existing Hama.bundle..."
     rm -rf "${HAMA_BUNDLE_FOLDER_PATH}"
@@ -137,10 +143,22 @@ if [[ ${PLEX_DOWNLOAD_HAMA_BUNDLE} == "true" ]]; then
   echo "Downloading Hama.bundle..."
   curl -fsSL -o "${HAMA_BUNDLE_FOLDER_PATH}.zip" \
     "${PLEX_HAMA_BUNDLE_URL}"
+  if [[ ! -f ${HAMA_BUNDLE_FOLDER_PATH}.zip ]]; then
+    echo "Failed to download Hama.bundle!"
+    exit 1
+  fi
   unzip -o "${HAMA_BUNDLE_FOLDER_PATH}.zip" \
     -d "${PLEX_MEDIA_SERVER_PLUGIN_DIR}"
+  if [[ ! -d ${HAMA_UNZIP_FOLDER_PATH} ]]; then
+    echo "Failed to unzip Hama.bundle!"
+    exit 1
+  fi
   mv "${HAMA_UNZIP_FOLDER_PATH}" \
     "${HAMA_BUNDLE_FOLDER_PATH}"
+  if [[ ! -d ${HAMA_BUNDLE_FOLDER_PATH} ]]; then
+    echo "Failed to move Hama.bundle!"
+    exit 1
+  fi
   rm -f "${HAMA_BUNDLE_FOLDER_PATH}.zip"
   if [[ -d ${HAMA_BUNDLE_FOLDER_PATH} ]]; then
     chmod -R 755 "${HAMA_BUNDLE_FOLDER_PATH}"
