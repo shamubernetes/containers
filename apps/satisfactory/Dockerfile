@@ -1,4 +1,4 @@
-FROM docker.io/library/golang:1.23-bookworm@sha256:e173361b04898f447327bbb4cc890b9f96c0241caeac82cc4895c8a5d8333ad2 AS envsubst
+FROM docker.io/library/golang:1.23-bookworm@sha256:1479eb35034e30b5e3139ea6bde56754ccd0d57bad1fc8cc613e79ef63786cfe AS envsubst
 ARG VERSION
 ARG TARGETOS
 ARG TARGETARCH
