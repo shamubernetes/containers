@@ -8,4 +8,4 @@ channels:
   stable: true
   tests:
     enabled: true
-    type: web
+    type: cli
