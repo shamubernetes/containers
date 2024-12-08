@@ -65,7 +65,6 @@ lint:
 
 actions:
   enabled:
-  - commitlint
   - trunk-announce
   - trunk-check-pre-push
   - trunk-check-pre-commit
