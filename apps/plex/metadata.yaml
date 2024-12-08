@@ -4,14 +4,14 @@ description: Plex Media Server
 channels:
 - name: stable
   primary: true
-  platforms: ["linux/amd64", "linux/arm64"]
+  platforms: ["linux/amd64"]
   stable: true
   tests:
     enabled: true
     type: web
 - name: beta
   primary: false
-  platforms: ["linux/amd64", "linux/arm64"]
+  platforms: ["linux/amd64"]
   stable: false
   tests:
     enabled: true
