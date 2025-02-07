@@ -32,4 +32,5 @@ Home Assistant
  [![2025.1.3](https://img.shields.io/badge/2025.1.3-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/340162904?tag=2025.1.3)
  [![2025.1.4](https://img.shields.io/badge/2025.1.4-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/344824210?tag=2025.1.4)
  [![2025.2.0](https://img.shields.io/badge/2025.2.0-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/350129155?tag=2025.2.0)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/350129155?tag=rolling)
+ [![2025.2.1](https://img.shields.io/badge/2025.2.1-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/351619412?tag=2025.2.1)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/351619412?tag=rolling)
