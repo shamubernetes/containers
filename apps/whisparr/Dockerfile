@@ -1,5 +1,5 @@
 ARG VERSION
-FROM docker.io/library/golang:1.23-alpine@sha256:9a425d78a8257fc92d41ad979d38cb54005bac3fdefbdadde868e004eccbb898 AS envsubst
+FROM docker.io/library/golang:1.23-alpine@sha256:0bc2e43b0ce2e4a7b095de2626c641f8649fcd141c44e1006ec69c4f0e7af8d8 AS envsubst
 ARG VERSION
 ARG TARGETOS
 ARG TARGETARCH
