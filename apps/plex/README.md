@@ -33,8 +33,8 @@ Plex Media Server
  [![1.41.7.9799-5bce000f7](https://img.shields.io/badge/1.41.7.9799--5bce000f7-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/419818009?tag=1.41.7.9799-5bce000f7)
  [![1.41.7.9823-59f304c16](https://img.shields.io/badge/1.41.7.9823--59f304c16-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/429321200?tag=1.41.7.9823-59f304c16)
  [![1.41.8.9834-071366d65](https://img.shields.io/badge/1.41.8.9834--071366d65-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/452101726?tag=1.41.8.9834-071366d65)
- [![1.41.9.9961-46083195d](https://img.shields.io/badge/1.41.9.9961--46083195d-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/462623335?tag=1.41.9.9961-46083195d)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/462623335?tag=rolling)
+ [![1.41.9.9961-46083195d](https://img.shields.io/badge/1.41.9.9961--46083195d-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/465093914?tag=1.41.9.9961-46083195d)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex/465093914?tag=rolling)
 
 #### Beta
 
@@ -77,5 +77,5 @@ Plex Media Server
  [![1.41.7.9799-5bce000f7](https://img.shields.io/badge/1.41.7.9799--5bce000f7-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/418246094?tag=1.41.7.9799-5bce000f7)
  [![1.41.8.9834-071366d65](https://img.shields.io/badge/1.41.8.9834--071366d65-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/429321183?tag=1.41.8.9834-071366d65)
  [![1.41.9.9912-371133ff9](https://img.shields.io/badge/1.41.9.9912--371133ff9-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/452103198?tag=1.41.9.9912-371133ff9)
- [![1.42.0.9975-6b2b441e1](https://img.shields.io/badge/1.42.0.9975--6b2b441e1-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/462622317?tag=1.42.0.9975-6b2b441e1)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/462622317?tag=rolling)
+ [![1.42.0.9975-6b2b441e1](https://img.shields.io/badge/1.42.0.9975--6b2b441e1-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/465094072?tag=1.42.0.9975-6b2b441e1)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/plex-beta/465094072?tag=rolling)
