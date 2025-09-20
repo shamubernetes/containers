@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-#function +log:info{
-
-{[[ -z $LOG_LEVEL ]] || [[ $LOG_LEVEL -gt 2 ]]} && return
-
-+log:message "[INFO ] : ${funcstack[2]}: $@"
-
-#}

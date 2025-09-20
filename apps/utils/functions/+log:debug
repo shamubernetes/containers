@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-#function +log:debug{
-
-{[[ -z $LOG_LEVEL ]] || [[ $LOG_LEVEL -gt 1 ]]} && return
-
-+log:message "[DEBUG] : ${funcstack[2]}: $@"
-
-#}
