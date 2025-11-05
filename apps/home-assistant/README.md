@@ -36,6 +36,7 @@ Home Assistant
  [![2025.10.2](https://img.shields.io/badge/2025.10.2-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/541184339?tag=2025.10.2)
  [![2025.10.3](https://img.shields.io/badge/2025.10.3-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/548276082?tag=2025.10.3)
  [![2025.10.4](https://img.shields.io/badge/2025.10.4-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/555284041?tag=2025.10.4)
+ [![2025.11.0](https://img.shields.io/badge/2025.11.0-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/567418469?tag=2025.11.0)
  [![2025.2.0](https://img.shields.io/badge/2025.2.0-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/350129155?tag=2025.2.0)
  [![2025.2.1](https://img.shields.io/badge/2025.2.1-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/351619412?tag=2025.2.1)
  [![2025.2.2](https://img.shields.io/badge/2025.2.2-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/352953219?tag=2025.2.2)
@@ -52,4 +53,4 @@ Home Assistant
  [![2025.4.3](https://img.shields.io/badge/2025.4.3-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/398714840?tag=2025.4.3)
  [![2025.4.4](https://img.shields.io/badge/2025.4.4-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/402621495?tag=2025.4.4)
  [![2025.9.4](https://img.shields.io/badge/2025.9.4-blue?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/521547988?tag=2025.9.4)
- [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/555284041?tag=rolling)
+ [![rolling](https://img.shields.io/badge/rolling-green?style=flat-square)](https://github.com/shamubernetes/containers/pkgs/container/home-assistant/567418469?tag=rolling)
