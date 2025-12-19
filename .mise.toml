@@ -6,7 +6,7 @@
 [tools]
 goss = "0.4.8"
 yq = "4.50.1"
-yamlfmt = "0.15.0"
+yamlfmt = "0.20.0"
 cue = "0.10.0"
 task = "3.38.0"
 # qemu = "latest"
