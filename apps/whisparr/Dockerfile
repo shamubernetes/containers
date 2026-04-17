@@ -12,7 +12,7 @@ ENV CGO_ENABLED=0 \
 RUN go install -ldflags="-s -w" github.com/drone/envsubst/cmd/envsubst@latest
 
 
-FROM docker.io/library/alpine:3.21@sha256:c3f8e73fdb79deaebaa2037150150191b9dcbfba68b4a46d70103204c53f4709
+FROM docker.io/library/alpine:3.21@sha256:881540709e57ba720f7a0c2a3efad734318d9893f7956ce0c9d78ee0139bc097
 
 ARG TARGETPLATFORM
 ARG VERSION
