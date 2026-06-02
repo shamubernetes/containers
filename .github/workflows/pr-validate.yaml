@@ -12,15 +12,15 @@ concurrency:
 
 jobs:
   simple-checks:
-    uses: shamubernetes/containers/.github/workflows/simple-checks.yaml@07987f7d24f2e053b874512ac55216e84052347f # main
+    uses: shamubernetes/containers/.github/workflows/simple-checks.yaml@c06571162fe6962f2808eef80b53ad24ba9aacb7 # main
 
   get-changed-images:
-    uses: shamubernetes/containers/.github/workflows/get-changed-images.yaml@07987f7d24f2e053b874512ac55216e84052347f # main
+    uses: shamubernetes/containers/.github/workflows/get-changed-images.yaml@c06571162fe6962f2808eef80b53ad24ba9aacb7 # main
 
   build-images:
     needs: ["simple-checks", "get-changed-images"]
     if: ${{ needs.get-changed-images.outputs.addedOrModified == 'true' }}
-    uses: shamubernetes/containers/.github/workflows/build-images.yaml@07987f7d24f2e053b874512ac55216e84052347f # main
+    uses: shamubernetes/containers/.github/workflows/build-images.yaml@c06571162fe6962f2808eef80b53ad24ba9aacb7 # main
     secrets: inherit
     with:
       appsToBuild: "${{ needs.get-changed-images.outputs.addedOrModifiedImages }}"
