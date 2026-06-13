@@ -24,7 +24,7 @@ jobs:
       uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
     - name: Setup Homebrew
-      uses: Homebrew/actions/setup-homebrew@caddd704cd8c1cbb45f9f3dfbd1f77d1f81e97f0 # master
+      uses: Homebrew/actions/setup-homebrew@1141dcc5d01333e0891094766c3b2cf2ae3df7df # master
 
     - name: Setup Workflow Tools
       shell: bash
