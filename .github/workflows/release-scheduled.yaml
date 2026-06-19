@@ -24,12 +24,12 @@ on:
 jobs:
   simple-checks:
     name: Simple Checks
-    uses: shamubernetes/containers/.github/workflows/simple-checks.yaml@07097ca0f85257fa197541bb451ba3edeee4b35e # main
+    uses: shamubernetes/containers/.github/workflows/simple-checks.yaml@1ad6785a26b3ed25876e00166f7c9b0e0d2fe1d5 # main
 
   build-images:
     name: Build Images
     needs: simple-checks
-    uses: shamubernetes/containers/.github/workflows/build-images.yaml@07097ca0f85257fa197541bb451ba3edeee4b35e # main
+    uses: shamubernetes/containers/.github/workflows/build-images.yaml@1ad6785a26b3ed25876e00166f7c9b0e0d2fe1d5 # main
     secrets: inherit
     permissions:
       contents: read
