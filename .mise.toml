@@ -4,7 +4,7 @@
 # docker-buildx = "https://github.com/kiliantyler/asdf-dockerbuildx.git"
 
 [tools]
-goss = "0.4.8"
+goss = "0.4.9"
 yq = "4.50.1"
 yamlfmt = "0.15.0"
 cue = "0.10.0"
