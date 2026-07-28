@@ -14,7 +14,7 @@ version=$(
 version="${version#*v}"
 version="${version#*release-}"
 
-if [[ -z "${version}" ]]; then
+if [[ -z ${version} ]]; then
   echo "Whisparr ${channel} update response did not contain a version" >&2
   exit 1
 fi

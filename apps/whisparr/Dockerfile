@@ -54,7 +54,7 @@ RUN \
         xmlstarlet \
     && \
     case "${TARGETPLATFORM}" in \
-        'linux/amd64') export ARCH='x64' ;; \
+        'linux/amd64') export ARCH='amd64' ;; \
         'linux/arm64') export ARCH='arm64' ;; \
     esac \
     && \
