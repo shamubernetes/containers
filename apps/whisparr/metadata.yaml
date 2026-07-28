@@ -9,10 +9,3 @@ channels:
   tests:
     enabled: true
     type: web
-- name: eros
-  primary: true
-  platforms: ["linux/amd64"]
-  stable: false
-  tests:
-    enabled: true
-    type: web

@@ -90,6 +90,12 @@ def get_image_metadata(subdir, meta, forRelease=False, force=False, channels=Non
         if version is None:
             continue
 
+        version = str(version).strip()
+        if not version:
+            raise ValueError(
+                f'Latest version for {meta["app"]}/{channel["name"]} is empty'
+            )
+
         # Image Name
         toBuild = {}
         if channel.get("stable", False):
