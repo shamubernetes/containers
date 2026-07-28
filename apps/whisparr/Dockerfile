@@ -60,8 +60,29 @@ RUN \
     && \
     mkdir -p /app/bin \
     && \
-    curl -fsSL "https://whisparr.servarr.com/v1/update/${WHISPARR__BRANCH}/updatefile?version=${VERSION}&os=linuxmusl&runtime=netcore&arch=${ARCH}" \
-        | tar xzf - -C /app/bin --strip-components=1 \
+    if [ "${WHISPARR__BRANCH}" = 'eros' ]; then \
+        asset="Whisparr.eros.${VERSION}.linux-musl-${ARCH}.tar.gz"; \
+        curl --fail --silent --show-error --location \
+            --retry 5 --retry-delay 2 --retry-all-errors \
+            --output /tmp/eros-release.json \
+            "https://api.github.com/repos/Whisparr/Whisparr-Eros/releases/tags/v${VERSION}"; \
+        asset_count=$(jq --arg asset "${asset}" '[.assets[] | select(.name == $asset)] | length' /tmp/eros-release.json); \
+        [ "${asset_count}" -eq 1 ]; \
+        download_url=$(jq --exit-status --raw-output --arg asset "${asset}" '.assets[] | select(.name == $asset) | .browser_download_url' /tmp/eros-release.json); \
+        digest=$(jq --exit-status --raw-output --arg asset "${asset}" '.assets[] | select(.name == $asset) | .digest | select(test("^sha256:[0-9a-f]{64}$"))' /tmp/eros-release.json); \
+        curl --fail --silent --show-error --location \
+            --retry 5 --retry-delay 2 --retry-all-errors \
+            --output /tmp/whisparr.tar.gz "${download_url}"; \
+        printf '%s  %s\n' "${digest#sha256:}" /tmp/whisparr.tar.gz > /tmp/whisparr.sha256; \
+        sha256sum --check --status /tmp/whisparr.sha256; \
+    else \
+        curl --fail --silent --show-error --location \
+            --retry 5 --retry-delay 2 --retry-all-errors \
+            --output /tmp/whisparr.tar.gz \
+            "https://whisparr.servarr.com/v1/update/${WHISPARR__BRANCH}/updatefile?version=${VERSION}&os=linuxmusl&runtime=netcore&arch=${ARCH}"; \
+    fi \
+    && \
+    tar xzf /tmp/whisparr.tar.gz -C /app/bin --strip-components=1 \
     && \
     rm -rf /app/bin/Whisparr.Update \
     && \
@@ -81,4 +102,4 @@ VOLUME ["/config"]
 
 ENTRYPOINT ["/usr/bin/catatonit", "--", "/entrypoint.sh"]
 
-LABEL org.opencontainers.image.source="https://github.com/Whisparr/Whisparr"
+LABEL org.opencontainers.image.source="https://github.com/Whisparr"
