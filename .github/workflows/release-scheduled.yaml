@@ -29,7 +29,7 @@ jobs:
   build-images:
     name: Build Images
     needs: simple-checks
-    uses: shamubernetes/containers/.github/workflows/build-images.yaml@720fbdd0ee9635a0517b67bffdd700c81e32f082 # main
+    uses: shamubernetes/containers/.github/workflows/build-images.yaml@9d3e36f40507282bf015e7351a448e12aa5a5197 # main
     secrets: inherit
     permissions:
       contents: read

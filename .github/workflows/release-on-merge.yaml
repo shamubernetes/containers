@@ -25,7 +25,7 @@ jobs:
   build-images:
     needs: ["simple-checks", "get-changed-images"]
     if: ${{ needs.get-changed-images.outputs.addedOrModified == 'true' }}
-    uses: shamubernetes/containers/.github/workflows/build-images.yaml@720fbdd0ee9635a0517b67bffdd700c81e32f082 # main
+    uses: shamubernetes/containers/.github/workflows/build-images.yaml@9d3e36f40507282bf015e7351a448e12aa5a5197 # main
     secrets: inherit
     with:
       appsToBuild: "${{ needs.get-changed-images.outputs.addedOrModifiedImages }}"
