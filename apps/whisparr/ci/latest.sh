@@ -7,8 +7,8 @@ update_url="${WHISPARR_UPDATE_URL:-https://whisparr.servarr.com/v1/update/${chan
 version=$(
   curl --fail --silent --show-error --location \
     --retry 5 --retry-delay 2 --retry-all-errors \
-    "${update_url}" \
-    | jq --exit-status --raw-output \
+    "${update_url}" |
+    jq --exit-status --raw-output \
       '.[0].version | select(type == "string" and length > 0)'
 )
 version="${version#*v}"

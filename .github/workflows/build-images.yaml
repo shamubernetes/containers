@@ -166,9 +166,33 @@ jobs:
 
     - name: Setup Goss
       if: ${{ matrix.image.tests_enabled }}
-      uses: e1himself/goss-installation-action@8c646222c1cb43528392161394b745cb5d28e8f9 # v1
-      with:
-        version: latest
+      shell: bash
+      env:
+        GOSS_VERSION: 0.4.10
+        GOSS_SHA256: 26e365428946294bcec0c61d867bb3c8349f39feb3d0e6f59084e98632785cc7
+        DGOSS_SHA256: 3bb3ac9df33eeab8ce71a35763f4a69582eceb7db7bf02b4d0a551e72c7a888d
+      run: |
+        set -euo pipefail
+
+        install_dir="${RUNNER_TEMP}/goss/bin"
+        archive="goss_${GOSS_VERSION}_linux_x86_64.tar.gz"
+        release_url="https://github.com/goss-org/goss/releases/download/v${GOSS_VERSION}"
+        mkdir -p "${install_dir}"
+
+        curl --fail --silent --show-error --location \
+          --retry 5 --retry-all-errors \
+          --output "${RUNNER_TEMP}/${archive}" \
+          "${release_url}/${archive}"
+        echo "${GOSS_SHA256}  ${RUNNER_TEMP}/${archive}" | sha256sum --check --status
+        tar --extract --gzip --file "${RUNNER_TEMP}/${archive}" --directory "${install_dir}" goss
+
+        curl --fail --silent --show-error --location \
+          --retry 5 --retry-all-errors \
+          --output "${install_dir}/dgoss" \
+          "${release_url}/dgoss"
+        echo "${DGOSS_SHA256}  ${install_dir}/dgoss" | sha256sum --check --status
+        chmod +x "${install_dir}/goss" "${install_dir}/dgoss"
+        echo "${install_dir}" >> "${GITHUB_PATH}"
 
     - name: Prepare Build Outputs
       id: prepare-build-outputs
