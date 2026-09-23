@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=../../docs/metadata-schema.json
+app: actions-runner
+description: "GitHub Actions runner with the MaudeCode CI toolchain preinstalled"
+channels:
+- name: stable
+  primary: true
+  platforms: ["linux/amd64"]
+  stable: true
+  tests:
+    enabled: true
+    type: cli

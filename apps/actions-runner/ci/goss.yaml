@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://github.com/goss-org/goss/raw/master/docs/schema.yaml
+command:
+  zsh --version:
+    exit-status: 0
+  make --version:
+    exit-status: 0
+  g++ --version:
+    exit-status: 0
+  python3 --version:
+    exit-status: 0
+  ruby-json:
+    exec: ruby -rjson -e 'puts JSON.generate("ok" => true)'
+    exit-status: 0
+    stdout: ['{"ok":true}']
+  docker compose version:
+    exit-status: 0
+  docker buildx version:
+    exit-status: 0
+file:
+  /home/runner/run.sh:
+    exists: true
