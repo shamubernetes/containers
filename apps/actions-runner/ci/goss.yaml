@@ -8,7 +8,8 @@ command:
     exit-status: 0
   python3 --version:
     exit-status: 0
-  ruby -rjson -e 'puts JSON.generate(ok: true)':
+  ruby-json:
+    exec: ruby -rjson -e 'puts JSON.generate("ok" => true)'
     exit-status: 0
     stdout: ['{"ok":true}']
   docker compose version:
