@@ -19,6 +19,9 @@ ARG PYTHON_RELEASE=3.13.15-31064747964
 ARG PYTHON_SHA256=4e544242f8a4ef647a6f511b67f9b00eefc9ef366644e3c40a27a6eff709ae2b
 ARG RUBY_VERSION=3.3.12
 ARG RUBY_SHA256=3fa2d6242e105a65f694fae86e9f68d9617c827fc14d1fcf611035b9ae2cbdb8
+# Keep in step with Talaria's @playwright/test; another version still downloads its own browser.
+# renovate: datasource=npm depName=playwright
+ARG PLAYWRIGHT_VERSION=1.63.0
 
 LABEL author="shamubernetes"
 LABEL version="${VERSION}"
@@ -76,5 +79,15 @@ RUN \
     && touch "${RUNNER_TOOL_CACHE}/Ruby/${RUBY_VERSION}/x64.complete" \
     && chown -R runner:runner "${RUNNER_TOOL_CACHE}" \
     && rm -rf /tmp/*
+
+# Chromium, its headless shell and system libraries, so `playwright install --with-deps
+# chromium` finds everything already present.
+ENV PLAYWRIGHT_BROWSERS_PATH=/opt/ms-playwright
+
+RUN \
+    PATH="${RUNNER_TOOL_CACHE}/node/${NODE24_VERSION}/x64/bin:${PATH}" \
+        npx --yes "playwright@${PLAYWRIGHT_VERSION}" install --with-deps chromium \
+    && chown -R runner:runner "${PLAYWRIGHT_BROWSERS_PATH}" \
+    && rm -rf /var/lib/apt/lists/* /root/.npm /tmp/* /var/tmp/*
 
 USER runner
