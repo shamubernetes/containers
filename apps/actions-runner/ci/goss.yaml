@@ -32,6 +32,13 @@ command:
     exec: /opt/hostedtoolcache/Ruby/3.3.12/x64/bin/ruby --version
     exit-status: 0
     stdout: [ruby 3.3.12]
+  playwright-browsers-path:
+    exec: printenv PLAYWRIGHT_BROWSERS_PATH
+    exit-status: 0
+    stdout: [/opt/ms-playwright]
+  playwright-chromium:
+    exec: sh -c 'ls -d /opt/ms-playwright/chromium-* /opt/ms-playwright/chromium_headless_shell-*'
+    exit-status: 0
 file:
   /home/runner/run.sh:
     exists: true
