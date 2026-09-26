@@ -30,8 +30,9 @@ LABEL documentation="https://github.com/shamubernetes/containers/blob/main/apps/
 USER root
 
 # Tools the MaudeCode pool jobs otherwise install on every run: zsh and the node-pty
-# toolchain (make, g++, python3), Ruby for release tooling, and the Compose CLI plugin
-# (the base Docker CLI ships Buildx only). The pod's dind daemon is unchanged.
+# toolchain (make, g++, python3), python3-venv for repository tooling, skopeo for OCI
+# transfers, Ruby for release tooling, and the Compose CLI plugin (the base Docker CLI
+# ships Buildx only). The pod's dind daemon is unchanged.
 #hadolint ignore=DL3008
 RUN \
     apt-get -qq update \
@@ -39,7 +40,9 @@ RUN \
         g++ \
         make \
         python3 \
+        python3-venv \
         ruby \
+        skopeo \
         zsh \
     && install -d -m 755 /usr/local/lib/docker/cli-plugins \
     && curl -fsSL -o /usr/local/lib/docker/cli-plugins/docker-compose \
