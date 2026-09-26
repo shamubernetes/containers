@@ -39,6 +39,11 @@ command:
   playwright-chromium:
     exec: sh -c 'ls -d /opt/ms-playwright/chromium-* /opt/ms-playwright/chromium_headless_shell-*'
     exit-status: 0
+  skopeo --version:
+    exit-status: 0
+  python3-venv:
+    exec: python3 -m venv /tmp/goss-venv
+    exit-status: 0
 file:
   /home/runner/run.sh:
     exists: true
